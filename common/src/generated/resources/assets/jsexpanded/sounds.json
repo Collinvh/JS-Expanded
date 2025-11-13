@@ -1,0 +1,38 @@
+{
+  "venatosaurus_attack": {
+    "sounds": [
+      "jsexpanded:animal/venatosaurus/venatosaurus_attack"
+    ]
+  },
+  "venatosaurus_death": {
+    "sounds": [
+      "jsexpanded:animal/venatosaurus/venatosaurus_death01",
+      "jsexpanded:animal/venatosaurus/venatosaurus_death02"
+    ]
+  },
+  "venatosaurus_hurt": {
+    "sounds": [
+      "jsexpanded:animal/venatosaurus/venatosaurus_hurt01",
+      "jsexpanded:animal/venatosaurus/venatosaurus_hurt02",
+      "jsexpanded:animal/venatosaurus/venatosaurus_hurt03",
+      "jsexpanded:animal/venatosaurus/venatosaurus_hurt04"
+    ]
+  },
+  "venatosaurus_living": {
+    "sounds": [
+      "jsexpanded:animal/venatosaurus/venatosaurus_living01",
+      "jsexpanded:animal/venatosaurus/venatosaurus_living02",
+      "jsexpanded:animal/venatosaurus/venatosaurus_living03",
+      "jsexpanded:animal/venatosaurus/venatosaurus_living04",
+      "jsexpanded:animal/venatosaurus/venatosaurus_living05",
+      "jsexpanded:animal/venatosaurus/venatosaurus_living06"
+    ]
+  },
+  "venatosaurus_threaten": {
+    "sounds": [
+      "jsexpanded:animal/venatosaurus/venatosaurus_threaten01",
+      "jsexpanded:animal/venatosaurus/venatosaurus_threaten02",
+      "jsexpanded:animal/venatosaurus/venatosaurus_threaten03"
+    ]
+  }
+}

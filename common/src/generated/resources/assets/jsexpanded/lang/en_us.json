@@ -1,0 +1,14 @@
+{
+  "advancements.js.venatosaurus.desc": "Incubate an venatosaurus egg!",
+  "advancements.js.venatosaurus.title": "???",
+  "entity.jurassicsaga.venatosaurus": "Venatosaurus",
+  "guidebook.jurassicsaga.venatosaurus.description": "???",
+  "guidebook.jurassicsaga.venatosaurus.scientific_name": "Venatosaurus",
+  "guidebook.jurassicsaga.venatosaurus.source": "Skull Island",
+  "item.jurassicsaga.venatosaurus_coin": "Venatosaurus DNA",
+  "item.jurassicsaga.venatosaurus_cooked": "Venatosaurus Cooked Meat",
+  "item.jurassicsaga.venatosaurus_fossil_remains": "Venatosaurus Remains",
+  "item.jurassicsaga.venatosaurus_hatch_egg": "Venatosaurus Hatched Egg",
+  "item.jurassicsaga.venatosaurus_raw": "Venatosaurus Raw Meat",
+  "item.jurassicsaga.venatosaurus_spawn_egg": "Venatosaurus Spawn Egg"
+}

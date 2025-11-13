@@ -19,7 +19,9 @@ dependencies {
     compileOnly "org.projectlombok:lombok:1.18.30"
     annotationProcessor "org.projectlombok:lombok:1.18.30"
 
-    implementation("travelers:travelerslib-neoforge-${minecraft_version}:${travelers_version}")
+    implementation "travelers:travelerslib-neoforge-${minecraft_version}:${travelers_version}"
+    implementation "jp.jurassicsaga:jurassicsaga-neoforge-${minecraft_version}:${js_version}"
+
     implementation "mod.azure.azurelib:azurelib-neo-${minecraft_version}:${azure_version}"
 }
 

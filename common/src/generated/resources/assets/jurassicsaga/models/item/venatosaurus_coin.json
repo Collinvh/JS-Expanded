@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "jsexpanded:item/natural/entity/default_coins/coin_carnivore",
+    "layer1": "jsexpanded:item/natural/entity/animal/extinct/venatosaurus/venatosaurus_coin"
+  }
+}

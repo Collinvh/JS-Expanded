@@ -23,7 +23,11 @@ dependencies {
     }
     modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+
+    //Collinvht Repo
 	modImplementation "travelers:travelerslib-fabric-${minecraft_version}:${travelers_version}"
+	modImplementation "jp.jurassicsaga:jurassicsaga-fabric-${minecraft_version}:${js_version}"
+
     modImplementation "mod.azure.azurelib:azurelib-fabric-${minecraft_version}:${azure_version}"
 }
 

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "jurassicsaga:block/manmade/other/paddock_sign/venatosaurus"
+  }
+}

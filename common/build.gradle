@@ -36,7 +36,9 @@ dependencies {
     compileOnly "org.projectlombok:lombok:1.18.30"
     annotationProcessor "org.projectlombok:lombok:1.18.30"
 
-    implementation("travelers:travelerslib-common-${minecraft_version}:${travelers_version}")
+    implementation "travelers:travelerslib-common-${minecraft_version}:${travelers_version}"
+    implementation "jp.jurassicsaga:jurassicsaga-common-${minecraft_version}:${js_version}"
+
     implementation "mod.azure.azurelib:azurelib-common-${minecraft_version}:${azure_version}"
 }
 
