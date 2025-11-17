@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "waterlogged=false": {
+      "model": "jsexpanded:plant/dead_mans_hair",
+      "uvlock": true
+    },
+    "waterlogged=true": {
+      "model": "jsexpanded:plant/dead_mans_hair",
+      "uvlock": true
+    }
+  }
+}

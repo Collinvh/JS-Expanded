@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "jsexpanded:block/natural/stone/rhyolite/rhyolite_face_bottom",
+    "side": "jsexpanded:block/natural/stone/rhyolite/rhyolite_face",
+    "top": "jsexpanded:block/natural/stone/rhyolite/rhyolite_face_top"
+  }
+}

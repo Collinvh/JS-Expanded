@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/vine",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "vine": "jsexpanded:block/plant/vine/rancid_wall_growth"
+  }
+}

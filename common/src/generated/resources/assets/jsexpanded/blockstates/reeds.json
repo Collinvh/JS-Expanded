@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "half=lower,waterlogged=false": {
+      "model": "jsexpanded:plant/reeds_bottom",
+      "uvlock": true
+    },
+    "half=lower,waterlogged=true": {
+      "model": "jsexpanded:plant/reeds_bottom",
+      "uvlock": true
+    },
+    "half=upper,waterlogged=false": {
+      "model": "jsexpanded:plant/reeds_top",
+      "uvlock": true
+    },
+    "half=upper,waterlogged=true": {
+      "model": "jsexpanded:plant/reeds_top",
+      "uvlock": true
+    }
+  }
+}

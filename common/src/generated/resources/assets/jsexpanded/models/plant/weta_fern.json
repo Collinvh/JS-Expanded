@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cross",
+  "ambientocclusion": false,
+  "render_type": "minecraft:cutout_mipped",
+  "textures": {
+    "cross": "jsexpanded:block/plant/land/weta_fern"
+  }
+}

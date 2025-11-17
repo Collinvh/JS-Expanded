@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "": {
+      "model": "jsexpanded:plant/swamp_slime",
+      "uvlock": true
+    }
+  }
+}

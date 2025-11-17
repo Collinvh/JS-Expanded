@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "": {
+      "model": "jsexpanded:plant/water_lily",
+      "uvlock": true
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "jsexpanded:plant/kongwobisa_bottom",
+      "uvlock": true
+    },
+    "half=upper": {
+      "model": "jsexpanded:plant/kongwobisa_top",
+      "uvlock": true
+    }
+  }
+}

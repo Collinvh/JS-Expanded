@@ -1,11 +1,9 @@
 package jp.jsexpanded.server.animals;
 
 import jp.jsexpanded.JSExpanded;
-import jp.jurassicsaga.JSCommon;
 import jp.jurassicsaga.server.base.animal.entity.obj.bases.JSAnimalBase;
 import jp.jurassicsaga.server.base.animal.entity.obj.info.AnimalGrowthStage;
 import jp.jurassicsaga.server.base.animal.entity.obj.other.JSVariants;
-import jp.jurassicsaga.server.base.animal.obj.locator.JSAnimalBaseLocator;
 import net.minecraft.resources.ResourceLocation;
 import travelers.server.animal.obj.locator.ResourceLocator;
 

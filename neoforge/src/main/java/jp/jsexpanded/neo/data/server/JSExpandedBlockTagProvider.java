@@ -1,6 +1,7 @@
 package jp.jsexpanded.neo.data.server;
 
 import jp.jsexpanded.JSExpanded;
+import jp.jsexpanded.server.block.JSExpandedBlocks;
 import jp.jurassicsaga.server.base.block.obj.group.BasicBlockSetRegistries;
 import jp.jurassicsaga.server.base.block.obj.group.StoneRegistries;
 import jp.jurassicsaga.server.base.block.obj.group.WoodRegistries;
@@ -14,6 +15,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
+import static jp.jsexpanded.server.block.JSExpandedBlocks.*;
+
 public class JSExpandedBlockTagProvider extends BlockTagsProvider {
     public JSExpandedBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
         super(output, lookupProvider, JSExpanded.MOD_ID, existingFileHelper);
@@ -21,6 +24,7 @@ public class JSExpandedBlockTagProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
+        tag(BlockTags.CLIMBABLE).add(EPIPHYTE_VERN.get(), RANCID_WALL_GROWTH.get(), ROPE.get(), SHROUD_MOSS.get());
     }
 
     private void initBasic(BasicBlockSetRegistries stone) {

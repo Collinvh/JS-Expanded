@@ -1,9 +1,14 @@
 package jp.jsexpanded.neo.data.server.loot;
 
 import jp.jsexpanded.JSExpanded;
+import jp.jsexpanded.server.block.JSExpandedBlocks;
+import jp.jsexpanded.server.block.obj.JSSugarCaneBlock;
 import jp.jurassicsaga.server.base.block.obj.group.BasicBlockSetRegistries;
 import jp.jurassicsaga.server.base.block.obj.group.ColoredRegistries;
 import jp.jurassicsaga.server.base.block.obj.group.StoneRegistries;
+import jp.jurassicsaga.server.base.block.obj.plant.JSDoublePlantBlock;
+import jp.jurassicsaga.server.base.block.obj.plant.JSPlantBlock;
+import jp.jurassicsaga.server.base.block.obj.vanilla_overrides.JSWaterLily;
 import jp.jurassicsaga.server.base.generic.obj.Era;
 import jp.jurassicsaga.server.base.generic.obj.PossibleResult;
 import net.minecraft.core.HolderLookup;
@@ -14,6 +19,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.VineBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -36,7 +42,38 @@ public class JSExpandedBlockLootTableProvider extends VanillaBlockLoot {
 
     @Override
     protected void generate() {
+//        dropSelf(CARPET_MOSS.get());
+//        dropSelf(HORSETAILS.get());
+//        dropSelf(INDIGOFERA.get());
+//        dropSelf(LASIANDRA.get());
+//        dropSelf(MELTED_CROWN.get());
+//        dropSelf(NEEDLEBRUSH.get());
+//        dropSelf(PEARL_MUSHROOM.get());
+//        dropSelf(PINNATONO_BERRY.get());
+//        dropSelf(RIBBON_FERN.get());
+//        dropSelf(STOUT_DRAGON.get());
+//        dropSelf(THORNY_STEAMER.get());
+//        dropSelf(WETA_FERN.get());
+//        dropSelf(WILD_PEANUT.get());
+//
+//        this.add(HERMIT_GYMPIE.get(), createDoublePlantDrop(HERMIT_GYMPIE.get()));
+//        this.add(KONGWOBISA.get(), createDoublePlantDrop(KONGWOBISA.get()));
+//        this.add(TREE_FERN.get(), createDoublePlantDrop(TREE_FERN.get()));
+//
+//        dropSelf(BULLWEED.get());
+//        dropSelf(DEAD_MANS_HAIR.get());
+//        dropSelf(DROWNING_LILY.get());
 
+        JSExpandedBlocks.BLOCKS.getValues().forEach((s, blockSupplier) -> {
+            var block = blockSupplier.get();
+            if(block instanceof JSDoublePlantBlock) {
+                this.add(block, createDoublePlantDrop(block));
+            } else if(block instanceof JSPlantBlock || block instanceof JSWaterLily) {
+                dropSelf(block);
+            } else {
+                dropSelf(block);
+            }
+        });
     }
 
     private void dropStoneSet(StoneRegistries stoneRegistries) {

@@ -2,12 +2,10 @@ package jp.jsexpanded.server.animals.extinct.terrestial;
 
 import jp.jsexpanded.server.animals.AbstractAddonAnimal;
 import jp.jsexpanded.server.animals.JSExpandedLocator;
-import jp.jsexpanded.server.animals.entity.extinct.terrestial.VenatosaurusEntity;
+import jp.jsexpanded.server.animals.entity.extinct.terrestial.venatosaurus.VenatosaurusEntity;
 import jp.jurassicsaga.server.base.animal.entity.obj.diet.Diets;
 import jp.jurassicsaga.server.base.animal.entity.obj.info.AnimalDietType;
-import jp.jurassicsaga.server.base.animal.obj.AbstractJSAnimal;
 import jp.jurassicsaga.server.base.animal.obj.attributes.*;
-import jp.jurassicsaga.server.base.animal.obj.locator.JSAnimalBaseLocator;
 import jp.jurassicsaga.server.base.generic.obj.ActiveTime;
 import jp.jurassicsaga.server.base.generic.obj.EggType;
 import jp.jurassicsaga.server.base.generic.obj.Era;
@@ -57,8 +55,8 @@ public class VenatosaurusAnimal extends AbstractAddonAnimal<VenatosaurusEntity> 
         miscProperties.setEra(Era.QUATERNARY);
         miscProperties.setMaxHeadRotation(20, 46);
         miscProperties.setBabyAnimations();
-        miscProperties.setGuidebookScaling(new float[]{ 1.2f,1.7f });
-        miscProperties.setGuidebookOffset(new Vec2(-1,0),new Vec2(0,0));
+        miscProperties.setGuidebookScaling(new float[]{ 1.2f,0.89f });
+        miscProperties.setGuidebookOffset(new Vec2(-2,0),new Vec2(0,0));
         miscProperties.setExtinct();
 
         miscProperties.setGuideBookDescription("???");
@@ -66,6 +64,7 @@ public class VenatosaurusAnimal extends AbstractAddonAnimal<VenatosaurusEntity> 
         miscProperties.setGuideBookScientificName("Venatosaurus");
 
         miscProperties.setAdvancementTitle("???");
+        miscProperties.setVersion(-1);
     }
 
     @Override
@@ -91,7 +90,7 @@ public class VenatosaurusAnimal extends AbstractAddonAnimal<VenatosaurusEntity> 
         socialGroupProperties.setMaxDistanceToPackLeader(900);
         socialGroupProperties.setMinDistanceToPackLeader(400);
         socialGroupProperties.setMaxHerdSize(7);
-        socialGroupProperties.setNaturalAggression(0.2F);
+        socialGroupProperties.setNaturalAggression(1F);
     }
 
     @Override
@@ -115,7 +114,7 @@ public class VenatosaurusAnimal extends AbstractAddonAnimal<VenatosaurusEntity> 
         /*
         Render Properties
          */
-        base.setRenderScale(1.3F);
+        base.setRenderScale(1.35F);
         base.setLocator(new JSExpandedLocator<>());
         base.setBabyAnimations();
 
@@ -128,7 +127,7 @@ public class VenatosaurusAnimal extends AbstractAddonAnimal<VenatosaurusEntity> 
         attributes.setEyeHeight(0.95F);
         attributes.setCategory(MobCategory.CREATURE);
         attributes.setMaxHealth(90.0F);
-        attributes.setDimensions(1.3F,2.4F);
+        attributes.setDimensions(1.7F,2.9F);
         attributes.setTrackingRange(64);
 
         /*

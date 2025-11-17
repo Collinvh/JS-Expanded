@@ -38,8 +38,48 @@ public class JSExpandedModelProvider {
                 switch (dataObject.getModelType()) {
                     case PARTICLE ->
                             getVariantBuilder(block).forAllStatesExcept(blockState -> ConfiguredModel.builder().modelFile(models().getBuilder(name(block)).texture("particle", location)).build());
-                    case POTTED ->
-                            simpleBlockWithItem(block, models().singleTexture(name(block), ResourceLocation.withDefaultNamespace("flower_pot_cross"), "plant", location).renderType("cutout_mipped").ao(false));
+                    case POTTED -> {
+                        ModelFile vine = models().singleTexture(
+                                        name(block),
+                                        mcLoc("block/vine"),
+                                        "vine",
+                                        location
+                                )
+                                .renderType("cutout");
+
+                        getMultipartBuilder(block)
+                                // NORTH
+                                .part()
+                                .modelFile(vine)
+                                .rotationY(0)
+                                .addModel()
+                                .condition(VineBlock.NORTH, true)
+                                .end()
+
+                                // SOUTH
+                                .part()
+                                .modelFile(vine)
+                                .rotationY(180)
+                                .addModel()
+                                .condition(VineBlock.SOUTH, true)
+                                .end()
+
+                                // EAST
+                                .part()
+                                .modelFile(vine)
+                                .rotationY(90)
+                                .addModel()
+                                .condition(VineBlock.EAST, true)
+                                .end()
+
+                                // WEST
+                                .part()
+                                .modelFile(vine)
+                                .rotationY(270)
+                                .addModel()
+                                .condition(VineBlock.WEST, true)
+                                .end();
+                    }
                     case SIMPLE_BLOCK -> simpleBlock(block, models().cubeAll(name(block), location));
                     case SIMPLE_WITH_TOP ->
                             simpleBlock(block, models().cubeTop(name(block), location, location.withSuffix("_top")));
@@ -73,8 +113,19 @@ public class JSExpandedModelProvider {
                     case TRAPDOOR -> trapdoorBlockWithRenderType((TrapDoorBlock) block, location, true, "cutout");
                     case DOOR ->
                             doorBlockWithRenderType((DoorBlock) block, location.withSuffix("_lower"), location.withSuffix("_upper"), "cutout");
-                    case ALL_SIDES ->
-                            simpleBlock(block, models().cube(name(block), location.withSuffix("_down"), location.withSuffix("_up"), location.withSuffix("_side_1"), location.withSuffix("_side_2"), location.withSuffix("_side_3"), location.withSuffix("_side_4")).texture("particle", location.withSuffix("_side_1")));
+                    case ALL_SIDES -> {
+                        ModelFile model = models()
+                                .cube(name(block),
+                                        location.withSuffix("_down"),
+                                        location.withSuffix("_up"),
+                                        location.withSuffix("_side_1"),
+                                        location.withSuffix("_side_2"),
+                                        location.withSuffix("_side_3"),
+                                        location.withSuffix("_side_4"))
+                                .texture("particle", location.withSuffix("_side_1"));
+
+                        horizontalBlock(block, model);
+                    }
                     case IRONBAR -> paneBlock((IronBarsBlock) block, location, location.withSuffix("_frame"));
                     case SIMPLE_TRANSLUCENT_BLOCK ->
                             simpleBlock(block, models().cubeAll(name(block), location).renderType("translucent"));
@@ -153,7 +204,7 @@ public class JSExpandedModelProvider {
                                 .build());
                     }
                     case LILY_PAD -> {
-                        BlockModelBuilder all = models().singleTexture("plant/" + name(block), ResourceLocation.withDefaultNamespace(BLOCK_FOLDER + "/lily_pad"), location).ao(false).renderType("cutout_mipped");
+                        BlockModelBuilder all = models().singleTexture("plant/" + name(block), ResourceLocation.withDefaultNamespace(BLOCK_FOLDER + "/lily_pad"), location).ao(false).renderType("translucent");
                         getVariantBuilder(block).forAllStatesExcept(state -> ConfiguredModel.builder()
                                 .modelFile(all)
                                 .uvLock(true)
@@ -479,7 +530,7 @@ public class JSExpandedModelProvider {
             for (JSAnimal<?> value : JSAnimals.getAnimals()) {
                 if(value instanceof AbstractAddonAnimal<?>) {
                     if (value.getAnimalAttributes().getMiscProperties().isExtinct()) {
-                        getBuilder("jurassicsaga:signs/paddock/" + value.getAnimalAttributes().getAnimalName()).parent(new ModelFile.UncheckedModelFile("item/generated"))
+                        getBuilder("signs/paddock/" + value.getAnimalAttributes().getAnimalName()).parent(new ModelFile.UncheckedModelFile("item/generated"))
                                 .texture("layer0", "block/manmade/other/paddock_sign/" + value.getAnimalAttributes().getAnimalName());
                     }
                 }

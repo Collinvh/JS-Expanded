@@ -1,6 +1,8 @@
 package jp.jsexpanded.server.animals;
 
-import jp.jsexpanded.server.animals.entity.extinct.terrestial.VenatosaurusEntity;
+import jp.jsexpanded.server.animals.entity.extinct.terrestial.venatosaurus.VenatosaurusEntity;
+import jp.jsexpanded.server.animals.extinct.terrestial.MoonspiderAnimal;
+import jp.jsexpanded.server.animals.extinct.terrestial.SicklefinAnimal;
 import jp.jsexpanded.server.animals.extinct.terrestial.VenatosaurusAnimal;
 import jp.jurassicsaga.server.base.animal.obj.JSAnimal;
 import jp.jurassicsaga.server.v1.animal.JSV1Animals;
@@ -9,6 +11,8 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class JSExpandedAnimals {
     public static final VenatosaurusAnimal VENATOSAURUS = new VenatosaurusAnimal();
+    public static final MoonspiderAnimal MOONSPIDER = new MoonspiderAnimal();
+    public static final SicklefinAnimal SICKLEFIN = new SicklefinAnimal();
 
     public static void init() {
         beScaredOfMe(VenatosaurusEntity.class,

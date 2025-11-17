@@ -1,25 +1,19 @@
 package jp.jsexpanded.neo.data;
 
 import com.google.common.base.Supplier;
+import jp.jsexpanded.JSExpanded;
 import jp.jsexpanded.server.animals.AbstractAddonAnimal;
-import jp.jurassicsaga.neo.data.JSV1Data;
-import jp.jurassicsaga.neo.data.JSV2Data;
+import jp.jsexpanded.server.block.JSExpandedBlocks;
 import jp.jurassicsaga.neo.data.obj.*;
 import jp.jurassicsaga.server.base.animal.JSAnimals;
 import jp.jurassicsaga.server.base.animal.obj.JSAnimal;
 import jp.jurassicsaga.server.base.animal.obj.JSTravelersAttributes;
 import jp.jurassicsaga.server.base.animal.obj.JSTravelersItems;
-import jp.jurassicsaga.server.base.block.JSBlocks;
 import jp.jurassicsaga.server.base.block.obj.group.BasicBlockSetRegistries;
 import jp.jurassicsaga.server.base.block.obj.group.ColoredRegistries;
 import jp.jurassicsaga.server.base.block.obj.group.StoneRegistries;
 import jp.jurassicsaga.server.base.block.obj.group.WoodRegistries;
-import jp.jurassicsaga.server.base.generic.gene.JSGenetics;
-import jp.jurassicsaga.server.base.generic.obj.Era;
-import jp.jurassicsaga.server.base.item.JSItems;
-import jp.jurassicsaga.server.v1.item.JSV1Items;
 import lombok.Getter;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import org.apache.commons.lang3.text.WordUtils;
@@ -46,13 +40,14 @@ public class JSExpandedData {
     ItemGroups
      */
     static {
+        DATA_ARRAY.add(new SimpleDataObject("itemGroup.jsexpanded.items", "JSExpanded : Items"));
         for (JSAnimal<?> animal : JSAnimals.getAnimals()) {
             if (animal instanceof AbstractAddonAnimal<?>) {
                 var miscAttributes = animal.getAnimalAttributes().getMiscProperties();
                 var animalName = animal.getAnimalAttributes().getAnimalName().toLowerCase(Locale.ROOT);
-                DATA_ARRAY.add(new SimpleDataObject("guidebook.jurassicsaga." + animalName + ".scientific_name", miscAttributes.getGuideBookScientificName()));
-                DATA_ARRAY.add(new SimpleDataObject("guidebook.jurassicsaga." + animalName + ".source", miscAttributes.getGuideBookSource()));
-                DATA_ARRAY.add(new SimpleDataObject("guidebook.jurassicsaga." + animalName + ".description", miscAttributes.getGuideBookDescription()));
+                DATA_ARRAY.add(new SimpleDataObject("guidebook."+ JSExpanded.MOD_ID +"." + animalName + ".scientific_name", miscAttributes.getGuideBookScientificName()));
+                DATA_ARRAY.add(new SimpleDataObject("guidebook."+ JSExpanded.MOD_ID +"." + animalName + ".source", miscAttributes.getGuideBookSource()));
+                DATA_ARRAY.add(new SimpleDataObject("guidebook."+ JSExpanded.MOD_ID +"." + animalName + ".description", miscAttributes.getGuideBookDescription()));
 
                 DATA_ARRAY.add(new SimpleDataObject("advancements.js." + animalName + ".title", miscAttributes.getAdvancementTitle()));
                 DATA_ARRAY.add(new SimpleDataObject("advancements.js." + animalName + ".desc", "Incubate an " + animalName + " egg!"));
@@ -79,6 +74,48 @@ public class JSExpandedData {
     Blocks
      */
     static {
+        BLOCKS.put(JSExpandedBlocks.SHALE_FACE, new BlockDataObject("Shale Face", "natural/stone/shale/", BlockModelType.SIMPLE_WITH_TOP_BOTTOM, ItemModelType.PARENT));
+        BLOCKS.put(JSExpandedBlocks.TRAP_SHALE_FACE, new BlockDataObject("Shale Face Trap", "natural/stone/shale/", BlockModelType.ALL_SIDES, ItemModelType.PARENT));
+        BLOCKS.put(JSExpandedBlocks.BURNING_SHALE_FACE, new BlockDataObject("Burning Shale Face", "natural/stone/shale/", BlockModelType.SIMPLE_WITH_TOP_BOTTOM, ItemModelType.PARENT));
+
+        BLOCKS.put(JSExpandedBlocks.RHYOLITE_FACE, new BlockDataObject("Rhyolite Face", "natural/stone/rhyolite/", BlockModelType.SIMPLE_WITH_TOP_BOTTOM, ItemModelType.PARENT));
+        BLOCKS.put(JSExpandedBlocks.TRAP_RHYOLITE_FACE, new BlockDataObject("Rhyolite Face Trap", "natural/stone/rhyolite/", BlockModelType.ALL_SIDES, ItemModelType.PARENT));
+        BLOCKS.put(JSExpandedBlocks.BURNING_RHYOLITE_FACE, new BlockDataObject("Burning Rhyolite Face", "natural/stone/rhyolite/", BlockModelType.SIMPLE_WITH_TOP_BOTTOM, ItemModelType.PARENT));
+
+        BLOCKS.put(JSExpandedBlocks.CARPET_MOSS, new BlockDataObject("Carpet Moss", "plant/land/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.HORSETAILS, new BlockDataObject("Horsetails", "plant/land/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.INDIGOFERA, new BlockDataObject("Indigofera", "plant/land/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.LASIANDRA, new BlockDataObject("Lasiandra", "plant/land/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.MELTED_CROWN, new BlockDataObject("Melted Crown", "plant/land/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.NEEDLEBRUSH, new BlockDataObject("Needlebrush", "plant/land/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.PEARL_MUSHROOM, new BlockDataObject("Pearl Mushroom", "plant/land/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.PINNATONO_BERRY, new BlockDataObject("Pinnatono Berry", "plant/land/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.RIBBON_FERN, new BlockDataObject("Ribbon Fern", "plant/land/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.STOUT_DRAGON, new BlockDataObject("Stout Dragon", "plant/land/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.THORNY_STEAMER, new BlockDataObject("Thorny Streamer", "plant/land/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.WETA_FERN, new BlockDataObject("Weta Fern", "plant/land/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.WILD_PEANUT, new BlockDataObject("Wild Peanut", "plant/land/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+
+        BLOCKS.put(JSExpandedBlocks.HERMIT_GYMPIE, new BlockDataObject("Hermit Gympie", "plant/land/", BlockModelType.BASIC_PLANT_DOUBLE, ItemModelType.DOUBLE_PLANT));
+        BLOCKS.put(JSExpandedBlocks.KONGWOBISA, new BlockDataObject("Kongwobisa", "plant/land/", BlockModelType.BASIC_PLANT_DOUBLE, ItemModelType.DOUBLE_PLANT));
+        BLOCKS.put(JSExpandedBlocks.TREE_FERN, new BlockDataObject("Tree Fern", "plant/land/", BlockModelType.BASIC_PLANT_DOUBLE, ItemModelType.DOUBLE_PLANT));
+        BLOCKS.put(JSExpandedBlocks.REEDS, new BlockDataObject("Reeds", "plant/land/", BlockModelType.BASIC_PLANT_DOUBLE, ItemModelType.DOUBLE_PLANT));
+
+        BLOCKS.put(JSExpandedBlocks.BULLWEED, new BlockDataObject("Bullweed", "plant/aquatic/", BlockModelType.BASIC_AQUATIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.DEAD_MANS_HAIR, new BlockDataObject("Dead Mans Hair", "plant/aquatic/", BlockModelType.BASIC_AQUATIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.DROWNING_LILY, new BlockDataObject("Drowning Lily", "plant/aquatic/", BlockModelType.BASIC_AQUATIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+
+        BLOCKS.put(JSExpandedBlocks.BUSHY_BAMBOO, new BlockDataObject("Bushy Bamboo", "plant/sugarcane/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.FODDER_BAMBOO, new BlockDataObject("Fodder Bamboo", "plant/sugarcane/", BlockModelType.BASIC_PLANT, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+
+        BLOCKS.put(JSExpandedBlocks.SWAMP_SLIME, new BlockDataObject("Swamp Slime", "plant/aquatic/", BlockModelType.LILY_PAD, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.WATER_LILY, new BlockDataObject("Water Lily", "plant/aquatic/", BlockModelType.LILY_PAD, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+
+        //Potted is used as a vine here (can't change variables lol)
+        BLOCKS.put(JSExpandedBlocks.EPIPHYTE_VERN, new BlockDataObject("Epiphyte Vern", "plant/vine/", BlockModelType.POTTED, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.RANCID_WALL_GROWTH, new BlockDataObject("Rancid Wall Growth", "plant/vine/", BlockModelType.POTTED, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.ROPE, new BlockDataObject("Rope", "plant/vine/", BlockModelType.POTTED, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
+        BLOCKS.put(JSExpandedBlocks.SHROUD_MOSS, new BlockDataObject("Shroud Moss", "plant/vine/", BlockModelType.POTTED, ItemModelType.BLOCK_TEXTURE_AS_TEXTURE));
     }
 
     static void registerBasicType(BasicBlockSetRegistries set, String name, String prefix, String overrideName) {
@@ -138,7 +175,7 @@ public class JSExpandedData {
             DATA.put(itemDeferredItem, obj);
         }));
 
-        DATA_ARRAY.add(new SimpleDataObject("entity.jurassicsaga." + animalName, WordUtils.capitalize(animalName.replace("_", " "))));
+        DATA_ARRAY.add(new SimpleDataObject("entity." + JSExpanded.MOD_ID +"." + animalName, WordUtils.capitalize(animalName.replace("_", " "))));
     }
 
     static void registerColoredRegistries(ColoredRegistries registries, String baseTranslation, String prefix, BlockModelType blockModelType, ItemModelType modelType) {

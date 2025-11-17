@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "jsexpanded:plant/tree_fern_bottom",
+      "uvlock": true
+    },
+    "half=upper": {
+      "model": "jsexpanded:plant/tree_fern_top",
+      "uvlock": true
+    }
+  }
+}

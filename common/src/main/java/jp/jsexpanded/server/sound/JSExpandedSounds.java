@@ -2,8 +2,6 @@ package jp.jsexpanded.server.sound;
 
 import com.google.common.base.Supplier;
 import jp.jsexpanded.JSExpanded;
-import jp.jurassicsaga.JSCommon;
-import jp.jurassicsaga.JSConstants;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
 import travelers.util.helper.TravelersRegistry;

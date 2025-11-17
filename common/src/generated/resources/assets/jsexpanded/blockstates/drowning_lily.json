@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "waterlogged=false": {
+      "model": "jsexpanded:plant/drowning_lily",
+      "uvlock": true
+    },
+    "waterlogged=true": {
+      "model": "jsexpanded:plant/drowning_lily",
+      "uvlock": true
+    }
+  }
+}

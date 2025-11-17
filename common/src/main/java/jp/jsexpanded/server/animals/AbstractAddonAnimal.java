@@ -1,5 +1,6 @@
 package jp.jsexpanded.server.animals;
 
+import jp.jsexpanded.JSExpanded;
 import jp.jurassicsaga.server.base.animal.animals.JSAnimations;
 import jp.jurassicsaga.server.base.animal.entity.obj.bases.JSAnimalBase;
 import jp.jurassicsaga.server.base.animal.obj.JSAnimal;
@@ -12,7 +13,7 @@ import travelers.server.animal.obj.attributes.EntityBaseProperties;
 
 public abstract class AbstractAddonAnimal<T extends JSAnimalBase> extends JSAnimal<T> {
     public AbstractAddonAnimal(String name) {
-        super(new JSTravelersAttributes<>(name));
+        super(new JSTravelersAttributes<>(name, JSExpanded.MOD_ID));
         TravelersAnimalRegistry.register(this);
     }
 

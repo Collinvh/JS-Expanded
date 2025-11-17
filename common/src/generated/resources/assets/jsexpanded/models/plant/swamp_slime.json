@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/lily_pad",
+  "ambientocclusion": false,
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "texture": "jsexpanded:block/plant/aquatic/swamp_slime"
+  }
+}

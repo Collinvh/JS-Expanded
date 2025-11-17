@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "jsexpanded:block/natural/stone/rhyolite/trap_rhyolite_face_down",
+    "east": "jsexpanded:block/natural/stone/rhyolite/trap_rhyolite_face_side_3",
+    "north": "jsexpanded:block/natural/stone/rhyolite/trap_rhyolite_face_side_1",
+    "particle": "jsexpanded:block/natural/stone/rhyolite/trap_rhyolite_face_side_1",
+    "south": "jsexpanded:block/natural/stone/rhyolite/trap_rhyolite_face_side_2",
+    "up": "jsexpanded:block/natural/stone/rhyolite/trap_rhyolite_face_up",
+    "west": "jsexpanded:block/natural/stone/rhyolite/trap_rhyolite_face_side_4"
+  }
+}
