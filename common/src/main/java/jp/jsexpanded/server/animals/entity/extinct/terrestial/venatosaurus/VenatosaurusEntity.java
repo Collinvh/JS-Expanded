@@ -2,6 +2,7 @@ package jp.jsexpanded.server.animals.entity.extinct.terrestial.venatosaurus;
 
 import jp.jsexpanded.server.sound.JSExpandedSounds;
 import jp.jurassicsaga.server.base.animal.entity.obj.bases.JSAnimalBase;
+import jp.jurassicsaga.server.base.animal.entity.obj.info.AnimalGrowthStage;
 import jp.jurassicsaga.server.base.animal.entity.obj.tasks.JSFloatTask;
 import jp.jurassicsaga.server.base.animal.entity.obj.tasks.JSOpenDoorTask;
 import jp.jurassicsaga.server.base.animal.entity.obj.tasks.combat.JSHerdCombatFollowTask;
@@ -11,6 +12,7 @@ import jp.jurassicsaga.server.base.animal.entity.obj.tasks.metabolism.JSFindWate
 import jp.jurassicsaga.server.base.animal.entity.obj.tasks.misc.JSRestTask;
 import jp.jurassicsaga.server.base.animal.entity.obj.tasks.navigation.JSFleeTask;
 import jp.jurassicsaga.server.base.animal.entity.obj.tasks.navigation.JSRandomStrollTask;
+import jp.jurassicsaga.server.base.entity.obj.other.IJSLeapingEntity;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -20,7 +22,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import travelers.server.animal.entity.task.TravelerTaskController;
 
-public class VenatosaurusEntity extends JSAnimalBase {
+public class VenatosaurusEntity extends JSAnimalBase implements IJSLeapingEntity {
+    private int minLeapTicks = 0;
 
     public VenatosaurusEntity(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
@@ -37,7 +40,7 @@ public class VenatosaurusEntity extends JSAnimalBase {
         controller.registerTask(new JSFindFoodTask(this));
         controller.registerTask(new JSFindWaterTask(this));
         controller.registerTask(new JSRevengeOrRunTask(this));
-        controller.registerTask(new JSHerdCombatFollowTask(this).stalk());
+        controller.registerTask(new JSHerdCombatFollowTask(this).shouldCallout(true, 20));
 
         controller.registerTask(new JSRestTask(this));
 
@@ -51,18 +54,50 @@ public class VenatosaurusEntity extends JSAnimalBase {
 
     @Override
     public double jumpHeight() {
-        return 3;
+        if (getModules().getGrowthStageModule().getGrowthStage() == AnimalGrowthStage.ADULT && !isInWater()) {
+            return 6;
+        } else {
+            return 1;
+        }
+    }
+
+
+    @Override
+    public void onLeap() {
+        if(getAttackSound() != null) {
+            playSound(getAttackSound(), getSoundVolume(), 1.0F + (this.random.nextFloat() - this.random.nextFloat()) * 0.4F);
+        }
+        setLeaping(true);
+        minLeapTicks = 1;
+    }
+
+    @Override
+    public void aiStep() {
+        super.aiStep();
+        if (isLeaping()) {
+            if(minLeapTicks > 0) {
+                minLeapTicks--;
+            } else {
+                if (onGround() || isInWater()) {
+                    setLeaping(false);
+                }
+            }
+        }
     }
 
     @Override
     protected @Nullable SoundEvent getAttackSound() {
-        if(getTarget() != null) return JSExpandedSounds.VENATOSAURUS_THREAT.get();
         return JSExpandedSounds.VENATOSAURUS_ATTACK.get();
     }
 
     @Override
     protected @Nullable SoundEvent getAmbientSound() {
         return JSExpandedSounds.VENATOSAURUS_LIVING.get();
+    }
+
+    @Override
+    protected @Nullable SoundEvent getCallSound() {
+        return JSExpandedSounds.VENATOSAURUS_THREAT.get();
     }
 
     @Override

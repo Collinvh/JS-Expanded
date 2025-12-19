@@ -2,6 +2,7 @@ package jp.jsexpanded.server.animals.entity.extinct.terrestial.venatosaurus;
 
 import jp.jurassicsaga.server.base.animal.entity.obj.bases.JSAnimalBase;
 import jp.jurassicsaga.server.base.animal.entity.obj.tasks.combat.JSTargetTask;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 
@@ -17,7 +18,7 @@ public class VenatosaurusTarget extends JSTargetTask {
                 mob -> {
                     if (mob.is(animal)) return false;
                     if (mustSee && !animal.hasLineOfSight(mob)) return false;
-                    return animal.getModules().getMetabolismModule().canTarget(false, false, mob);
+                    return animal.getModules().getMetabolismModule().canTarget(false, false, (Entity) mob);
                 });
 
         LivingEntity nearest = this.animal.level().getNearestEntity(

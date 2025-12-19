@@ -2,9 +2,8 @@ package jp.jsexpanded.server.animals.extinct.terrestial;
 
 import jp.jsexpanded.JSExpanded;
 import jp.jsexpanded.server.animals.AbstractAddonAnimal;
-import jp.jsexpanded.server.animals.entity.extinct.aquatic.SicklefinEntity;
+import jp.jsexpanded.server.animals.entity.extinct.terrestial.celocimex.CelocimexEntity;
 import jp.jsexpanded.server.animals.entity.extinct.terrestial.moonspider.MoonspiderEntity;
-import jp.jurassicsaga.client.v1.animation.obj.BonitoAnimator;
 import jp.jurassicsaga.server.base.animal.animals.JSAnimations;
 import jp.jurassicsaga.server.base.animal.animations.JSAnimator;
 import jp.jurassicsaga.server.base.animal.entity.obj.diet.Diets;
@@ -14,7 +13,7 @@ import jp.jurassicsaga.server.base.generic.obj.ActiveTime;
 import jp.jurassicsaga.server.base.generic.obj.EggType;
 import jp.jurassicsaga.server.base.generic.obj.Era;
 import jp.jurassicsaga.server.base.generic.util.JSUtils;
-import jp.jurassicsaga.server.v1.animal.animations.extant.BonitoAnimations;
+import jp.jurassicsaga.server.v1.animal.animals.extinct.avian.MeganeuraAnimal;
 import jp.jurassicsaga.server.v1.animal.entity.extant.GoatEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.DryosaurusEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.ProcompsognathusEntity;
@@ -28,7 +27,6 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec2;
 import travelers.server.animal.entity.other.TravelersAnimalAnimationModule;
 import travelers.server.animal.obj.TravelersMoveAnalysis;
@@ -37,51 +35,54 @@ import travelers.server.animal.obj.attributes.EntityBaseProperties;
 import travelers.server.animal.obj.locator.ResourceLocator;
 import travelers.server.animal.obj.misc.AnimalType;
 
-public class SicklefinAnimal extends AbstractAddonAnimal<SicklefinEntity> {
-    public SicklefinAnimal() {
-        super("sicklefin");
+public class CelocimexAnimal extends AbstractAddonAnimal<CelocimexEntity> {
+    public CelocimexAnimal() {
+        super("celocimex");
         setAnimator(new Animations());
     }
 
     @Override
-    protected void applyGeneticProperties(JSGeneticProperties<SicklefinEntity> geneticProperties) {
-        geneticProperties.addGrowthStageScaling(0.4F);
-        geneticProperties.addGrowthStageSize(0.5f, 0.7f);
-        geneticProperties.addGrowthNextStageScaling(1.1F);
-        geneticProperties.addGrowthStageMaxGrowth((int) JSUtils.toTicksMCDays(4));
-        geneticProperties.setGrowthProgressCap((int) JSUtils.toTicksMCDays(6));
+    protected void applyGeneticProperties(JSGeneticProperties<CelocimexEntity> geneticProperties) {
+        geneticProperties.addGrowthStageScaling(0.1F);
+        geneticProperties.addGrowthNextStageScaling(0.5F);
+        geneticProperties.addGrowthStageSize(0.5f, 0.4f);
+        geneticProperties.addGrowthStageMaxGrowth((int) JSUtils.toTicksMCDays(4.9F));
+        geneticProperties.setGrowthProgressCap((int) JSUtils.toTicksMCDays(5));
         geneticProperties.addSupportedGenes();
     }
 
     @Override
-    protected void applyMetabolismProperties(JSMetabolismProperties<SicklefinEntity> metabolismProperties) {
-        metabolismProperties.setDiet(AnimalDietType.CARNIVORE, Diets.CARNIVORE);
-        metabolismProperties.setActiveTime(ActiveTime.DIURNAL);
-        metabolismProperties.setMaxWater((int) JSUtils.toTicksMCDays(2F));
-        metabolismProperties.setMaxFood((int) JSUtils.toTicksMCDays(1F));
-        metabolismProperties.setStalkingSpeedMultiplier(0.7F);
+    protected void applyMetabolismProperties(JSMetabolismProperties<CelocimexEntity> metabolismProperties) {
+        metabolismProperties.setDiet(AnimalDietType.INSECTOVORE, () ->
+                Diets.INSECTOVORE.get().addItem(net.minecraft.world.item.Items.CHICKEN)
+        );
+        metabolismProperties.disableWater();
+        metabolismProperties.disableFood();
     }
 
     @Override
-    protected void applyMiscProperties(JSMiscProperties<SicklefinEntity> miscProperties) {
+    protected void applyMiscProperties(JSMiscProperties<CelocimexEntity> miscProperties) {
+        miscProperties.setGuidebookScaling(new float[]{3, 3});
+        miscProperties.setGuidebookOffset(new Vec2(-0.45F, -0), new Vec2(0, -0));
+        miscProperties.setCorpseMeatDrops(1, 1);
+        miscProperties.setCorpseDropTimes(1);
+        miscProperties.setCorpseBoneDrops(0, 1);
         miscProperties.setEra(Era.QUATERNARY);
-        miscProperties.setMaxHeadRotation(20, 46);
+        miscProperties.setMaxHeadRotation(25, 30);
         miscProperties.setBabyAnimations();
-        miscProperties.setGuidebookScaling(new float[]{ 1.2f,1.7f });
-        miscProperties.setGuidebookOffset(new Vec2(-1,0),new Vec2(0,0));
         miscProperties.setExtinct();
 
-        miscProperties.setGuideBookDescription("???");
+        miscProperties.setGuideBookDescription("Moonspiders (Galeodes luna - \"moon helmet\") are one of the many arachnids on Skull Island");
         miscProperties.setGuideBookSource("Skull Island");
-        miscProperties.setGuideBookScientificName("Venatosaurus");
+        miscProperties.setGuideBookScientificName("Galeodes luna");
 
-        miscProperties.setAdvancementTitle("???");
+        miscProperties.setAdvancementTitle("Ambush micropredator");
         miscProperties.disableBabyGuidebook();
         miscProperties.setVersion(-1);
     }
 
     @Override
-    protected void applySocialProperties(JSSocialGroupProperties<SicklefinEntity> socialGroupProperties) {
+    protected void applySocialProperties(JSSocialGroupProperties<CelocimexEntity> socialGroupProperties) {
         socialGroupProperties.addHuntTargets(
                 //Vanilla
                 AbstractVillager.class, Player.class, Monster.class,
@@ -105,7 +106,7 @@ public class SicklefinAnimal extends AbstractAddonAnimal<SicklefinEntity> {
     }
 
     @Override
-    protected void applyItemProperties(JSItemProperties<SicklefinEntity> itemProperties) {
+    protected void applyItemProperties(JSItemProperties<CelocimexEntity> itemProperties) {
         itemProperties.setEggtype(EggType.SPIDER);
         itemProperties.setSpawnEggColors(0x38312E, 0x161312);
         itemProperties.disableMeat();
@@ -113,11 +114,11 @@ public class SicklefinAnimal extends AbstractAddonAnimal<SicklefinEntity> {
     }
 
     @Override
-    protected void applyTravelersProperties(EntityAttributeProperties<SicklefinEntity> attributes, EntityBaseProperties<SicklefinEntity> base) {
+    protected void applyTravelersProperties(EntityAttributeProperties<CelocimexEntity> attributes, EntityBaseProperties<CelocimexEntity> base) {
         /*
         Base Properties
          */
-        base.setAnimalType(AnimalType.FISH);
+        base.setAnimalType(AnimalType.INSECT);
         base.setFov(90);
         base.setMaxTurnRate(9);
         base.setSizeDimorphism(9);
@@ -126,23 +127,24 @@ public class SicklefinAnimal extends AbstractAddonAnimal<SicklefinEntity> {
         /*
         Render Properties
          */
-        base.setRenderScale(0.65F);
-        base.setLocator(new ResourceLocator<SicklefinEntity>() {
-            private static final ResourceLocation texture = JSExpanded.createId("textures/geo/animal/sicklefin/sicklefin.png");
-            private static final ResourceLocation model = JSExpanded.createId("geo/animal/sicklefin/sicklefin.geo.json");
-            private static final ResourceLocation animation = JSExpanded.createId("animations/animal/sicklefin/sicklefin.animation.json");
+        base.setRenderScale(0.225F);
+        base.setLocator(new ResourceLocator<>() {
+            private static final ResourceLocation texture = JSExpanded.createId("textures/geo/animal/celocimex/celocimex.png");
+            private static final ResourceLocation model = JSExpanded.createId("geo/animal/celocimex/celocimex_adult.geo.json");
+            private static final ResourceLocation animation = JSExpanded.createId("animations/animal/celocimex/celocimex.animation.json");
+
             @Override
-            public ResourceLocation getTextureLocation(SicklefinEntity entity) {
+            public ResourceLocation getTextureLocation(CelocimexEntity entity) {
                 return texture;
             }
 
             @Override
-            public ResourceLocation getModelLocation(SicklefinEntity entity) {
+            public ResourceLocation getModelLocation(CelocimexEntity entity) {
                 return model;
             }
 
             @Override
-            public ResourceLocation getAnimationLocation(SicklefinEntity entity) {
+            public ResourceLocation getAnimationLocation(CelocimexEntity entity) {
                 return animation;
             }
         });
@@ -152,7 +154,7 @@ public class SicklefinAnimal extends AbstractAddonAnimal<SicklefinEntity> {
          */
         attributes.setPersistent();
         attributes.setWaterEfficiency(0.6F);
-        attributes.setEntityFactory(SicklefinEntity::new);
+        attributes.setEntityFactory(CelocimexEntity::new);
         attributes.setEyeHeight(0.95F);
         attributes.setCategory(MobCategory.CREATURE);
         attributes.setMaxHealth(15.0F);
@@ -162,39 +164,55 @@ public class SicklefinAnimal extends AbstractAddonAnimal<SicklefinEntity> {
         /*
         Speed Related
          */
-        attributes.setMovementSpeed(JSUtils.kmhToSpeed(18));
+        attributes.setMovementSpeed(JSUtils.kmhToSpeed(8));
         attributes.setWaterEfficiency(0.8F);
-        attributes.setRunningSpeedMultiplier(1.45F);
+        attributes.setRunningSpeedMultiplier(2.7F);
 
         /*
         Combat Related
          */
         attributes.setAttackDamage(6F);
-        attributes.setAttackSpeed(2F);
+        attributes.setAttackSpeed(0.2F);
+        attributes.setFlyingSpeed(0.2F);
         attributes.setAttackKnockback(0.5F);
         attributes.setFollowRange(64.0F);
     }
 
-    static class Animations extends JSAnimator<SicklefinEntity> {
+    static class Animations extends JSAnimator<CelocimexEntity> {
         @Override
-        public void animate(SicklefinEntity base, TravelersMoveAnalysis moveAnalysis, TravelersAnimalAnimationModule animationManager) {
-            if (!base.isInWaterOrBubble()) {
-                JSAnimations.FLOP.sendForEntity(base);
+        public void animate(CelocimexEntity base, TravelersMoveAnalysis moveAnalysis, TravelersAnimalAnimationModule animationManager) {
+            if (base.isDead()) {
+                JSAnimations.DEATH.sendForEntity(base);
                 return;
             }
 
             if (base.isInWater()) {
-                if (base.getInBlockState().is(Blocks.BUBBLE_COLUMN)) {
-                    JSAnimations.FLOP.sendForEntity(base);
-                } else if (isMoving(moveAnalysis)) {
-                    JSAnimations.SWIM.sendForEntity(base);
+                JSAnimations.DROWN.sendForEntity(base);
+                return;
+            }
+
+            if (base.curAttackTicks > 0) {
+                JSAnimations.ATTACK.sendForEntity(base);
+                return;
+            }
+
+            if (base.isFlying() && !base.onGround()) {
+                if (isMoving(moveAnalysis)) {
+                    JSAnimations.FLYING.sendForEntity(base);
                 } else {
-                    JSAnimations.IDLE.sendForEntity(base);
+                    JSAnimations.HOVER.sendForEntity(base);
                 }
             } else {
-                JSAnimations.BEACHED.sendForEntity(base);
+                if (base.onGround()) {
+                    if (isMoving(moveAnalysis)) {
+                        JSAnimations.FLYING.sendForEntity(base);
+                    } else {
+                        JSAnimations.IDLE.sendForEntity(base);
+                    }
+                } else {
+                    JSAnimations.HOVER.sendForEntity(base);
+                }
             }
         }
     }
 }
-

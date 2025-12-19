@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "jsexpanded:block/manmade/other/paddock_sign/celocimex"
+  }
+}

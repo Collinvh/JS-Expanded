@@ -26,9 +26,10 @@
           "js.genetic_data.name.donor": "",
           "js.genetic_data.quality.base": 100,
           "js.genetic_data.quality.donor.quality": 0,
-          "js.genetic_data.seed": 0,
+          "js.genetic_data.seed": -1,
           "js.genetic_data.size": 0,
           "js.genetic_data.size_dimorphism": 0.0,
+          "js.genetics.activetime": 0,
           "js.genetics.type": 0
         }
       },

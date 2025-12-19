@@ -1,0 +1,162 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.Model",
+				"texture_width": 110,
+				"texture_height": 110,
+				"visible_bounds_width": 6,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 13, 5]
+				},
+				{
+					"name": "opperculum",
+					"parent": "root",
+					"pivot": [0, 14.6, -5],
+					"rotation": [2.61, 0, 0],
+					"cubes": [
+						{"origin": [-4, 5.6, -9], "size": [8, 13, 8], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "body_1",
+					"parent": "opperculum",
+					"pivot": [0, 14.8, -2.5],
+					"rotation": [5.22, 0, 0],
+					"cubes": [
+						{"origin": [-3.5, 5.3, -2.5], "size": [7, 14, 10], "uv": [33, 0]}
+					]
+				},
+				{
+					"name": "body_2",
+					"parent": "body_1",
+					"pivot": [0, 11.7, 6.2],
+					"rotation": [-7.83, 0, 0],
+					"cubes": [
+						{"origin": [-3, 5.2, 5.2], "size": [6, 11, 8], "uv": [19, 51]}
+					]
+				},
+				{
+					"name": "tail_1",
+					"parent": "body_2",
+					"pivot": [0, 12.8, 11.7],
+					"rotation": [-2.61, 0, 0],
+					"cubes": [
+						{"origin": [-2, 9.3, 11.7], "size": [4, 6, 7], "uv": [48, 53]}
+					]
+				},
+				{
+					"name": "tail_2",
+					"parent": "tail_1",
+					"pivot": [0, 12.3, 16.7],
+					"rotation": [-7.83, 0, 0],
+					"cubes": [
+						{"origin": [-1, 9.3, 16.7], "size": [2, 6, 7], "uv": [0, 57]}
+					]
+				},
+				{
+					"name": "fin_caudal",
+					"parent": "tail_2",
+					"pivot": [0, 12.8, 19.7],
+					"rotation": [5.22, 0, 0],
+					"cubes": [
+						{"origin": [0, 4.8, 19.7], "size": [1, 16, 16], "uv": [65, 71]}
+					]
+				},
+				{
+					"name": "fin_anal",
+					"parent": "body_2",
+					"pivot": [0.05, 6.2, 6.2],
+					"cubes": [
+						{"origin": [0.05, 0.2, 5.2], "size": [1, 8, 14], "uv": [0, 72]}
+					]
+				},
+				{
+					"name": "fin_dorsal",
+					"parent": "body_1",
+					"pivot": [0, 19.3, -1.5],
+					"cubes": [
+						{"origin": [0, 18.3, -3.5], "size": [1, 12, 15], "uv": [30, 74]}
+					]
+				},
+				{
+					"name": "fin_pelvic",
+					"parent": "body_1",
+					"pivot": [0, 6.3, -3],
+					"rotation": [29.19, 0, 0],
+					"cubes": [
+						{"origin": [-2, -3.7, -3], "size": [4, 10, 7], "uv": [0, 39]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "opperculum",
+					"pivot": [0, 14.9, -11.4],
+					"rotation": [7.83, 0, 0],
+					"cubes": [
+						{"origin": [-4.5, 8.9, -13.6], "size": [9, 9, 7], "uv": [68, 0]}
+					]
+				},
+				{
+					"name": "jaw_lower",
+					"parent": "head",
+					"pivot": [0, 7.4, -10.1],
+					"rotation": [-39.13, 0, 0],
+					"cubes": [
+						{"origin": [-3, 5.9, -20.6], "size": [6, 3, 12], "uv": [59, 55]}
+					]
+				},
+				{
+					"name": "teeth_lower",
+					"parent": "jaw_lower",
+					"pivot": [0, 8.9, -20.4],
+					"cubes": [
+						{"origin": [-3, 8.9, -20.4], "size": [6, 1, 5], "uv": [0, 22]}
+					]
+				},
+				{
+					"name": "jaw_upper",
+					"parent": "head",
+					"pivot": [0, 14.4, -13.3],
+					"rotation": [33.91, 0, 0],
+					"cubes": [
+						{"origin": [-3.5, 10.4, -16.3], "size": [7, 7, 5], "uv": [29, 38]}
+					]
+				},
+				{
+					"name": "teeth_upper",
+					"parent": "jaw_upper",
+					"pivot": [0, 16.9, -16.3],
+					"rotation": [2.61, 0, 0],
+					"cubes": [
+						{"origin": [-2.5, 11.9, -17.3], "size": [5, 5, 1], "uv": [0, 30]}
+					]
+				},
+				{
+					"name": "fin_pectoral_right",
+					"parent": "opperculum",
+					"pivot": [0, 10.6, -3],
+					"rotation": [7.3, 0, 0],
+					"cubes": [
+						{"origin": [-11, 9.6, -3], "size": [11, 1, 14], "uv": [40, 38]}
+					]
+				},
+				{
+					"name": "fin_pectoral_left",
+					"parent": "opperculum",
+					"pivot": [0, 10.6, -3],
+					"rotation": [7.3, 0, 0],
+					"cubes": [
+						{"origin": [0, 9.6, -3], "size": [11, 1, 14], "uv": [56, 20]}
+					]
+				}
+			]
+		}
+	]
+}

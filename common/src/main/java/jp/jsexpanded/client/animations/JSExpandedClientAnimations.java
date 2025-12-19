@@ -1,6 +1,7 @@
 package jp.jsexpanded.client.animations;
 
 import jp.jsexpanded.client.animations.animal.MoonspiderAnimations;
+import jp.jsexpanded.client.animations.animal.PiranhadonAnimator;
 import jp.jsexpanded.client.animations.animal.SicklefinAnimator;
 import jp.jsexpanded.server.animals.JSExpandedAnimals;
 import jp.jurassicsaga.client.v1.animation.obj.BonitoAnimator;
@@ -12,5 +13,6 @@ public class JSExpandedClientAnimations {
         TravelersAnimationMap.register(JSExpandedAnimals.VENATOSAURUS, new RaptorAnimator());
         TravelersAnimationMap.register(JSExpandedAnimals.MOONSPIDER, new MoonspiderAnimations());
         TravelersAnimationMap.register(JSExpandedAnimals.SICKLEFIN, new SicklefinAnimator());
+        TravelersAnimationMap.register(JSExpandedAnimals.PIRANHADON, new PiranhadonAnimator());
     }
 }

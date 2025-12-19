@@ -1,7 +1,7 @@
-// 1.21.1	2025-11-16T20:54:30.3028273	Tags for minecraft:item mod id jsexpanded
+// 1.21.1	2025-12-19T00:35:16.5505212	Tags for minecraft:item mod id jsexpanded
 02683630e8ba2b066500a6410f0575e05cfe97ed data/c/tags/item/foods/cooked_meat.json
 b41ecf04f429c34d153db3d4b2576e69dc689dfc data/c/tags/item/foods/raw_meat.json
 a35f92410a4c2654f52c45379ae1968ded41128d data/jurassicsaga/tags/item/carnivore_edible.json
-628e2e8c01a4b04a7f7a13c7558a5c77117fb3cd data/jurassicsaga/tags/item/dna.json
-3e5607982191cd53f40759e03a62ef6363496422 data/jurassicsaga/tags/item/fertilized_eggs.json
+b29b0b9aaa6114f3c1bfa39303f26137ed7dcfea data/jurassicsaga/tags/item/dna.json
+835045a7f040f513aab3f1dfbd1bcc928ab58061 data/jurassicsaga/tags/item/fertilized_eggs.json
 38b727b0f1bc5c2c3285c25657fa533351dc612d data/jurassicsaga/tags/item/fossil.json

@@ -6,6 +6,7 @@ import jp.jsexpanded.server.animals.entity.extinct.terrestial.venatosaurus.Venat
 import jp.jurassicsaga.server.base.animal.entity.obj.diet.Diets;
 import jp.jurassicsaga.server.base.animal.entity.obj.info.AnimalDietType;
 import jp.jurassicsaga.server.base.animal.obj.attributes.*;
+import jp.jurassicsaga.server.base.generic.gene.JSGenetics;
 import jp.jurassicsaga.server.base.generic.obj.ActiveTime;
 import jp.jurassicsaga.server.base.generic.obj.EggType;
 import jp.jurassicsaga.server.base.generic.obj.Era;
@@ -38,14 +39,13 @@ public class VenatosaurusAnimal extends AbstractAddonAnimal<VenatosaurusEntity> 
         geneticProperties.addGrowthNextStageScaling(1.1F);
         geneticProperties.addGrowthStageMaxGrowth((int) JSUtils.toTicksMCDays(4));
         geneticProperties.setGrowthProgressCap((int) JSUtils.toTicksMCDays(6));
-        geneticProperties.addSupportedGenes();
+        geneticProperties.addSupportedGenes(JSGenetics.FOREST_COSMETIC);
     }
 
     @Override
     protected void applyMetabolismProperties(JSMetabolismProperties<VenatosaurusEntity> metabolismProperties) {
         metabolismProperties.setDiet(AnimalDietType.CARNIVORE, Diets.CARNIVORE);
-        metabolismProperties.setActiveTime(ActiveTime.DIURNAL);
-        metabolismProperties.setMaxWater((int) JSUtils.toTicksMCDays(2F));
+        metabolismProperties.disableWater();
         metabolismProperties.setMaxFood((int) JSUtils.toTicksMCDays(1F));
         metabolismProperties.setStalkingSpeedMultiplier(0.7F);
     }
@@ -140,7 +140,7 @@ public class VenatosaurusAnimal extends AbstractAddonAnimal<VenatosaurusEntity> 
         /*
         Combat Related
          */
-        attributes.setAttackDamage(22F);
+        attributes.setAttackDamage(14F);
         attributes.setAttackSpeed(2F);
         attributes.setAttackKnockback(0.5F);
         attributes.setFollowRange(64.0F);

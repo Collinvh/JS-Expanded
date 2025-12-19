@@ -55,7 +55,6 @@ public class MoonspiderAnimal extends AbstractAddonAnimal<MoonspiderEntity> {
     @Override
     protected void applyMetabolismProperties(JSMetabolismProperties<MoonspiderEntity> metabolismProperties) {
         metabolismProperties.setDiet(AnimalDietType.CARNIVORE, Diets.CARNIVORE);
-        metabolismProperties.setActiveTime(ActiveTime.DIURNAL);
         metabolismProperties.setMaxWater((int) JSUtils.toTicksMCDays(2F));
         metabolismProperties.setMaxFood((int) JSUtils.toTicksMCDays(1F));
         metabolismProperties.setStalkingSpeedMultiplier(0.7F);

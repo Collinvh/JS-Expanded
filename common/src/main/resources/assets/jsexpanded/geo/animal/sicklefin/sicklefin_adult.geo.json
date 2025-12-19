@@ -37,7 +37,6 @@
 					"name": "body_2",
 					"parent": "body_1",
 					"pivot": [0, -0.2, 5.5],
-					"rotation": [0, 0, 0],
 					"cubes": [
 						{"origin": [-1.5, -4.7, 5.5], "size": [3, 9, 3], "uv": [30, 24]}
 					]
@@ -46,7 +45,6 @@
 					"name": "tail_1",
 					"parent": "body_2",
 					"pivot": [0, -0.4, 7.5],
-					"rotation": [0, 0, 0],
 					"cubes": [
 						{"origin": [-1, -2.4, 7.5], "size": [2, 4, 4], "uv": [53, 14]}
 					]
@@ -64,7 +62,6 @@
 					"name": "fin_dorsal_2",
 					"parent": "body_1",
 					"pivot": [-0.05, 1.8, 1],
-					"rotation": [0, 0, 0],
 					"cubes": [
 						{"origin": [-0.05, 1.8, 1], "size": [1, 16, 13], "uv": [19, 37]}
 					]
@@ -118,7 +115,6 @@
 					"name": "fin_dorsal_1",
 					"parent": "opperculum",
 					"pivot": [0, 5.7, -5.4],
-					"rotation": [0, 0, 0],
 					"cubes": [
 						{"origin": [0, 3.7, -8.4], "size": [1, 12, 10], "uv": [0, 14]}
 					]
@@ -127,7 +123,6 @@
 					"name": "fin_anal_1",
 					"parent": "opperculum",
 					"pivot": [-0.05, -6, -2],
-					"rotation": [0, 0, 0],
 					"cubes": [
 						{"origin": [-0.05, -11, -4], "size": [1, 5, 6], "uv": [18, 67]}
 					]

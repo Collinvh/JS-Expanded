@@ -1,8 +1,12 @@
 package jp.jsexpanded.server.animals;
 
+import jp.jsexpanded.server.animals.entity.extinct.aquatic.PiranhadonEntity;
 import jp.jsexpanded.server.animals.entity.extinct.terrestial.venatosaurus.VenatosaurusEntity;
+import jp.jsexpanded.server.animals.extinct.aquatic.BloodfishAnimal;
+import jp.jsexpanded.server.animals.extinct.aquatic.PiranhadonAnimal;
+import jp.jsexpanded.server.animals.extinct.terrestial.CelocimexAnimal;
 import jp.jsexpanded.server.animals.extinct.terrestial.MoonspiderAnimal;
-import jp.jsexpanded.server.animals.extinct.terrestial.SicklefinAnimal;
+import jp.jsexpanded.server.animals.extinct.aquatic.SicklefinAnimal;
 import jp.jsexpanded.server.animals.extinct.terrestial.VenatosaurusAnimal;
 import jp.jurassicsaga.server.base.animal.obj.JSAnimal;
 import jp.jurassicsaga.server.v1.animal.JSV1Animals;
@@ -13,6 +17,9 @@ public class JSExpandedAnimals {
     public static final VenatosaurusAnimal VENATOSAURUS = new VenatosaurusAnimal();
     public static final MoonspiderAnimal MOONSPIDER = new MoonspiderAnimal();
     public static final SicklefinAnimal SICKLEFIN = new SicklefinAnimal();
+    public static final CelocimexAnimal CELOCIMEX = new CelocimexAnimal();
+    public static final BloodfishAnimal BLOODFISH = new BloodfishAnimal();
+    public static final PiranhadonAnimal PIRANHADON = new PiranhadonAnimal();
 
     public static void init() {
         beScaredOfMe(VenatosaurusEntity.class,
@@ -23,8 +30,12 @@ public class JSExpandedAnimals {
                 JSV2Animals.METRIACANTHOSAURUS, JSV2Animals.ACHILLOBATOR, JSV2Animals.EUOPLOCEPHALUS,
                 JSV2Animals.STYRACOSAURUS, JSV2Animals.MAIASAURA, JSV2Animals.MICROCERATUS
         );
+        beScaredOfMe(PiranhadonEntity.class,
+                JSV1Animals.BONITO
+        );
 
         huntMe(VenatosaurusEntity.class, JSV2Animals.BARYONYX, JSV1Animals.TYRANNOSAURUS, JSV1Animals.TYLOSAURUS);
+        huntMe(PiranhadonEntity.class, JSV1Animals.TYLOSAURUS);
     }
 
 
