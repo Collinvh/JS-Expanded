@@ -20,7 +20,7 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:1.18.30"
 
     compileOnly "travelers:travelerslib-neoforge-${minecraft_version}:${travelers_version}"
-    implementation "jp.jurassicsaga:jurassicsaga-neoforge-${minecraft_version}:${js_version}"
+    compileOnly "jp.jurassicsaga:jurassicsaga-neoforge-${minecraft_version}:${js_version}"
 
     implementation "mod.azure.azurelib:azurelib-neo-${minecraft_version}:${azure_version}"
 }

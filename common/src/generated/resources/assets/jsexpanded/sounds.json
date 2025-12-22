@@ -1,4 +1,26 @@
 {
+  "piranhadon_death": {
+    "sounds": [
+      "jsexpanded:animal/piranhadon/piranhadon_death"
+    ]
+  },
+  "piranhadon_hurt": {
+    "sounds": [
+      "jsexpanded:animal/piranhadon/piranhadon_hurt01",
+      "jsexpanded:animal/piranhadon/piranhadon_hurt02",
+      "jsexpanded:animal/piranhadon/piranhadon_hurt03",
+      "jsexpanded:animal/piranhadon/piranhadon_hurt04",
+      "jsexpanded:animal/piranhadon/piranhadon_hurt05"
+    ]
+  },
+  "piranhadon_living": {
+    "sounds": [
+      "jsexpanded:animal/piranhadon/piranhadon_living01",
+      "jsexpanded:animal/piranhadon/piranhadon_living02",
+      "jsexpanded:animal/piranhadon/piranhadon_living03",
+      "jsexpanded:animal/piranhadon/piranhadon_living04"
+    ]
+  },
   "venatosaurus_attack": {
     "sounds": [
       "jsexpanded:animal/venatosaurus/venatosaurus_attack"

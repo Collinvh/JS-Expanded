@@ -66,11 +66,11 @@ public class BloodfishAnimal extends AbstractAddonAnimal<BloodfishEntity> {
         miscProperties.setGuidebookOffset(new Vec2(-1,0),new Vec2(0,0));
         miscProperties.setExtinct();
 
-        miscProperties.setGuideBookDescription("???");
+        miscProperties.setGuideBookDescription("The Bloodfish, or Sanguichthys rufus, was a cyprinid which inhabited Skull island's backwater canals and freshwater estuaries. Its bright red coloring was thought to provide it camouflage against the murky tannin stained water that was its preferred habitat.");
         miscProperties.setGuideBookSource("Skull Island");
         miscProperties.setGuideBookScientificName("Bloodfish");
 
-        miscProperties.setAdvancementTitle("???");
+        miscProperties.setAdvancementTitle("Let The Rivers Fill With Bloodfish");
         miscProperties.disableBabyGuidebook();
         miscProperties.setVersion(-1);
     }
@@ -102,7 +102,8 @@ public class BloodfishAnimal extends AbstractAddonAnimal<BloodfishEntity> {
     @Override
     protected void applyItemProperties(JSItemProperties<BloodfishEntity> itemProperties) {
         itemProperties.setEggtype(EggType.FISH);
-        itemProperties.setSpawnEggColors(0x38312E, 0x161312);
+        itemProperties.setSpawnEggColors(0xCD8656, 0xB42805);
+        itemProperties.setSpawnEggColorsMale(0xE4613E, 0x992205);
         itemProperties.disableMeat();
         itemProperties.setHasFossil(false);
     }
@@ -166,7 +167,7 @@ public class BloodfishAnimal extends AbstractAddonAnimal<BloodfishEntity> {
                 } else if (isMoving(moveAnalysis)) {
                     JSAnimations.SWIM.sendForEntity(base);
                 } else {
-                    JSAnimations.IDLE.sendForEntity(base);
+                    JSAnimations.IDLE_IN_WATER.sendForEntity(base);
                 }
             } else {
                 JSAnimations.BEACHED.sendForEntity(base);

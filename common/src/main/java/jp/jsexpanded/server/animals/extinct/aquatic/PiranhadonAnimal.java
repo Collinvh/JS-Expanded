@@ -63,15 +63,15 @@ public class PiranhadonAnimal extends AbstractAddonAnimal<PiranhadonEntity> {
     protected void applyMiscProperties(JSMiscProperties<PiranhadonEntity> miscProperties) {
         miscProperties.setEra(Era.QUATERNARY);
         miscProperties.setMaxHeadRotation(20, 46);
-        miscProperties.setGuidebookScaling(new float[]{ 1.2f,1.7f });
+        miscProperties.setGuidebookScaling(new float[]{ 1.2f, 0.6f });
         miscProperties.setGuidebookOffset(new Vec2(-1,0),new Vec2(0,0));
         miscProperties.setExtinct();
 
-        miscProperties.setGuideBookDescription("???");
+        miscProperties.setGuideBookDescription("Piranhadon was a massive carnivorous river-dwelling fish that inhabited the swamps of Skull Island.As an ambush predator, Piranhadon would lie in wait near the river banks, using its sensitive barbels to detect prey.");
         miscProperties.setGuideBookSource("Skull Island");
         miscProperties.setGuideBookScientificName("Piranhadon");
 
-        miscProperties.setAdvancementTitle("???");
+        miscProperties.setAdvancementTitle("Boom piranha");
         miscProperties.disableBabyGuidebook();
         miscProperties.setVersion(-1);
     }
@@ -101,8 +101,8 @@ public class PiranhadonAnimal extends AbstractAddonAnimal<PiranhadonEntity> {
     @Override
     protected void applyItemProperties(JSItemProperties<PiranhadonEntity> itemProperties) {
         itemProperties.setEggtype(EggType.FISH);
-        itemProperties.setSpawnEggColors(0x38312E, 0x161312);
-        itemProperties.setSpawnEggColorsMale(0x38312E, 0x161312);
+        itemProperties.setSpawnEggColors(0x958C5F, 0x313525);
+        itemProperties.setSpawnEggColorsMale(0x6E6745, 0x181A10);
         itemProperties.disableMeat();
         itemProperties.setHasFossil(false);
     }
@@ -121,8 +121,8 @@ public class PiranhadonAnimal extends AbstractAddonAnimal<PiranhadonEntity> {
         /*
         Render Properties
          */
-        base.setRenderScale(2.45F);
-        base.setRenderScaleMale(1.1F);
+        base.setRenderScale(1.9F);
+        base.setRenderScaleMale(0.9F);
         base.setLocator(new JSExpandedLocator<PiranhadonEntity>().setAdultOnly());
 
         /*

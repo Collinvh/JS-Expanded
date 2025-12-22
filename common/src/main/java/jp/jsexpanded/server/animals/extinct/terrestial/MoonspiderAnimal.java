@@ -69,11 +69,11 @@ public class MoonspiderAnimal extends AbstractAddonAnimal<MoonspiderEntity> {
         miscProperties.setGuidebookOffset(new Vec2(-1,0),new Vec2(0,0));
         miscProperties.setExtinct();
 
-        miscProperties.setGuideBookDescription("Moonspiders (Galeodes luna - \"moon helmet\") are one of the many arachnids on Skull Island");
+        miscProperties.setGuideBookDescription("The Moonspider, or Galeodes luna, were a nocturnal species of venomous Solifugid. Dwelling mostly in the undergrowth of Skull Island, the moonspiders hunted primarily rodents and other small prey. Their venom is strong enough to cause significant discomfort to even an adult dinosaur.");
         miscProperties.setGuideBookSource("Skull Island");
         miscProperties.setGuideBookScientificName("Galeodes luna");
 
-        miscProperties.setAdvancementTitle("Ambush micropredator");
+        miscProperties.setAdvancementTitle("Goodbye, Moonspiders");
         miscProperties.disableBabyGuidebook();
         miscProperties.setVersion(-1);
     }
@@ -105,7 +105,7 @@ public class MoonspiderAnimal extends AbstractAddonAnimal<MoonspiderEntity> {
     @Override
     protected void applyItemProperties(JSItemProperties<MoonspiderEntity> itemProperties) {
         itemProperties.setEggtype(EggType.SPIDER);
-        itemProperties.setSpawnEggColors(0x38312E, 0x161312);
+        itemProperties.setSpawnEggColors(0x584E47, 0x161312);
         itemProperties.disableMeat();
         itemProperties.setHasFossil(false);
     }
@@ -115,7 +115,7 @@ public class MoonspiderAnimal extends AbstractAddonAnimal<MoonspiderEntity> {
         /*
         Base Properties
          */
-        base.setAnimalType(AnimalType.REPTILE);
+        base.setAnimalType(AnimalType.INSECT);
         base.setFov(90);
         base.setMaxTurnRate(9);
         base.setSizeDimorphism(9);

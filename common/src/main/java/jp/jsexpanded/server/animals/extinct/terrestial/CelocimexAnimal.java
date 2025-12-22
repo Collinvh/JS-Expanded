@@ -72,11 +72,11 @@ public class CelocimexAnimal extends AbstractAddonAnimal<CelocimexEntity> {
         miscProperties.setBabyAnimations();
         miscProperties.setExtinct();
 
-        miscProperties.setGuideBookDescription("Moonspiders (Galeodes luna - \"moon helmet\") are one of the many arachnids on Skull Island");
+        miscProperties.setGuideBookDescription("Celocimex is a species of dragonfly native to the jungle canopies of Skull Island. Little is known of Celocimex, but it is assumed to fill the same niche as mainland dragonflies as a pursuit micropredator.");
         miscProperties.setGuideBookSource("Skull Island");
-        miscProperties.setGuideBookScientificName("Galeodes luna");
+        miscProperties.setGuideBookScientificName("Celocimex");
 
-        miscProperties.setAdvancementTitle("Ambush micropredator");
+        miscProperties.setAdvancementTitle("Converse your Ammunition!");
         miscProperties.disableBabyGuidebook();
         miscProperties.setVersion(-1);
     }
@@ -108,7 +108,7 @@ public class CelocimexAnimal extends AbstractAddonAnimal<CelocimexEntity> {
     @Override
     protected void applyItemProperties(JSItemProperties<CelocimexEntity> itemProperties) {
         itemProperties.setEggtype(EggType.SPIDER);
-        itemProperties.setSpawnEggColors(0x38312E, 0x161312);
+        itemProperties.setSpawnEggColors(0x313724, 0x615030);
         itemProperties.disableMeat();
         itemProperties.setHasFossil(false);
     }

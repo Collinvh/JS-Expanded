@@ -1,4 +1,4 @@
-// 1.21.1	2025-12-19T00:35:16.5535212	Item Models: jsexpanded
+// 1.21.1	2025-12-20T16:31:36.1749318	Item Models: jsexpanded
 83f8dd663ad75f4f28a3b8e188d25e629cd3c80a assets/jsexpanded/models/item/bloodfish_coin.json
 c61aa4272e71d3782ea9d25503beec8b4beaa25f assets/jsexpanded/models/item/bloodfish_hatch_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/jsexpanded/models/item/bloodfish_spawn_egg.json
@@ -7,7 +7,7 @@ e0f2e7d6afb85512aca5a1b17915aed9c0605c82 assets/jsexpanded/models/item/burning_r
 2e8d26f66d0b543f3375e6bab35e9b6ffa696b82 assets/jsexpanded/models/item/burning_shale_face.json
 ae66072de849ecc233ad14c4500bf884963ccbaf assets/jsexpanded/models/item/bushy_bamboo.json
 0688058bad8360f412f1f23c9bf82efa9600174a assets/jsexpanded/models/item/carpet_moss.json
-dcb7b1df9e7af2e3d3f230deda8546e49bf1d845 assets/jsexpanded/models/item/celocimex_coin.json
+74a2d1628d5549a395ec98ff7f3de5f7c04790cc assets/jsexpanded/models/item/celocimex_coin.json
 abc2b2f657d19f0c72dce05b301c775a2c7a1383 assets/jsexpanded/models/item/celocimex_hatch_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/jsexpanded/models/item/celocimex_spawn_egg.json
 7e5d76fd7da3fe377a1621276c8d38f641a9faab assets/jsexpanded/models/item/dead_mans_hair.json
@@ -20,7 +20,7 @@ c919be309d6b21e347df5b5722e321e7b0c16627 assets/jsexpanded/models/item/indigofer
 d8f7060f3d4596948a91eb81bd5df267e0d601a3 assets/jsexpanded/models/item/kongwobisa.json
 4de8cd70a2fa6ffae7de27a6c5e6c1a7ef4e3846 assets/jsexpanded/models/item/lasiandra.json
 8fd7c2f2318f7de4e593fddcb5e28deb8ba81dcd assets/jsexpanded/models/item/melted_crown.json
-7e5a7d5d8eaea9f82c7ae2481b31343e7104e992 assets/jsexpanded/models/item/moonspider_coin.json
+de26f415b76dc577b590199ae05415cac1990fdc assets/jsexpanded/models/item/moonspider_coin.json
 abc2b2f657d19f0c72dce05b301c775a2c7a1383 assets/jsexpanded/models/item/moonspider_hatch_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/jsexpanded/models/item/moonspider_spawn_egg.json
 e0de0aad52bd1b43298a9f400771a783c90aec9e assets/jsexpanded/models/item/needlebrush.json

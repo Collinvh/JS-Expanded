@@ -11820,6 +11820,81 @@
 					"effect": "venatosaurus_footstep01"
 				}
 			}
+		},
+		"animation.guidebook_pose": {
+			"loop": true,
+			"bones": {
+				"hips": {
+					"rotation": [2.5, 0, 0]
+				},
+				"body_1": {
+					"rotation": [0, 12.5, 0]
+				},
+				"neck_1": {
+					"rotation": [4.56271, 6.80649, 0.15657]
+				},
+				"neck_2": {
+					"rotation": [7.5, 0, 0]
+				},
+				"arm_lower_left": {
+					"rotation": [-12.5, 0, 0]
+				},
+				"hand_left": {
+					"rotation": [22.5, 0, 0]
+				},
+				"arm_upper_right": {
+					"rotation": [-25, 0, 0]
+				},
+				"arm_lower_right": {
+					"rotation": [7.5, 0, 0]
+				},
+				"hand_right": {
+					"rotation": [10, 0, 0]
+				},
+				"tail_1": {
+					"rotation": [0, 0, 0]
+				},
+				"tail_2": {
+					"rotation": [2.36821, 17.47965, -0.85723]
+				},
+				"tail_3": {
+					"rotation": [10, 0, 0]
+				},
+				"tail_4": {
+					"rotation": [10, 0, 0]
+				},
+				"leg_left": {
+					"rotation": [20.39769, 22.18203, 3.81388]
+				},
+				"knee_left": {
+					"rotation": [-12.5, 0, 0]
+				},
+				"ankle_left": {
+					"rotation": [-5, 0, 0]
+				},
+				"foot_left": {
+					"rotation": [0, 0, -7.5]
+				},
+				"leg_right": {
+					"rotation": [-34.78891, 10.61641, 3.53452],
+					"position": [0, -1, 0]
+				},
+				"knee_right": {
+					"rotation": [37.5, 0, 0]
+				},
+				"ankle_right": {
+					"rotation": [-12.5, 0, 0]
+				},
+				"foot_right": {
+					"rotation": [40, 0, 0]
+				},
+				"toe_right": {
+					"rotation": [-7.5, 0, 0]
+				},
+				"root": {
+					"rotation": [0, 7.5, 0]
+				}
+			}
 		}
 	}
 }

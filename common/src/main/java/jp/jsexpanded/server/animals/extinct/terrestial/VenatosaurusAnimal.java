@@ -59,11 +59,11 @@ public class VenatosaurusAnimal extends AbstractAddonAnimal<VenatosaurusEntity> 
         miscProperties.setGuidebookOffset(new Vec2(-2,0),new Vec2(0,0));
         miscProperties.setExtinct();
 
-        miscProperties.setGuideBookDescription("???");
+        miscProperties.setGuideBookDescription("Venatosaurus saevidicus were a large-sized theropod dinosaur that lived on Skull Island's highlands. These social, highly intelligent and vicious creatures were observed during expeditions to prey on animals ten times their own size. Descended from a dromaeosaurid ancestor.");
         miscProperties.setGuideBookSource("Skull Island");
         miscProperties.setGuideBookScientificName("Venatosaurus");
 
-        miscProperties.setAdvancementTitle("???");
+        miscProperties.setAdvancementTitle("Thought They Were Supposed To Be Extinct!");
         miscProperties.setVersion(-1);
     }
 

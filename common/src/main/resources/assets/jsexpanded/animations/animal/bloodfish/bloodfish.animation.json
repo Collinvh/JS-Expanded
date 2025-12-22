@@ -2476,6 +2476,41 @@
 					}
 				}
 			}
+		},
+		"animation.guidebook_pose": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"rotation": [30.40773, 24.1782, 13.51584],
+					"position": [0, 23, 0]
+				},
+				"opperculum": {
+					"rotation": [0, 12.5, 0],
+					"scale": 2.2275
+				},
+				"body_1": {
+					"rotation": [0, -10, 0]
+				},
+				"body_2": {
+					"rotation": [0, -7.5, 0]
+				},
+				"tail_1": {
+					"rotation": [0, -10, 0]
+				},
+				"tail_2": {
+					"rotation": [0, -12.5, 0]
+				},
+				"fin_caudal": {
+					"rotation": [0, -20, 0]
+				},
+				"head": {
+					"rotation": [0, 10, 0],
+					"position": [-0.6625, 0, 0]
+				},
+				"jaw_lower": {
+					"rotation": [27.5, 0, 0]
+				}
+			}
 		}
 	}
 }

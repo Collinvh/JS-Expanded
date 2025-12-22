@@ -23,6 +23,10 @@ public class JSExpandedSounds {
     public static final Supplier<SoundEvent> VENATOSAURUS_LIVING = create("venatosaurus_living");
     public static final Supplier<SoundEvent> VENATOSAURUS_THREAT = create("venatosaurus_threaten");
 
+    public static final Supplier<SoundEvent> PIRANHADON_DEATH = create("piranhadon_death");
+    public static final Supplier<SoundEvent> PIRANHADON_HURT = create("piranhadon_hurt");
+    public static final Supplier<SoundEvent> PIRANHADON_LIVING = create("piranhadon_living");
+
     public static void init() {
     }
 }

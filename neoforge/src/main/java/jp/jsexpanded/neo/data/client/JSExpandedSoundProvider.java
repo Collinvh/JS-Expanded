@@ -20,6 +20,10 @@ public class JSExpandedSoundProvider extends SoundDefinitionsProvider {
         addAnimalSound("venatosaurus_living", 6, "jsexpanded:animal/venatosaurus/", JSExpandedSounds.VENATOSAURUS_LIVING);
         addAnimalSound("venatosaurus_threaten", 3, "jsexpanded:animal/venatosaurus/", JSExpandedSounds.VENATOSAURUS_THREAT);
         addAnimalSound("venatosaurus_hurt", 4, "jsexpanded:animal/venatosaurus/", JSExpandedSounds.VENATOSAURUS_HURT);
+
+        addAnimalSound("piranhadon_death", 1, "jsexpanded:animal/piranhadon/", JSExpandedSounds.PIRANHADON_DEATH);
+        addAnimalSound("piranhadon_hurt", 5, "jsexpanded:animal/piranhadon/", JSExpandedSounds.PIRANHADON_HURT);
+        addAnimalSound("piranhadon_living", 4, "jsexpanded:animal/piranhadon/", JSExpandedSounds.PIRANHADON_LIVING);
     }
 
     private void addAnimalSound(String baseName, int amount, String prefix, Supplier<SoundEvent> event) {

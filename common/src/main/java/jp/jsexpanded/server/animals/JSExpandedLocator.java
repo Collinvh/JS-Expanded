@@ -4,17 +4,12 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import jp.jsexpanded.JSExpanded;
 import jp.jurassicsaga.server.base.animal.entity.obj.bases.JSAnimalBase;
-import jp.jurassicsaga.server.base.animal.entity.obj.bases.JSEntityDataHolder;
 import jp.jurassicsaga.server.base.animal.entity.obj.info.AnimalGrowthStage;
 import jp.jurassicsaga.server.base.animal.entity.obj.other.JSVariants;
-import jp.jurassicsaga.server.base.animal.obj.locator.JSAnimalBaseLocator;
 import net.minecraft.resources.ResourceLocation;
 import travelers.server.animal.obj.locator.ResourceLocator;
 
-import java.util.Collections;
 import java.util.Locale;
-import java.util.Map;
-import java.util.WeakHashMap;
 import java.util.concurrent.ExecutionException;
 
 import static jp.jurassicsaga.server.base.animal.entity.obj.bases.JSEntityDataHolder.textureVariant;
@@ -156,17 +151,17 @@ public class JSExpandedLocator<T extends JSAnimalBase> extends ResourceLocator<T
         boolean genderedVariants = entity.getAnimal().getAnimalAttributes().getMiscProperties().isGenderedVariants();
 
         if (variant.ignoresGenders()) {
-            return ResourceLocation.fromNamespaceAndPath(variantLoc.getNamespace(),
+            return ResourceLocation.fromNamespaceAndPath(JSExpanded.MOD_ID,
                     "textures/geo/animal/" +  name + "/variants/" + name + "_adult_" + path + ".png");
         }
 
         if (genderedVariants) {
             String suffix = entity.getModules().getGeneticModule().isMale() ? "_male" : "_female";
-            return ResourceLocation.fromNamespaceAndPath(variantLoc.getNamespace(),
+            return ResourceLocation.fromNamespaceAndPath(JSExpanded.MOD_ID,
                     "textures/geo/animal/" +  name + "/variants/" + name + "_adult_" + path + suffix + ".png");
         }
 
-        return ResourceLocation.fromNamespaceAndPath(variantLoc.getNamespace(),
+        return ResourceLocation.fromNamespaceAndPath(JSExpanded.MOD_ID,
                 "textures/geo/animal/" +  name + "/variants/" + name + "_adult_" + path + ".png");
     }
 
