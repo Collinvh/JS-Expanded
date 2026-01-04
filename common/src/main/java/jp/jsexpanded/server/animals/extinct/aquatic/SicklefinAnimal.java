@@ -65,7 +65,7 @@ public class SicklefinAnimal extends AbstractAddonAnimal<SicklefinEntity> {
         miscProperties.setEra(Era.QUATERNARY);
         miscProperties.setMaxHeadRotation(20, 46);
         miscProperties.setGuidebookScaling(new float[]{ 1.2f,1.7f });
-        miscProperties.setGuidebookOffset(new Vec2(-1,0),new Vec2(0,0));
+        miscProperties.setGuidebookOffset(new Vec2(-1,0),new Vec2(0,-0.1F));
         miscProperties.setExtinct();
 
         miscProperties.setGuideBookDescription("The Sicklefin, or Sicililepis minimus, was a fish native to Skull Island's waterways, similar to a batfish in appearance. It is unknown what the Sicklefin actually eats, however, it's beaked mouth suggests a possible diet of shellfish.");
@@ -106,7 +106,6 @@ public class SicklefinAnimal extends AbstractAddonAnimal<SicklefinEntity> {
         itemProperties.setEggtype(EggType.SPIDER);
         itemProperties.setSpawnEggColors(0x69300E, 0xC4AA13);
         itemProperties.setSpawnEggColorsMale(0xD0B365, 0x7F3400);
-        itemProperties.disableMeat();
         itemProperties.setHasFossil(false);
     }
 

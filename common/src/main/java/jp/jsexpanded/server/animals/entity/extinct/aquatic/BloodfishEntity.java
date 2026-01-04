@@ -6,8 +6,10 @@ import jp.jurassicsaga.server.base.animal.entity.obj.tasks.combat.JSTargetTask;
 import jp.jurassicsaga.server.base.animal.entity.obj.tasks.navigation.JSFleeTask;
 import jp.jurassicsaga.server.base.animal.entity.obj.tasks.navigation.JSRandomStrollTask;
 import jp.jurassicsaga.server.v1.animal.entity.obj.task.JSFlopTask;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import travelers.server.animal.entity.task.TravelerTaskController;
 
@@ -29,9 +31,25 @@ public class BloodfishEntity extends JSAquaticBase {
 
     @Override
     protected void tickDeath() {
-        if (!this.level().isClientSide() && !this.isRemoved()) {
-            this.level().broadcastEntityEvent(this, (byte) 60);
-            this.remove(RemovalReason.KILLED);
+        if (isDead() || shouldDieInstantly()) {
+            if (shouldDieInstantly()) {
+                if (getAnimal().getAnimalAttributes().getItemProperties().isHasDrops()) {
+                    if (getAnimal().getAnimalAttributes().getItemProperties().isHasMeat() && random.nextFloat() < 0.6F) {
+                        spawnAtLocation(new ItemStack(getAnimal().getItems().getRawMeat().get(), random.nextInt(4) + 1));
+                    }
+                    if (getAnimal().getAnimalAttributes().getMiscProperties().isExtinct() &&
+                            getAnimal().getAnimalAttributes().getItemProperties().isHasFossil() && random.nextFloat() < 0.6F) {
+                        spawnAtLocation(new ItemStack(getAnimal().getItems().getFossil_remains().get(), random.nextInt(4) + 1));
+                    }
+                }
+            }
+            if (!this.level().isClientSide() && !this.isRemoved()) {
+                this.level().broadcastEntityEvent(this, (byte) 60);
+                this.remove(Entity.RemovalReason.KILLED);
+            }
+            return;
+        } else {
+            super.tickDeath();
         }
     }
 

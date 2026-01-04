@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "jsexpanded:item/natural/entity/animal/extinct/sicklefin/sicklefin_raw"
+  }
+}

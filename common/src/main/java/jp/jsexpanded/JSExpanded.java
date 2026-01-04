@@ -33,25 +33,28 @@ public class JSExpanded {
     public static void init() {
         TravelersMain.registerMod(MOD_ID);
         TravelersUtil.disableModForGecko(MOD_ID);
-        TravelersMain.enableDebugMode();
+//        TravelersMain.enableDebugMode();
         JSExpandedAnimals.init();
         JSExpandedBlocks.init();
         JSExpandedSounds.init();
+
+        BLOCKS = TABS.register("jsexpanded.items", () -> JSHelper.jsPlatform.registerMenu(
+                Component.translatable("itemGroup.jsexpanded.items"),
+                () -> JSExpandedBlocks.BULLWEED.get().asItem(),
+                (version,output) -> {
+                    Set<ItemLike> added = new HashSet<>();
+                    Consumer<ItemLike> safeOutput = item -> {
+                        if (added.add(item)) output.add(item.asItem().getDefaultInstance());
+                    };
+                    JSExpandedBlocks.BLOCKS.getValues().forEach((s, blockSupplier) -> safeOutput.accept(blockSupplier.get()));
+
+                    return output;
+                }
+        ));
     }
 
-    public static final Supplier<CreativeModeTab> BLOCKS = TABS.register("jsexpanded.items", () -> JSHelper.jsPlatform.registerMenu(
-            Component.translatable("itemGroup.jsexpanded.items"),
-            () -> JSExpandedBlocks.BULLWEED.get().asItem(),
-            (version,output) -> {
-                Set<ItemLike> added = new HashSet<>();
-                Consumer<ItemLike> safeOutput = item -> {
-                    if (added.add(item)) output.add(item.asItem().getDefaultInstance());
-                };
-                JSExpandedBlocks.BLOCKS.getValues().forEach((s, blockSupplier) -> safeOutput.accept(blockSupplier.get()));
+    public static Supplier<CreativeModeTab> BLOCKS;
 
-                return output;
-            }
-    ));
 
     public static ResourceLocation createId(String s) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, s);

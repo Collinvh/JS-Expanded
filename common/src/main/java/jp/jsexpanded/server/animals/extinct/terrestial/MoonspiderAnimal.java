@@ -6,12 +6,14 @@ import jp.jsexpanded.server.animals.JSExpandedLocator;
 import jp.jsexpanded.server.animals.entity.extinct.aquatic.SicklefinEntity;
 import jp.jsexpanded.server.animals.entity.extinct.terrestial.moonspider.MoonspiderEntity;
 import jp.jsexpanded.server.animals.entity.extinct.terrestial.venatosaurus.VenatosaurusEntity;
+import jp.jurassicsaga.JSCommon;
 import jp.jurassicsaga.server.base.animal.animals.JSAnimations;
 import jp.jurassicsaga.server.base.animal.animations.JSAnimator;
 import jp.jurassicsaga.server.base.animal.entity.obj.bases.JSAnimalBase;
 import jp.jurassicsaga.server.base.animal.entity.obj.diet.Diets;
 import jp.jurassicsaga.server.base.animal.entity.obj.info.AnimalDietType;
 import jp.jurassicsaga.server.base.animal.obj.attributes.*;
+import jp.jurassicsaga.server.base.animal.obj.locator.JSAnimalBaseLocator;
 import jp.jurassicsaga.server.base.generic.obj.ActiveTime;
 import jp.jurassicsaga.server.base.generic.obj.EggType;
 import jp.jurassicsaga.server.base.generic.obj.Era;
@@ -36,6 +38,8 @@ import travelers.server.animal.obj.attributes.EntityBaseProperties;
 import travelers.server.animal.obj.locator.ResourceLocator;
 import travelers.server.animal.obj.misc.AnimalType;
 
+import java.util.concurrent.ExecutionException;
+
 public class MoonspiderAnimal extends AbstractAddonAnimal<MoonspiderEntity> {
     public MoonspiderAnimal() {
         super("moonspider");
@@ -46,7 +50,7 @@ public class MoonspiderAnimal extends AbstractAddonAnimal<MoonspiderEntity> {
     protected void applyGeneticProperties(JSGeneticProperties<MoonspiderEntity> geneticProperties) {
         geneticProperties.addGrowthStageScaling(0.4F);
         geneticProperties.addGrowthStageSize(0.5f, 0.7f);
-        geneticProperties.addGrowthNextStageScaling(1.1F);
+        geneticProperties.addGrowthNextStageScaling(0.65F);
         geneticProperties.addGrowthStageMaxGrowth((int) JSUtils.toTicksMCDays(4));
         geneticProperties.setGrowthProgressCap((int) JSUtils.toTicksMCDays(6));
         geneticProperties.addSupportedGenes();
@@ -64,9 +68,8 @@ public class MoonspiderAnimal extends AbstractAddonAnimal<MoonspiderEntity> {
     protected void applyMiscProperties(JSMiscProperties<MoonspiderEntity> miscProperties) {
         miscProperties.setEra(Era.QUATERNARY);
         miscProperties.setMaxHeadRotation(20, 46);
-        miscProperties.setBabyAnimations();
-        miscProperties.setGuidebookScaling(new float[]{ 1.2f,1.7f });
-        miscProperties.setGuidebookOffset(new Vec2(-1,0),new Vec2(0,0));
+        miscProperties.setGuidebookScaling(new float[]{ 1f,1f });
+        miscProperties.setGuidebookOffset(new Vec2(-2F,0),new Vec2(0,0));
         miscProperties.setExtinct();
 
         miscProperties.setGuideBookDescription("The Moonspider, or Galeodes luna, were a nocturnal species of venomous Solifugid. Dwelling mostly in the undergrowth of Skull Island, the moonspiders hunted primarily rodents and other small prey. Their venom is strong enough to cause significant discomfort to even an adult dinosaur.");
@@ -74,7 +77,6 @@ public class MoonspiderAnimal extends AbstractAddonAnimal<MoonspiderEntity> {
         miscProperties.setGuideBookScientificName("Galeodes luna");
 
         miscProperties.setAdvancementTitle("Goodbye, Moonspiders");
-        miscProperties.disableBabyGuidebook();
         miscProperties.setVersion(-1);
     }
 
@@ -106,6 +108,7 @@ public class MoonspiderAnimal extends AbstractAddonAnimal<MoonspiderEntity> {
     protected void applyItemProperties(JSItemProperties<MoonspiderEntity> itemProperties) {
         itemProperties.setEggtype(EggType.SPIDER);
         itemProperties.setSpawnEggColors(0x584E47, 0x161312);
+        itemProperties.setSpawnEggColorsMale(0x584E47, 0x161312);
         itemProperties.disableMeat();
         itemProperties.setHasFossil(false);
     }
@@ -125,23 +128,18 @@ public class MoonspiderAnimal extends AbstractAddonAnimal<MoonspiderEntity> {
         Render Properties
          */
         base.setRenderScale(0.65F);
-        base.setLocator(new ResourceLocator<MoonspiderEntity>() {
-            private static final ResourceLocation texture = JSExpanded.createId("textures/geo/animal/moonspider/moonspider.png");
-            private static final ResourceLocation model = JSExpanded.createId("geo/animal/moonspider/moonspider.geo.json");
-            private static final ResourceLocation animation = JSExpanded.createId("animations/animal/moonspider/moonspider.animation.json");
-            @Override
-            public ResourceLocation getTextureLocation(MoonspiderEntity entity) {
-                return texture;
-            }
-
+        base.setLocator(new JSExpandedLocator<>() {
             @Override
             public ResourceLocation getModelLocation(MoonspiderEntity entity) {
-                return model;
-            }
-
-            @Override
-            public ResourceLocation getAnimationLocation(MoonspiderEntity entity) {
-                return animation;
+                String key = makeCacheKey(entity, "model");
+                try {
+                    return cache.get(key, () -> {
+                        String entity_name = getEntityName(entity);
+                        return JSExpanded.createId("geo/animal/" + entity_name + "/" + entity_name + ".geo.json");
+                    });
+                } catch (ExecutionException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 

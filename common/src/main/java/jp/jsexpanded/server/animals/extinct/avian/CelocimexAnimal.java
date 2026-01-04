@@ -1,19 +1,17 @@
-package jp.jsexpanded.server.animals.extinct.terrestial;
+package jp.jsexpanded.server.animals.extinct.avian;
 
 import jp.jsexpanded.JSExpanded;
 import jp.jsexpanded.server.animals.AbstractAddonAnimal;
-import jp.jsexpanded.server.animals.entity.extinct.terrestial.celocimex.CelocimexEntity;
+import jp.jsexpanded.server.animals.entity.extinct.avian.celocimex.CelocimexEntity;
 import jp.jsexpanded.server.animals.entity.extinct.terrestial.moonspider.MoonspiderEntity;
 import jp.jurassicsaga.server.base.animal.animals.JSAnimations;
 import jp.jurassicsaga.server.base.animal.animations.JSAnimator;
 import jp.jurassicsaga.server.base.animal.entity.obj.diet.Diets;
 import jp.jurassicsaga.server.base.animal.entity.obj.info.AnimalDietType;
 import jp.jurassicsaga.server.base.animal.obj.attributes.*;
-import jp.jurassicsaga.server.base.generic.obj.ActiveTime;
 import jp.jurassicsaga.server.base.generic.obj.EggType;
 import jp.jurassicsaga.server.base.generic.obj.Era;
 import jp.jurassicsaga.server.base.generic.util.JSUtils;
-import jp.jurassicsaga.server.v1.animal.animals.extinct.avian.MeganeuraAnimal;
 import jp.jurassicsaga.server.v1.animal.entity.extant.GoatEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.DryosaurusEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.ProcompsognathusEntity;
@@ -62,8 +60,8 @@ public class CelocimexAnimal extends AbstractAddonAnimal<CelocimexEntity> {
 
     @Override
     protected void applyMiscProperties(JSMiscProperties<CelocimexEntity> miscProperties) {
-        miscProperties.setGuidebookScaling(new float[]{3, 3});
-        miscProperties.setGuidebookOffset(new Vec2(-0.45F, -0), new Vec2(0, -0));
+        miscProperties.setGuidebookScaling(new float[]{3, 7});
+        miscProperties.setGuidebookOffset(new Vec2(-0.45F, -0), new Vec2(0, -0.08F));
         miscProperties.setCorpseMeatDrops(1, 1);
         miscProperties.setCorpseDropTimes(1);
         miscProperties.setCorpseBoneDrops(0, 1);
@@ -109,7 +107,6 @@ public class CelocimexAnimal extends AbstractAddonAnimal<CelocimexEntity> {
     protected void applyItemProperties(JSItemProperties<CelocimexEntity> itemProperties) {
         itemProperties.setEggtype(EggType.SPIDER);
         itemProperties.setSpawnEggColors(0x313724, 0x615030);
-        itemProperties.disableMeat();
         itemProperties.setHasFossil(false);
     }
 

@@ -34,9 +34,25 @@ public class SicklefinEntity extends JSAquaticBase {
 
     @Override
     protected void tickDeath() {
-        if (!this.level().isClientSide() && !this.isRemoved()) {
-            this.level().broadcastEntityEvent(this, (byte) 60);
-            this.remove(Entity.RemovalReason.KILLED);
+        if (isDead() || shouldDieInstantly()) {
+            if (shouldDieInstantly()) {
+                if (getAnimal().getAnimalAttributes().getItemProperties().isHasDrops()) {
+                    if (getAnimal().getAnimalAttributes().getItemProperties().isHasMeat() && random.nextFloat() < 0.6F) {
+                        spawnAtLocation(new ItemStack(getAnimal().getItems().getRawMeat().get(), random.nextInt(4) + 1));
+                    }
+                    if (getAnimal().getAnimalAttributes().getMiscProperties().isExtinct() &&
+                            getAnimal().getAnimalAttributes().getItemProperties().isHasFossil() && random.nextFloat() < 0.6F) {
+                        spawnAtLocation(new ItemStack(getAnimal().getItems().getFossil_remains().get(), random.nextInt(4) + 1));
+                    }
+                }
+            }
+            if (!this.level().isClientSide() && !this.isRemoved()) {
+                this.level().broadcastEntityEvent(this, (byte) 60);
+                this.remove(Entity.RemovalReason.KILLED);
+            }
+            return;
+        } else {
+            super.tickDeath();
         }
     }
 

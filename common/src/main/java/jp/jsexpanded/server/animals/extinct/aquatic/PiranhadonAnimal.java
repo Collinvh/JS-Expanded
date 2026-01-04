@@ -103,7 +103,6 @@ public class PiranhadonAnimal extends AbstractAddonAnimal<PiranhadonEntity> {
         itemProperties.setEggtype(EggType.FISH);
         itemProperties.setSpawnEggColors(0x958C5F, 0x313525);
         itemProperties.setSpawnEggColorsMale(0x6E6745, 0x181A10);
-        itemProperties.disableMeat();
         itemProperties.setHasFossil(false);
     }
 

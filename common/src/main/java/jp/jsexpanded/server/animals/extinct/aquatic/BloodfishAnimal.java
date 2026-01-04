@@ -104,7 +104,6 @@ public class BloodfishAnimal extends AbstractAddonAnimal<BloodfishEntity> {
         itemProperties.setEggtype(EggType.FISH);
         itemProperties.setSpawnEggColors(0xCD8656, 0xB42805);
         itemProperties.setSpawnEggColorsMale(0xE4613E, 0x992205);
-        itemProperties.disableMeat();
         itemProperties.setHasFossil(false);
     }
 

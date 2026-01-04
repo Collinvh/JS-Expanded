@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_celocimex_cooked": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jsexpanded:celocimex_cooked"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_celocimex_raw": {
+      "conditions": {
+        "items": [
+          {
+            "items": "jsexpanded:celocimex_raw"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "jsexpanded:celocimex_cooked_smoke"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_celocimex_raw",
+      "has_celocimex_cooked"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "jsexpanded:celocimex_cooked_smoke"
+    ]
+  }
+}

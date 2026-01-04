@@ -55,7 +55,7 @@ public class VenatosaurusAnimal extends AbstractAddonAnimal<VenatosaurusEntity> 
         miscProperties.setEra(Era.QUATERNARY);
         miscProperties.setMaxHeadRotation(20, 46);
         miscProperties.setBabyAnimations();
-        miscProperties.setGuidebookScaling(new float[]{ 1.2f,0.89f });
+        miscProperties.setGuidebookScaling(new float[]{ 1.2f,0.83f });
         miscProperties.setGuidebookOffset(new Vec2(-2,0),new Vec2(0,0));
         miscProperties.setExtinct();
 

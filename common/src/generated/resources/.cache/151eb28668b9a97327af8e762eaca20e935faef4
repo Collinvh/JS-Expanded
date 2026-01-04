@@ -1,6 +1,8 @@
-// 1.21.1	2025-12-20T16:31:36.1749318	Item Models: jsexpanded
+// 1.21.1	2026-01-04T23:38:17.0953193	Item Models: jsexpanded
 83f8dd663ad75f4f28a3b8e188d25e629cd3c80a assets/jsexpanded/models/item/bloodfish_coin.json
+2de0a4ad4745819ea25fa2a755c65b06ee30cde2 assets/jsexpanded/models/item/bloodfish_cooked.json
 c61aa4272e71d3782ea9d25503beec8b4beaa25f assets/jsexpanded/models/item/bloodfish_hatch_egg.json
+dfff872fb9c843ba76ae76d9b56f5eb530b33a30 assets/jsexpanded/models/item/bloodfish_raw.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/jsexpanded/models/item/bloodfish_spawn_egg.json
 1921a30f93528e9c874fa4527f295498a7064bde assets/jsexpanded/models/item/bullweed.json
 e0f2e7d6afb85512aca5a1b17915aed9c0605c82 assets/jsexpanded/models/item/burning_rhyolite_face.json
@@ -8,8 +10,13 @@ e0f2e7d6afb85512aca5a1b17915aed9c0605c82 assets/jsexpanded/models/item/burning_r
 ae66072de849ecc233ad14c4500bf884963ccbaf assets/jsexpanded/models/item/bushy_bamboo.json
 0688058bad8360f412f1f23c9bf82efa9600174a assets/jsexpanded/models/item/carpet_moss.json
 74a2d1628d5549a395ec98ff7f3de5f7c04790cc assets/jsexpanded/models/item/celocimex_coin.json
+7cd620ee3c8e458bb11b8376bc7876950dfe9004 assets/jsexpanded/models/item/celocimex_cooked.json
 abc2b2f657d19f0c72dce05b301c775a2c7a1383 assets/jsexpanded/models/item/celocimex_hatch_egg.json
+9557cd2b9d7887a3fe553fc176a10d2ed941a033 assets/jsexpanded/models/item/celocimex_raw.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/jsexpanded/models/item/celocimex_spawn_egg.json
+8ae372432eaedad356acc741cf06b22303ff4a08 assets/jsexpanded/models/item/cunaepraedator_coin.json
+abc2b2f657d19f0c72dce05b301c775a2c7a1383 assets/jsexpanded/models/item/cunaepraedator_hatch_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/jsexpanded/models/item/cunaepraedator_spawn_egg.json
 7e5d76fd7da3fe377a1621276c8d38f641a9faab assets/jsexpanded/models/item/dead_mans_hair.json
 7025adab954450943bc39ec52e399ecb23721012 assets/jsexpanded/models/item/drowning_lily.json
 f73d097528e8cee5a32983cba477f59fac56b3b8 assets/jsexpanded/models/item/epiphyte_vern.json
@@ -27,7 +34,9 @@ e0de0aad52bd1b43298a9f400771a783c90aec9e assets/jsexpanded/models/item/needlebru
 c7207b9868072e663d29c3c8ec8ec4667f21e7cd assets/jsexpanded/models/item/pearl_mushroom.json
 ca931564a23803eae83941f7db17987faaebd59b assets/jsexpanded/models/item/pinnatono_berry.json
 cbd6d542d15a9017b788316f3646f51f54eff47b assets/jsexpanded/models/item/piranhadon_coin.json
+ee40fc23294fb913920ad9a6fb7069e40940c096 assets/jsexpanded/models/item/piranhadon_cooked.json
 c61aa4272e71d3782ea9d25503beec8b4beaa25f assets/jsexpanded/models/item/piranhadon_hatch_egg.json
+577562b65c734b84e5ece92f817d076028897e49 assets/jsexpanded/models/item/piranhadon_raw.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/jsexpanded/models/item/piranhadon_spawn_egg.json
 dd53928c42453a0a086f25c01a5bb1978ee4244e assets/jsexpanded/models/item/rancid_wall_growth.json
 5439f7fddb13c08b8ad6177c160ab21e20d4f523 assets/jsexpanded/models/item/reeds.json
@@ -37,8 +46,13 @@ dd53928c42453a0a086f25c01a5bb1978ee4244e assets/jsexpanded/models/item/rancid_wa
 9efbe726eebb7fab0c6334eaea5e1b2bdf6ffce0 assets/jsexpanded/models/item/shale_face.json
 a04c795aa108d99a98195fa2830e7d6affec8e68 assets/jsexpanded/models/item/shroud_moss.json
 fc030d66829c4feca51eaec061ad7f4295080c59 assets/jsexpanded/models/item/sicklefin_coin.json
+ed4db3ef7b107bb67b5ea157f39650e9742ce1c8 assets/jsexpanded/models/item/sicklefin_cooked.json
 abc2b2f657d19f0c72dce05b301c775a2c7a1383 assets/jsexpanded/models/item/sicklefin_hatch_egg.json
+2560d129125719998490d381fde41fc7ae7b0ab2 assets/jsexpanded/models/item/sicklefin_raw.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/jsexpanded/models/item/sicklefin_spawn_egg.json
+edb04bbd9dfb057762e69d78014717010883e02a assets/jsexpanded/models/item/spinaculex_coin.json
+abc2b2f657d19f0c72dce05b301c775a2c7a1383 assets/jsexpanded/models/item/spinaculex_hatch_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/jsexpanded/models/item/spinaculex_spawn_egg.json
 404d187aed00971341a3140edb501dab03e18342 assets/jsexpanded/models/item/stout_dragon.json
 f28a6596061e464b7b9f69b3ca78e1509cf23395 assets/jsexpanded/models/item/swamp_slime.json
 9ae916bd92bfa0ddaa539c1167295d7fd07744c7 assets/jsexpanded/models/item/thorny_streamer.json
@@ -56,7 +70,9 @@ c980780452980a015c63d5f9337a5fb446e0e3f2 assets/jsexpanded/models/item/venatosau
 9b29b4255605e78c3a6fbb376de6d5ea8d9a5823 assets/jsexpanded/models/item/wild_peanut.json
 566be121a8c36562d8ebeee6cbafedd8204e408d assets/jsexpanded/models/signs/paddock/bloodfish.json
 1212c7b523f9854373986993adc62ce8c616eb80 assets/jsexpanded/models/signs/paddock/celocimex.json
+991af647015f6eec67364c397fdaee82f3e75d97 assets/jsexpanded/models/signs/paddock/cunaepraedator.json
 0d5a87289cc628e20712b58548aceaa575984e07 assets/jsexpanded/models/signs/paddock/moonspider.json
 8af42dc4cb164c0229dbf706f9ffc0b5f4ca949f assets/jsexpanded/models/signs/paddock/piranhadon.json
 2ebd1cd347f52241026248e499e63738716596a2 assets/jsexpanded/models/signs/paddock/sicklefin.json
+af40a3f5e4433dbb6b6695828d4a910502ceb1f3 assets/jsexpanded/models/signs/paddock/spinaculex.json
 b5b72f15fd3f55ae0d6ba1151df18e88369d055a assets/jsexpanded/models/signs/paddock/venatosaurus.json

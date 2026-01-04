@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "jsexpanded:item/natural/entity/eggs/egg_spider_hatched"
+  }
+}

@@ -29,6 +29,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -47,9 +48,25 @@ public class MoonspiderEntity extends JSAnimalBase {
 
     @Override
     protected void tickDeath() {
-        if (!this.level().isClientSide() && !this.isRemoved()) {
-            this.level().broadcastEntityEvent(this, (byte) 60);
-            this.remove(Entity.RemovalReason.KILLED);
+        if (isDead() || shouldDieInstantly()) {
+            if (shouldDieInstantly()) {
+                if (getAnimal().getAnimalAttributes().getItemProperties().isHasDrops()) {
+                    if (getAnimal().getAnimalAttributes().getItemProperties().isHasMeat() && random.nextFloat() < 0.6F) {
+                        spawnAtLocation(new ItemStack(getAnimal().getItems().getRawMeat().get(), random.nextInt(4) + 1));
+                    }
+                    if (getAnimal().getAnimalAttributes().getMiscProperties().isExtinct() &&
+                            getAnimal().getAnimalAttributes().getItemProperties().isHasFossil() && random.nextFloat() < 0.6F) {
+                        spawnAtLocation(new ItemStack(getAnimal().getItems().getFossil_remains().get(), random.nextInt(4) + 1));
+                    }
+                }
+            }
+            if (!this.level().isClientSide() && !this.isRemoved()) {
+                this.level().broadcastEntityEvent(this, (byte) 60);
+                this.remove(Entity.RemovalReason.KILLED);
+            }
+            return;
+        } else {
+            super.tickDeath();
         }
     }
 

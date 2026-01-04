@@ -1,4 +1,4 @@
-package jp.jsexpanded.server.animals.entity.extinct.terrestial.celocimex;
+package jp.jsexpanded.server.animals.entity.extinct.avian.celocimex;
 
 import jp.jsexpanded.server.animals.entity.extinct.terrestial.venatosaurus.VenatosaurusTarget;
 import jp.jurassicsaga.server.base.animal.entity.obj.bases.JSAnimalBase;
@@ -26,10 +26,8 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -69,6 +67,30 @@ public class CelocimexEntity extends JSAvianBase {
     protected @Nullable SoundEvent getAmbientSound() {
         if(isFlying() && !isBaby()) return JSV1Sounds.MEGANEURA_FLIGHT_LOOP.get();
         return null;
+    }
+
+    @Override
+    protected void tickDeath() {
+        if (isDead() || shouldDieInstantly()) {
+            if (shouldDieInstantly()) {
+                if (getAnimal().getAnimalAttributes().getItemProperties().isHasDrops()) {
+                    if (getAnimal().getAnimalAttributes().getItemProperties().isHasMeat() && random.nextFloat() < 0.6F) {
+                        spawnAtLocation(new ItemStack(getAnimal().getItems().getRawMeat().get(), random.nextInt(4) + 1));
+                    }
+                    if (getAnimal().getAnimalAttributes().getMiscProperties().isExtinct() &&
+                            getAnimal().getAnimalAttributes().getItemProperties().isHasFossil() && random.nextFloat() < 0.6F) {
+                        spawnAtLocation(new ItemStack(getAnimal().getItems().getFossil_remains().get(), random.nextInt(4) + 1));
+                    }
+                }
+            }
+            if (!this.level().isClientSide() && !this.isRemoved()) {
+                this.level().broadcastEntityEvent(this, (byte) 60);
+                this.remove(Entity.RemovalReason.KILLED);
+            }
+            return;
+        } else {
+            super.tickDeath();
+        }
     }
 
     @Override
