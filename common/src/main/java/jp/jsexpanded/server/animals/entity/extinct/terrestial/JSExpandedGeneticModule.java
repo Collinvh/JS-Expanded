@@ -18,7 +18,7 @@ public class JSExpandedGeneticModule extends JSGeneticModule {
         data.setGeneSeed(owner.level().getRandom().nextInt());
         data.setSizeDimorphism((float) (1 + owner.level().getRandom().nextInt(
                 (int) owner.getAnimal().getAnimalAttributes().getEntityBaseProperties().getSizeDimorphism()
-        )) / 750);
+        )) / 400);
         setGeneData(data);
     }
 }

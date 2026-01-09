@@ -17,7 +17,6 @@ public class JSNeoExpanded {
         JSExpanded.init();
 
         eventBus.addListener(GatherData::gatherData);
-        eventBus.addListener(GatherData::gatherData);
     }
 
 
