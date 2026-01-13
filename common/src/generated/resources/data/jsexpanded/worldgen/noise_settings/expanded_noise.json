@@ -130,7 +130,7 @@
                                   },
                                   "argument2": {
                                     "type": "minecraft:mul",
-                                    "argument1": 1.6,
+                                    "argument1": 1.1,
                                     "argument2": {
                                       "type": "minecraft:mul",
                                       "argument1": {

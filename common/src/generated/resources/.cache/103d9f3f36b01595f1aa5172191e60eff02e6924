@@ -1,4 +1,4 @@
-// 1.21.1	2026-01-13T02:03:37.0288569	Registries
+// 1.21.1	2026-01-13T02:40:28.7960446	Registries
 ebedd2a821ec86f5409fa3509c5e54674e7d354f data/jsexpanded/dimension/expanded_dimension.json
 c580278504ff8d318b05fe9790e711e904f45d32 data/jsexpanded/dimension_type/expanded_type.json
 5ba984680a1b4e74d5aa14338085be290a69c71d data/jsexpanded/worldgen/biome/bamboo_forest.json
@@ -33,4 +33,4 @@ bd93c61a0a1e105904848e985968b73e97240546 data/jsexpanded/worldgen/biome/sea.json
 dfddeee1da5613baedfb97c976305f6c265633ba data/jsexpanded/worldgen/biome/tropical_highlands.json
 0d7d0b94c67651d58c8df85602dd26b85b9af3a3 data/jsexpanded/worldgen/biome/tropical_shrubland.json
 d57673454eac4087782a19c1e6d4f8d357e8af95 data/jsexpanded/worldgen/biome/waterfall_cliffs.json
-6e12486e20dc1d274fe22073b2ef0ad9bce4c0e0 data/jsexpanded/worldgen/noise_settings/expanded_noise.json
+0f1e9a3d1daecd361f91df00f258caaba976efb9 data/jsexpanded/worldgen/noise_settings/expanded_noise.json

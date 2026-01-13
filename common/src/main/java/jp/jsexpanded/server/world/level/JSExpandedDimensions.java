@@ -245,7 +245,7 @@ public class JSExpandedDimensions {
         DensityFunction mountainJaggedness =
                 DensityFunctions.mul(
                         pv,
-                        DensityFunctions.mul(jaggednessStrength, DensityFunctions.constant(1.6D))
+                        DensityFunctions.mul(jaggednessStrength, DensityFunctions.constant(1.1D))
                 );
 
         terrainDensity =
