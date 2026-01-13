@@ -9,10 +9,5 @@ public class JSFabricExpanded implements ModInitializer {
     
     @Override
     public void onInitialize() {
-        JSExpanded.init();
-
-        ServerLifecycleEvents.SERVER_STARTED.register(server -> {
-            JSExpandedAnimals.init();
-        });
     }
 }

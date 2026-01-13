@@ -6,6 +6,6 @@ import net.fabricmc.api.ClientModInitializer;
 public class JSFabricExpandedClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        JSExpandedClient.init();
+
     }
 }
