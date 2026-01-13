@@ -14,6 +14,7 @@ public class GrassySeaCliffs extends JSExpandedBiome {
     public GrassySeaCliffs() {
         super("grassy_sea_cliffs");
         temperature = 5;
+        grassColor = 0xFFAA00;
         waterColor = 0x3F76E4;
     }
 

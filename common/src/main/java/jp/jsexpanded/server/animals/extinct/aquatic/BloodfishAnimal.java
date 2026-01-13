@@ -1,5 +1,6 @@
 package jp.jsexpanded.server.animals.extinct.aquatic;
 
+import jp.jsexpanded.JSExpanded;
 import jp.jsexpanded.server.animals.AbstractAddonAnimal;
 import jp.jsexpanded.server.animals.JSExpandedLocator;
 import jp.jsexpanded.server.animals.entity.extinct.aquatic.BloodfishEntity;
@@ -72,7 +73,7 @@ public class BloodfishAnimal extends AbstractAddonAnimal<BloodfishEntity> {
 
         miscProperties.setAdvancementTitle("Let The Rivers Fill With Bloodfish");
         miscProperties.disableBabyGuidebook();
-        miscProperties.setVersion(-1);
+        miscProperties.setVersion(JSExpanded.EXPANDED_VERSION);
     }
 
     @Override

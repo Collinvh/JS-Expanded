@@ -16,6 +16,7 @@ public class Sea extends JSExpandedBiome {
     public Sea() {
         super("sea");
         temperature = 5;
+        grassColor = 0x004A7F;
         waterColor = 0x3F76E4;
     }
 

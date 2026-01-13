@@ -14,6 +14,7 @@ public class SkullMountains extends JSExpandedBiome {
     public SkullMountains() {
         super("skullmountains");
         temperature = 5;
+        grassColor = 0xFF4A7F;
         waterColor = 0x3F76E4;
     }
 

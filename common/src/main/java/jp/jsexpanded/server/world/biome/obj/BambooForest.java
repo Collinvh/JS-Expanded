@@ -14,6 +14,7 @@ public class BambooForest extends JSExpandedBiome {
     public BambooForest() {
         super("bamboo_forest");
         temperature = 5;
+        grassColor = 0xDDFF00;
         waterColor = 0x3F76E4;
     }
 

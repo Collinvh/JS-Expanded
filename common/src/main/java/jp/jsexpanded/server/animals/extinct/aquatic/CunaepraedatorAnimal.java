@@ -75,7 +75,7 @@ public class CunaepraedatorAnimal extends AbstractAddonAnimal<CunaepraedatorEnti
         miscProperties.setGuideBookScientificName("N/A");
 
         miscProperties.setAdvancementTitle("N/A");
-        miscProperties.setVersion(-1);
+        miscProperties.setVersion(JSExpanded.EXPANDED_VERSION);
     }
 
     @Override

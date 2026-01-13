@@ -137,8 +137,6 @@ public class JSExpandedDimensions {
     public static void bootstrapNoise(BootstrapContext<NoiseGeneratorSettings> ctx) {
         HolderGetter<NormalNoise.NoiseParameters> noises = ctx.lookup(Registries.NOISE);
 
-
-
         ctx.register(EXPANDED_NOISE,
                 new NoiseGeneratorSettings(
                         NoiseSettings.create(-64, 384, 1, 2),
@@ -156,171 +154,149 @@ public class JSExpandedDimensions {
         );
     }
 
-
     protected static NoiseRouter expandedRouter(
             HolderGetter<DensityFunction> densityFunctions,
             HolderGetter<NormalNoise.NoiseParameters> noiseParameters
-    ) {
-        // ===== Aquifers =====
-        DensityFunction aquiferBarrier =
-                DensityFunctions.noise(noiseParameters.getOrThrow(Noises.AQUIFER_BARRIER), 0.5F);
-        DensityFunction aquiferFloodedness =
-                DensityFunctions.noise(noiseParameters.getOrThrow(Noises.AQUIFER_FLUID_LEVEL_FLOODEDNESS), 0.67F);
-        DensityFunction aquiferSpread =
-                DensityFunctions.noise(noiseParameters.getOrThrow(Noises.AQUIFER_FLUID_LEVEL_SPREAD), 0.7142857F);
-        DensityFunction aquiferLava =
-                DensityFunctions.noise(noiseParameters.getOrThrow(Noises.AQUIFER_LAVA));
-
-        // ===== Climate =====
+    ) {// ===== Climate =====
         DensityFunction shiftX = getFunction(densityFunctions, SHIFT_X);
         DensityFunction shiftZ = getFunction(densityFunctions, SHIFT_Z);
 
         DensityFunction temperature =
-                DensityFunctions.shiftedNoise2d(
-                        shiftX, shiftZ, 0.25F,
-                        noiseParameters.getOrThrow(Noises.TEMPERATURE)
-                );
+                DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.25D,
+                        noiseParameters.getOrThrow(Noises.TEMPERATURE));
 
         DensityFunction vegetation =
-                DensityFunctions.shiftedNoise2d(
-                        shiftX, shiftZ, 0.25F,
-                        noiseParameters.getOrThrow(Noises.VEGETATION)
-                );
+                DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.25D,
+                        noiseParameters.getOrThrow(Noises.VEGETATION));
 
-        // ===== Base terrain =====
+
+// ===== Base terrain =====
         DensityFunction continentFactor = getFunction(densityFunctions, FACTOR);
         DensityFunction depth = getFunction(densityFunctions, DEPTH);
+
+        DensityFunction continents =
+                DensityFunctions.cache2d(getFunction(densityFunctions, CONTINENTS));
+
+        DensityFunction erosion =
+                DensityFunctions.cache2d(getFunction(densityFunctions, EROSION));
 
         DensityFunction baseDensity =
                 noiseGradientDensity(
                         DensityFunctions.cache2d(continentFactor),
-                        DensityFunctions.mul(depth, DensityFunctions.constant(1.3F))
+                        DensityFunctions.mul(depth, DensityFunctions.constant(0.9D))
                 );
 
-        // IMPORTANT: density increases toward surface (solid), decreases underground (air)
         DensityFunction verticalBias =
-                DensityFunctions.yClampedGradient(-64, 320, -1.5F, 1.5F);
+                DensityFunctions.yClampedGradient(-64, 320, -0.9F, 0.9F);
 
         DensityFunction terrainDensity =
                 DensityFunctions.add(baseDensity, verticalBias);
 
-        // ===== Erosion =====
-        DensityFunction erosion =
-                DensityFunctions.cache2d(
-                        DensityFunctions.mul(
-                                getFunction(densityFunctions, EROSION),
-                                DensityFunctions.constant(2.0F)
-                        )
-                );
 
-        // ===== Mountains =====
-        DensityFunction rangeNoise =
-                DensityFunctions.cache2d(
-                        DensityFunctions.noise(noiseParameters.getOrThrow(Noises.RIDGE), 0.7F)
-                );
+// =====================================================
+// ===== Mountains (vanilla-style jaggedness) =====
+// =====================================================
 
-        DensityFunction mountainRangeMask =
+// Use routed RIDGES, not raw noise
+        DensityFunction ridges =
+                DensityFunctions.cache2d(getFunction(densityFunctions, RIDGES));
+
+
+// ---- Fold weirdness into Peaks & Valleys (PV) ----
+// PV = (-abs(abs(ridges) - 2/3) + 1/3) * 3
+
+        DensityFunction ridgesAbs = ridges.abs();
+
+        DensityFunction folded =
                 DensityFunctions.add(
-                        DensityFunctions.constant(1.0F),
-                        DensityFunctions.mul(rangeNoise.abs(), DensityFunctions.constant(-1.0F))
-                ).clamp(0.0F, 1.0F);
+                        DensityFunctions.constant(-0.6666667D),
+                        ridgesAbs
+                ).abs();
 
-        mountainRangeMask =
-                DensityFunctions.rangeChoice(
-                        mountainRangeMask,
-                        0.55F, 1.0F,
-                        mountainRangeMask,
-                        DensityFunctions.constant(0.0F)
-                );
-
-        DensityFunction mountainHeight =
+        DensityFunction pv =
                 DensityFunctions.mul(
-                        DensityFunctions.cache2d(
-                                DensityFunctions.noise(noiseParameters.getOrThrow(Noises.EROSION), 0.3F)
-                        ),
-                        DensityFunctions.constant(3.0F)
+                        DensityFunctions.add(folded, DensityFunctions.constant(-0.3333333D)),
+                        DensityFunctions.constant(-3.0D)
                 );
 
-        DensityFunction mountainLift =
-                DensityFunctions.mul(mountainHeight, mountainRangeMask);
+
+// ---- Continentalness gate (coasts = 0, inland = 1) ----
+        DensityFunction inlandMask =
+                DensityFunctions.add(
+                        DensityFunctions.mul(continents, DensityFunctions.constant(1.2D)),
+                        DensityFunctions.constant(0.4D)
+                ).clamp(0.0D, 1.0D);
+
+
+// ---- Erosion gate (flat biomes = 0, rugged = 1) ----
+        DensityFunction ruggedMask =
+                DensityFunctions.add(
+                        DensityFunctions.mul(erosion, DensityFunctions.constant(-1.3D)),
+                        DensityFunctions.constant(1.1D)
+                ).clamp(0.0D, 1.0D);
+
+
+// ---- Final jaggedness strength ----
+        DensityFunction jaggednessStrength =
+                DensityFunctions.mul(inlandMask, ruggedMask);
+
+
+// ---- Apply mountain lift ----
+        DensityFunction mountainJaggedness =
+                DensityFunctions.mul(
+                        pv,
+                        DensityFunctions.mul(jaggednessStrength, DensityFunctions.constant(1.6D))
+                );
 
         terrainDensity =
-                DensityFunctions.add(
-                        terrainDensity,
-                        DensityFunctions.mul(mountainLift, DensityFunctions.constant(1.6F))
-                );
+                DensityFunctions.add(terrainDensity, mountainJaggedness);
 
-        DensityFunction rangeErosion =
-                DensityFunctions.mul(erosion, mountainRangeMask);
 
-        terrainDensity =
-                DensityFunctions.add(
-                        terrainDensity,
-                        DensityFunctions.mul(rangeErosion, DensityFunctions.constant(-0.9F))
-                );
+// =====================================================
+// ===== Rivers (erosion based, no beach damage) =====
+// =====================================================
 
-        // ===== Caves =====
-        DensityFunction slopedCheese =
-                DensityFunctions.mul(
-                        getFunction(densityFunctions, SLOPED_CHEESE),
-                        DensityFunctions.constant(0.9F)
-                );
+// River carving only inland + only where erosion says valleys exist
+        DensityFunction riverMask =
+                DensityFunctions.mul(inlandMask, ruggedMask);
 
-        DensityFunction caveEntrances =
-                DensityFunctions.min(
-                        slopedCheese,
-                        DensityFunctions.mul(
-                                DensityFunctions.constant(2.5F),
-                                getFunction(densityFunctions, ENTRANCES)
-                        )
-                );
-
-        DensityFunction undergroundDensity =
-                DensityFunctions.rangeChoice(
-                        slopedCheese,
-                        -1_000_000.0F, 1.5625F,
-                        caveEntrances,
-                        underground(densityFunctions, noiseParameters, slopedCheese)
-                );
-
-        // hard-disable caves near surface (prevents surface holes)
-        DensityFunction caveMask =
-                DensityFunctions.rangeChoice(
-                        getFunction(densityFunctions, Y),
-                        -1_000_000F, 48F,
-                        DensityFunctions.constant(1.0F),
-                        DensityFunctions.constant(0.0F)
-                );
-
-        undergroundDensity = DensityFunctions.mul(undergroundDensity, caveMask);
-
-        // ===== Rivers =====
         DensityFunction riverCarving =
                 DensityFunctions.mul(
                         erosion,
-                        DensityFunctions.yClampedGradient(-64, 96, 1.0F, 0.0F)
+                        DensityFunctions.mul(riverMask, DensityFunctions.constant(1.2D))
                 );
 
         terrainDensity =
                 DensityFunctions.add(
                         terrainDensity,
-                        DensityFunctions.mul(riverCarving, DensityFunctions.constant(-0.5F))
+                        DensityFunctions.mul(riverCarving, DensityFunctions.constant(-1.1D))
                 );
 
-        // ===== Final terrain (NO NOODLE) =====
-        DensityFunction combined =
-                DensityFunctions.add(terrainDensity, undergroundDensity);
 
-        // extra surface reinforcement for aquifers
+// =====================================================
+// ===== Surface shaping =====
+// =====================================================
         DensityFunction surfaceFloor =
-                DensityFunctions.yClampedGradient(48, 96, 0.6F, 1.2F);
+                DensityFunctions.yClampedGradient(40, 96, 0.3F, 0.8F);
 
-        combined = DensityFunctions.add(combined, surfaceFloor);
+        terrainDensity =
+                DensityFunctions.add(terrainDensity, surfaceFloor);
 
+
+// ===== Final terrain =====
         DensityFunction finalDensity =
-                postProcess(slideOverworld(combined)).clamp(-64.0F, 64.0F);
+                postProcess(slideOverworld(terrainDensity)).clamp(-8.0D, 8.0D);
 
-        // ===== Ore veins =====
+
+// ===== Initial density (pre-cave) =====
+        DensityFunction initialDensityWithoutJaggedness =
+                slideOverworld(
+                        DensityFunctions.add(baseDensity, DensityFunctions.constant(-0.703125D))
+                                .clamp(-8.0D, 8.0D)
+                );
+
+
+// ===== Ore veins =====
         DensityFunction y = getFunction(densityFunctions, Y);
 
         int veinMinY = Stream.of(VeinType.values()).mapToInt(v -> v.minY).min()
@@ -331,33 +307,27 @@ public class JSExpandedDimensions {
         DensityFunction oreVeininess =
                 yLimitedInterpolatable(
                         y,
-                        DensityFunctions.noise(noiseParameters.getOrThrow(Noises.ORE_VEININESS), 1.5F, 1.5F),
-                        veinMinY,
-                        veinMaxY,
-                        0
+                        DensityFunctions.noise(noiseParameters.getOrThrow(Noises.ORE_VEININESS), 1.5D, 1.5D),
+                        veinMinY, veinMaxY, 0
                 );
 
         DensityFunction oreVeinA =
                 yLimitedInterpolatable(
                         y,
-                        DensityFunctions.noise(noiseParameters.getOrThrow(Noises.ORE_VEIN_A), 4.0F, 4.0F),
-                        veinMinY,
-                        veinMaxY,
-                        0
+                        DensityFunctions.noise(noiseParameters.getOrThrow(Noises.ORE_VEIN_A), 4.0D, 4.0D),
+                        veinMinY, veinMaxY, 0
                 ).abs();
 
         DensityFunction oreVeinB =
                 yLimitedInterpolatable(
                         y,
-                        DensityFunctions.noise(noiseParameters.getOrThrow(Noises.ORE_VEIN_B), 4.0F, 4.0F),
-                        veinMinY,
-                        veinMaxY,
-                        0
+                        DensityFunctions.noise(noiseParameters.getOrThrow(Noises.ORE_VEIN_B), 4.0D, 4.0D),
+                        veinMinY, veinMaxY, 0
                 ).abs();
 
         DensityFunction oreVeinRidge =
                 DensityFunctions.add(
-                        DensityFunctions.constant(-0.08F),
+                        DensityFunctions.constant(-0.08D),
                         DensityFunctions.max(oreVeinA, oreVeinB)
                 );
 
@@ -368,33 +338,18 @@ public class JSExpandedDimensions {
                 DensityFunctions.zero(),
                 DensityFunctions.zero(),
                 DensityFunctions.zero(),
-                aquiferLava,
+                DensityFunctions.zero(),
                 temperature,
                 vegetation,
-                getFunction(densityFunctions, CONTINENTS),
+                continents,
                 erosion,
                 depth,
                 getFunction(densityFunctions, RIDGES),
-                terrainDensity,
+                initialDensityWithoutJaggedness,
                 finalDensity,
                 oreVeininess,
                 oreVeinRidge,
                 oreGap
-        );
-    }
-
-
-    private static DensityFunction clampDF(DensityFunction df, float min, float max) {
-        return DensityFunctions.rangeChoice(
-                df,
-                min, max,
-                df,
-                DensityFunctions.rangeChoice(
-                        df,
-                        max, 1_000_000F,
-                        DensityFunctions.constant(max),
-                        DensityFunctions.constant(min)
-                )
         );
     }
 
@@ -425,27 +380,33 @@ public class JSExpandedDimensions {
         return slide(densityFunction, -64, 384, 80, 64, -0.078125F, 0, 24, 0.1171875F);
     }
 
-    private static DensityFunction underground(HolderGetter<DensityFunction> densityFunctions, HolderGetter<NormalNoise.NoiseParameters> noiseParameters, DensityFunction p_256658_) {
-        DensityFunction densityfunction = getFunction(densityFunctions, SPAGHETTI_2D);
-        DensityFunction densityfunction1 = getFunction(densityFunctions, SPAGHETTI_ROUGHNESS_FUNCTION);
-        DensityFunction densityfunction2 = DensityFunctions.noise(noiseParameters.getOrThrow(Noises.CAVE_LAYER), 8.0F);
-        DensityFunction densityfunction3 = DensityFunctions.mul(DensityFunctions.constant(4.0F), densityfunction2.square());
-        DensityFunction densityfunction4 = DensityFunctions.noise(noiseParameters.getOrThrow(Noises.CAVE_CHEESE), 0.6666666666666666);
-        DensityFunction densityfunction5 = DensityFunctions.add(DensityFunctions.add(DensityFunctions.constant(0.27), densityfunction4).clamp(-1.0F, 1.0F), DensityFunctions.add(DensityFunctions.constant(1.5F), DensityFunctions.mul(DensityFunctions.constant(-0.64), p_256658_)).clamp(0.0F, 0.5F));
-        DensityFunction densityfunction6 = DensityFunctions.add(densityfunction3, densityfunction5);
-        DensityFunction densityfunction7 = DensityFunctions.min(DensityFunctions.min(densityfunction6, getFunction(densityFunctions, ENTRANCES)), DensityFunctions.add(densityfunction, densityfunction1));
-        DensityFunction densityfunction8 = getFunction(densityFunctions, PILLARS);
-        DensityFunction densityfunction9 = DensityFunctions.rangeChoice(densityfunction8, -1000000.0F, 0.03, DensityFunctions.constant(-1000000.0F), densityfunction8);
-        return DensityFunctions.max(densityfunction7, densityfunction9);
-    }
+    private static DensityFunction slide(
+            DensityFunction input,
+            int minY, int maxY,
+            int topStart, int topEnd, double topTarget,
+            int bottomStart, int bottomEnd, double bottomTarget
+    ) {
+        // soften top fade (less crushing of caves near surface)
+        DensityFunction topGradient =
+                DensityFunctions.yClampedGradient(
+                        minY + maxY - topStart,
+                        minY + maxY - topEnd,
+                        0.9F, 0.0F
+                );
 
-    private static DensityFunction slide(DensityFunction input, int minY, int maxY, int p_224447_, int p_224448_, double p_224449_, int p_224450_, int p_224451_, double p_224452_) {
-        DensityFunction densityfunction1 = DensityFunctions.yClampedGradient(minY + maxY - p_224447_, minY + maxY - p_224448_, 1.0F, 0.0F);
-        DensityFunction $$9 = DensityFunctions.lerp(densityfunction1, p_224449_, input);
-        DensityFunction densityfunction2 = DensityFunctions.yClampedGradient(minY + p_224450_, minY + p_224451_, 0.0F, 1.0F);
-        return DensityFunctions.lerp(densityfunction2, p_224452_, $$9);
-    }
+        DensityFunction topLerp =
+                DensityFunctions.lerp(topGradient, topTarget, input);
 
+        // soften bottom fade (keep caves near bedrock)
+        DensityFunction bottomGradient =
+                DensityFunctions.yClampedGradient(
+                        minY + bottomStart,
+                        minY + bottomEnd,
+                        0.1F, 1.0F
+                );
+
+        return DensityFunctions.lerp(bottomGradient, bottomTarget, topLerp);
+    }
 
     protected enum VeinType {
         COPPER(Blocks.COPPER_ORE.defaultBlockState(), Blocks.RAW_COPPER_BLOCK.defaultBlockState(), Blocks.GRANITE.defaultBlockState(), 0, 50),

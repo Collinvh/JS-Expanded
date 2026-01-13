@@ -60,7 +60,7 @@ public class SpinaculexAnimal extends AbstractAddonAnimal<SpinaculexEntity> {
         miscProperties.setGenderedVariants();
         miscProperties.setEra(Era.QUATERNARY);
         miscProperties.setExtinct();
-        miscProperties.setVersion(-1);
+        miscProperties.setVersion(JSExpanded.EXPANDED_VERSION);
         miscProperties.disableBabyGuidebook();
     }
 

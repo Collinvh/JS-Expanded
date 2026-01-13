@@ -77,7 +77,7 @@ public class MoonspiderAnimal extends AbstractAddonAnimal<MoonspiderEntity> {
         miscProperties.setGuideBookScientificName("Galeodes luna");
 
         miscProperties.setAdvancementTitle("Goodbye, Moonspiders");
-        miscProperties.setVersion(-1);
+        miscProperties.setVersion(JSExpanded.EXPANDED_VERSION);
     }
 
     @Override

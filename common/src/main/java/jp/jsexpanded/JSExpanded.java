@@ -5,6 +5,7 @@ import jp.jsexpanded.server.animals.JSExpandedAnimals;
 import jp.jsexpanded.server.block.JSExpandedBlocks;
 import jp.jsexpanded.server.sound.JSExpandedSounds;
 import jp.jurassicsaga.JSConstants;
+import jp.jurassicsaga.server.base.generic.Versions;
 import jp.jurassicsaga.server.base.item.JSItemGroups;
 import jp.jurassicsaga.server.util.JSHelper;
 import jp.jurassicsaga.server.v1.block.JSV1Blocks;
@@ -29,9 +30,13 @@ public class JSExpanded {
 	public static final String MOD_NAME = "JSExpanded";
 	public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
     public static final TravelersRegistry<CreativeModeTab> TABS = new TravelersRegistry<>(BuiltInRegistries.CREATIVE_MODE_TAB, MOD_ID);
+    public static final Versions.Version EXPANDED_VERSION = Versions.register(
+            createId("9000.0"), 9000.0f
+    );
 
     public static void init() {
         TravelersMain.registerMod(MOD_ID);
+
         TravelersUtil.disableModForGecko(MOD_ID);
 //        TravelersMain.enableDebugMode();
         JSExpandedAnimals.init();

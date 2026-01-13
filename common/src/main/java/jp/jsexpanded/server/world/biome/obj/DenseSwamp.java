@@ -14,6 +14,7 @@ public class DenseSwamp extends JSExpandedBiome {
     public DenseSwamp() {
         super("dense_swamp");
         temperature = 5;
+        grassColor = 0x43772F;
         waterColor = 0x3F76E4;
     }
 

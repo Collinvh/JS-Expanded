@@ -16,6 +16,7 @@ public class FoggySea extends JSExpandedBiome {
     public FoggySea() {
         super("foggy_sea");
         temperature = 5;
+        grassColor = 0xA2ADFF;
         waterColor = 0x3F76E4;
     }
 

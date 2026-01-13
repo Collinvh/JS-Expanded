@@ -14,6 +14,7 @@ public class SandyShallows extends JSExpandedBiome {
     public SandyShallows() {
         super("sandy_shallows");
         temperature = 5;
+        grassColor = 0xA88C79;
         waterColor = 0x3F76E4;
     }
 
@@ -47,15 +48,7 @@ public class SandyShallows extends JSExpandedBiome {
                 SurfaceRules.ifTrue(
                         SurfaceRules.ON_FLOOR,
                         SurfaceRules.sequence(
-                                SurfaceRules.ifTrue(
-                                        SurfaceRules.noiseCondition(Noises.GRAVEL, 0.55D, 1.0D),
-                                        SurfaceRules.state(Blocks.COARSE_DIRT.defaultBlockState())
-                                ),
-                                SurfaceRules.ifTrue(
-                                        SurfaceRules.noiseCondition(Noises.SWAMP, 0.7D, 1.0D),
-                                        SurfaceRules.state(Blocks.PODZOL.defaultBlockState())
-                                ),
-                                SurfaceRules.state(Blocks.GRASS_BLOCK.defaultBlockState())
+                                SurfaceRules.state(Blocks.SAND.defaultBlockState())
                         )
                 )
         );

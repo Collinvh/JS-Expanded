@@ -76,7 +76,7 @@ public class CelocimexAnimal extends AbstractAddonAnimal<CelocimexEntity> {
 
         miscProperties.setAdvancementTitle("Converse your Ammunition!");
         miscProperties.disableBabyGuidebook();
-        miscProperties.setVersion(-1);
+        miscProperties.setVersion(JSExpanded.EXPANDED_VERSION);
     }
 
     @Override

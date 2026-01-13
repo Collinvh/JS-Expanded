@@ -14,6 +14,7 @@ public class OpenBayou extends JSExpandedBiome {
     public OpenBayou() {
         super("open_bayou");
         temperature = 5;
+        grassColor = 0x886D42;
         waterColor = 0x3F76E4;
     }
 

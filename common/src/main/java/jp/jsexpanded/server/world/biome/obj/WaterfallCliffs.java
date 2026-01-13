@@ -14,6 +14,7 @@ public class WaterfallCliffs extends JSExpandedBiome {
     public WaterfallCliffs() {
         super("waterfall_cliffs");
         temperature = 5;
+        grassColor = 0x21003D;
         waterColor = 0x3F76E4;
     }
 

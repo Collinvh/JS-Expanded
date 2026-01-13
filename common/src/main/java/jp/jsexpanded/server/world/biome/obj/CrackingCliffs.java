@@ -14,6 +14,7 @@ public class CrackingCliffs extends JSExpandedBiome {
     public CrackingCliffs() {
         super("cracking_cliffs");
         temperature = 5;
+        grassColor = 0xDB64BD;
         waterColor = 0x3F76E4;
     }
 

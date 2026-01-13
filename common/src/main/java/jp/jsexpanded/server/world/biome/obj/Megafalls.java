@@ -14,6 +14,7 @@ public class Megafalls extends JSExpandedBiome {
     public Megafalls() {
         super("megafalls");
         temperature = 5;
+        grassColor = 0x6B77FF;
         waterColor = 0x3F76E4;
     }
 

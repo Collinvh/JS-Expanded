@@ -1,5 +1,6 @@
 package jp.jsexpanded.server.animals.extinct.aquatic;
 
+import jp.jsexpanded.JSExpanded;
 import jp.jsexpanded.server.animals.AbstractAddonAnimal;
 import jp.jsexpanded.server.animals.JSExpandedLocator;
 import jp.jsexpanded.server.animals.entity.extinct.aquatic.BloodfishEntity;
@@ -73,7 +74,7 @@ public class PiranhadonAnimal extends AbstractAddonAnimal<PiranhadonEntity> {
 
         miscProperties.setAdvancementTitle("Boom piranha");
         miscProperties.disableBabyGuidebook();
-        miscProperties.setVersion(-1);
+        miscProperties.setVersion(JSExpanded.EXPANDED_VERSION);
     }
 
     @Override

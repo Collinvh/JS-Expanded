@@ -15,6 +15,7 @@ public class PitfallJungle extends JSExpandedBiome {
     public PitfallJungle() {
         super("pitfall_jungle");
         temperature = 5;
+        grassColor = 0x233F23;
         waterColor = 0x3F76E4;
     }
 

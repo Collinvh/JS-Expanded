@@ -14,6 +14,7 @@ public class DeadForest extends JSExpandedBiome {
     public DeadForest() {
         super("dead_forest");
         temperature = 5;
+        grassColor = 0xAE5045;
         waterColor = 0x3F76E4;
     }
 

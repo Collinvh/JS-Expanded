@@ -15,6 +15,7 @@ public class JungleClearing extends JSExpandedBiome {
     public JungleClearing() {
         super("jungle_clearing");
         temperature = 5;
+        grassColor = 0x184200;
         waterColor = 0x3F76E4;
     }
 

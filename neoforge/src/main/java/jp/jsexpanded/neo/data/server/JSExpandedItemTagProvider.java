@@ -5,6 +5,7 @@ import jp.jsexpanded.server.animals.AbstractAddonAnimal;
 import jp.jurassicsaga.server.base.animal.JSAnimals;
 import jp.jurassicsaga.server.base.animal.entity.obj.bases.JSAnimalBase;
 import jp.jurassicsaga.server.base.animal.obj.JSAnimal;
+import jp.jurassicsaga.server.base.generic.Versions;
 import jp.jurassicsaga.server.base.tag.JSItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -70,7 +71,7 @@ public class JSExpandedItemTagProvider extends ItemTagsProvider {
                 }
 
                 if(animal.getAnimalAttributes().getMiscProperties().isExtinct()) {
-                    if(animal.getAnimalAttributes().getMiscProperties().getVersion() == 1.0) {
+                    if(animal.getAnimalAttributes().getMiscProperties().getVersion() == Versions.VERSION_1) {
                         if(animal.getItems().getHatched_egg() != null) {
                             tag(JSItemTags.V1_ANIMALS).add(animal.getItems().getHatched_egg().get());
                         }

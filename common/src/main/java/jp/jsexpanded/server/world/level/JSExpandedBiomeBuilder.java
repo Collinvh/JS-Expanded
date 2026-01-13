@@ -15,45 +15,41 @@ public final class JSExpandedBiomeBuilder {
     private static final Climate.Parameter FULL_RANGE = Climate.Parameter.span(-1.0F, 1.0F);
 
     private static final Climate.Parameter[] TEMPS = new Climate.Parameter[]{
-            Climate.Parameter.span(-1.0F, -0.45F),
-            Climate.Parameter.span(-0.45F, -0.15F),
-            Climate.Parameter.span(-0.15F, 0.2F),
-            Climate.Parameter.span(0.2F, 0.55F),
-            Climate.Parameter.span(0.55F, 1.0F)
+            Climate.Parameter.span(-1.0F, -0.35F),  // rare cool
+            Climate.Parameter.span(-0.35F, -0.05F), // mild
+            Climate.Parameter.span(-0.05F, 0.35F),  // warm
+            Climate.Parameter.span(0.35F, 0.7F),    // hot
+            Climate.Parameter.span(0.7F, 1.0F)      // very hot
     };
 
     private static final Climate.Parameter[] HUMS = new Climate.Parameter[]{
-            Climate.Parameter.span(-1.0F, -0.35F),
-            Climate.Parameter.span(-0.35F, -0.1F),
-            Climate.Parameter.span(-0.1F, 0.1F),
-            Climate.Parameter.span(0.1F, 0.3F),
-            Climate.Parameter.span(0.3F, 1.0F)
+            Climate.Parameter.span(-1.0F, -0.45F),  // arid
+            Climate.Parameter.span(-0.45F, -0.15F), // dry
+            Climate.Parameter.span(-0.15F, 0.15F),  // neutral
+            Climate.Parameter.span(0.15F, 0.5F),    // humid
+            Climate.Parameter.span(0.5F, 1.0F)      // very humid
     };
 
     private static final Climate.Parameter[] EROS = new Climate.Parameter[]{
-            Climate.Parameter.span(-1.0F, -0.78F),
-            Climate.Parameter.span(-0.78F, -0.375F),
-            Climate.Parameter.span(-0.375F, -0.2225F),
-            Climate.Parameter.span(-0.2225F, 0.05F),
-            Climate.Parameter.span(0.05F, 0.45F),
-            Climate.Parameter.span(0.45F, 0.55F),
-            Climate.Parameter.span(0.55F, 1.0F)
+            Climate.Parameter.span(-1.0F, -0.75F), // shattered cliffs
+            Climate.Parameter.span(-0.75F, -0.45F),// steep slopes
+            Climate.Parameter.span(-0.45F, -0.2F), // hills
+            Climate.Parameter.span(-0.2F, 0.2F),   // rolling foothills
+            Climate.Parameter.span(0.2F, 0.5F),    // plains
+            Climate.Parameter.span(0.5F, 0.75F),   // flat wetlands
+            Climate.Parameter.span(0.75F, 1.0F)    // rivers/swamps
     };
 
-    // Cached spans
-    private static final Climate.Parameter FROZEN_RANGE = TEMPS[0];
-    private static final Climate.Parameter UNFROZEN_RANGE = Climate.Parameter.span(TEMPS[1], TEMPS[4]);
-
-    private static final Climate.Parameter MUSHROOM_C = Climate.Parameter.span(-1.2F, -1.05F);
+    private static final Climate.Parameter MUSHROOM_C   = Climate.Parameter.span(-1.2F, -1.05F);
     private static final Climate.Parameter DEEP_OCEAN_C = Climate.Parameter.span(-1.05F, -0.455F);
-    private static final Climate.Parameter OCEAN_C = Climate.Parameter.span(-0.455F, -0.19F);
-    private static final Climate.Parameter COAST_C = Climate.Parameter.span(-0.19F, -0.11F);
-    private static final Climate.Parameter INLAND_C = Climate.Parameter.span(-0.11F, 0.55F);
-    private static final Climate.Parameter NEAR_INLAND_C = Climate.Parameter.span(-0.11F, 0.03F);
-    private static final Climate.Parameter MID_INLAND_C = Climate.Parameter.span(0.03F, 0.3F);
-    private static final Climate.Parameter FAR_INLAND_C = Climate.Parameter.span(0.3F, 1.0F);
+    private static final Climate.Parameter OCEAN_C      = Climate.Parameter.span(-0.455F, -0.19F);
+    private static final Climate.Parameter COAST_C      = Climate.Parameter.span(-0.19F, -0.11F);
 
-    static final Climate.Parameter NEAR_INLAND  = Climate.Parameter.span(-0.19F, 0.03F);
+    private static final Climate.Parameter INLAND_C      = Climate.Parameter.span(-0.19F, 1.0F);
+    private static final Climate.Parameter NEAR_INLAND_C = Climate.Parameter.span(-0.19F, 0.1F);
+    private static final Climate.Parameter MID_INLAND_C  = Climate.Parameter.span(0.1F, 0.45F);
+    private static final Climate.Parameter FAR_INLAND_C  = Climate.Parameter.span(0.45F, 1.0F);
+
     static final Climate.Parameter LOW_EROSION  = Climate.Parameter.span(0.6F, 1.0F);   // cliffs
     static final Climate.Parameter MID_EROSION  = Climate.Parameter.span(-0.2F, 0.6F);  // beaches
     static final Climate.Parameter HIGH_EROSION = Climate.Parameter.span(-1.0F, -0.2F); // flats
@@ -62,32 +58,6 @@ public final class JSExpandedBiomeBuilder {
     private static final ResourceKey<Biome>[][] OCEANS = new ResourceKey[][]{
             { JSExpandedBiomes.SEA.getBiomeKey(), JSExpandedBiomes.SEA.getBiomeKey(), JSExpandedBiomes.FOGGY_SEA.getBiomeKey(), JSExpandedBiomes.SEA.getBiomeKey(), JSExpandedBiomes.SEA.getBiomeKey() },
             { JSExpandedBiomes.SEA.getBiomeKey(), JSExpandedBiomes.SEA.getBiomeKey(), JSExpandedBiomes.SEA.getBiomeKey(), JSExpandedBiomes.FOGGY_SEA.getBiomeKey(), JSExpandedBiomes.SEA.getBiomeKey() }
-    };
-
-    // Middle biomes and variants
-    private static final ResourceKey<Biome>[][] MIDDLE = new ResourceKey[][]{
-            // cold
-            { JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.DEAD_FOREST.getBiomeKey(), JSExpandedBiomes.LOWLAND_PLAINS.getBiomeKey(), JSExpandedBiomes.DENSE_SWAMP.getBiomeKey(), JSExpandedBiomes.MOUNTAINOUS_SWAMP.getBiomeKey() },
-
-            // cool
-            { JSExpandedBiomes.LOWLAND_PLAINS.getBiomeKey(), JSExpandedBiomes.MARSHY_PLAINS.getBiomeKey(), JSExpandedBiomes.OPEN_BAYOU.getBiomeKey(), JSExpandedBiomes.DENSE_SWAMP.getBiomeKey(), JSExpandedBiomes.MOUNTAINOUS_SWAMP.getBiomeKey() },
-
-            // temperate
-            { JSExpandedBiomes.LOWLAND_PLAINS.getBiomeKey(), JSExpandedBiomes.DRY_FOREST.getBiomeKey(), JSExpandedBiomes.TROPICAL_SHRUBLAND.getBiomeKey(), JSExpandedBiomes.LOW_LAND_JUNGLE.getBiomeKey(), JSExpandedBiomes.PRIMORDIAL_JUNGLE.getBiomeKey() },
-
-            // warm
-            { JSExpandedBiomes.DEAD_FOREST.getBiomeKey(), JSExpandedBiomes.TROPICAL_SHRUBLAND.getBiomeKey(), JSExpandedBiomes.JUNGLE_CLEARING.getBiomeKey(), JSExpandedBiomes.LOW_LAND_JUNGLE.getBiomeKey(), JSExpandedBiomes.BAMBOO_FOREST.getBiomeKey() },
-
-            // hot
-            { JSExpandedBiomes.OIL_FIELDS.getBiomeKey(), JSExpandedBiomes.OIL_FIELDS.getBiomeKey(), JSExpandedBiomes.OIL_FIELDS.getBiomeKey(), JSExpandedBiomes.DRY_FOREST.getBiomeKey(), JSExpandedBiomes.PRIMORDIAL_JUNGLE.getBiomeKey() }
-    };
-
-    private static final ResourceKey<Biome>[][] MIDDLE_VAR = new ResourceKey[][]{
-            { null, null, null, null, JSExpandedBiomes.SKULL_MOUNTAINS.getBiomeKey() },
-            { null, JSExpandedBiomes.MOUNTAINOUS_PLAINS.getBiomeKey(), null, null, null },
-            { JSExpandedBiomes.JUNGLE_CLEARING.getBiomeKey(), null, null, null, JSExpandedBiomes.PITFALL_JUNGLE.getBiomeKey() },
-            { null, null, JSExpandedBiomes.MEGAFALLS.getBiomeKey(), JSExpandedBiomes.WATERFALL_CLIFFS.getBiomeKey(), null },
-            { null, null, null, null, null }
     };
 
     private static final ResourceKey<Biome>[][] PLATEAU = new ResourceKey[][]{
@@ -140,16 +110,6 @@ public final class JSExpandedBiomeBuilder {
         return this;
     }
 
-    // ---- API
-    public List<Climate.ParameterPoint> spawnTarget() {
-        Climate.Parameter y = Climate.Parameter.point(0.0F);
-        float weirdCut = 0.16F;
-        return List.of(
-                new Climate.ParameterPoint(FULL_RANGE, FULL_RANGE, Climate.Parameter.span(INLAND_C, FULL_RANGE), FULL_RANGE, y, Climate.Parameter.span(-1.0F, -weirdCut), 0L),
-                new Climate.ParameterPoint(FULL_RANGE, FULL_RANGE, Climate.Parameter.span(INLAND_C, FULL_RANGE), FULL_RANGE, y, Climate.Parameter.span(weirdCut, 1.0F), 0L)
-        );
-    }
-
     public void addBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> out) {
         addOffCoastBiomes(out);
         addInlandBiomes(out);
@@ -191,37 +151,62 @@ public final class JSExpandedBiomeBuilder {
 
     private void addRiverBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> out) {
 
+        // ---- Primary river channels (valleys only)
         emitSurface(out,
                 FULL_RANGE,
                 FULL_RANGE,
-                NEAR_INLAND_C, // inland
+                Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), // never coast
+                Climate.Parameter.span(EROS[4], EROS[6]),           // flat terrain
+                Climate.Parameter.span(-0.15F, 0.15F),              // valley weirdness
+                0.0F,
+                JSExpandedBiomes.MIGHTY_RIVER.getBiomeKey()
+        );
+
+        // ---- Secondary river floodplains
+        emitSurface(out,
                 FULL_RANGE,
                 FULL_RANGE,
-                0.0F, // weirdness = river channels
+                Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C), // allow near inland but not coast
+                EROS[6],                                             // very flat only
+                Climate.Parameter.span(-0.1F, 0.1F),
+                0.0F,
                 JSExpandedBiomes.MIGHTY_RIVER.getBiomeKey()
         );
     }
 
-    // ---- Off coast
+
+    // ---- Off coast (OCEANS ONLY — never touches land)
     private void addOffCoastBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> out) {
 
-        // Rare ocean features
-        emitSurface(out, FULL_RANGE, FULL_RANGE, MUSHROOM_C, FULL_RANGE, FULL_RANGE, 0.0F,
+        // ---- Ultra-rare deep ocean features (below all other oceans)
+        emitSurface(out,
+                FULL_RANGE, FULL_RANGE,
+                MUSHROOM_C,               // must be far below coast
+                FULL_RANGE, FULL_RANGE, 0.0F,
                 JSExpandedBiomes.SUNKEN_CITY.getBiomeKey());
 
         for (int ti = 0; ti < TEMPS.length; ti++) {
-            Climate.Parameter temp = TEMPS[ti];
+            Climate.Parameter T = TEMPS[ti];
 
-            // Deep ocean
-            emitSurface(out, temp, FULL_RANGE, DEEP_OCEAN_C, FULL_RANGE, FULL_RANGE, 0.0F,
+            // ---- Deep ocean
+            emitSurface(out,
+                    T, FULL_RANGE,
+                    DEEP_OCEAN_C,
+                    FULL_RANGE, FULL_RANGE, 0.0F,
                     OCEANS[0][ti]);
 
-            // Normal ocean
-            emitSurface(out, temp, FULL_RANGE, OCEAN_C, FULL_RANGE, FULL_RANGE, 0.0F,
+            // ---- Normal ocean
+            emitSurface(out,
+                    T, FULL_RANGE,
+                    OCEAN_C,
+                    FULL_RANGE, FULL_RANGE, 0.0F,
                     OCEANS[1][ti]);
 
-            // Rare ocean variant (foggy)
-            emitSurface(out, temp, FULL_RANGE, OCEAN_C, FULL_RANGE, FULL_RANGE, 0.05F,
+            // ---- Rare ocean variant
+            emitSurface(out,
+                    T, FULL_RANGE,
+                    OCEAN_C,
+                    FULL_RANGE, FULL_RANGE, 0.05F,
                     JSExpandedBiomes.FOGGY_SEA.getBiomeKey());
         }
     }
@@ -247,24 +232,30 @@ public final class JSExpandedBiomeBuilder {
         grid((ti, hi) -> {
             Climate.Parameter T = TEMPS[ti];
             Climate.Parameter H = HUMS[hi];
-            ResourceKey<Biome> mid = pickMiddle(ti, hi, d);
-            ResourceKey<Biome> midHot = pickMiddleOrBadlandsIfHot(ti, hi, d);
-            ResourceKey<Biome> midHotOrSlopeCold = pickMiddleOrBadlandsIfHotOrSlopeIfCold(ti, hi, d);
-            ResourceKey<Biome> plat = pickPlateau(ti, hi, d);
-            ResourceKey<Biome> shat = pickShattered(ti, hi, d);
-            ResourceKey<Biome> maybeSav = maybeWindsweptSavanna(ti, hi, d, shat);
-            ResourceKey<Biome> peak = pickPeak(ti, hi, d);
 
+            ResourceKey<Biome> peak = pickPeak(ti, hi, d);          // jagged tops
+            ResourceKey<Biome> slope = pickSlope(ti, hi, d);        // steep upper slopes
+            ResourceKey<Biome> plat = pickPlateau(ti, hi, d);       // high plateaus
+            ResourceKey<Biome> mid = pickMiddle(ti, hi, d);         // foothills / uplands
+            ResourceKey<Biome> shat = pickShattered(ti, hi, d);     // broken ridges
+
+            // ---- Very steep / jagged ridges
             emitSurface(out, T, H, Climate.Parameter.span(COAST_C, FAR_INLAND_C), EROS[0], d, 0.0F, peak);
-            emitSurface(out, T, H, Climate.Parameter.span(COAST_C, NEAR_INLAND_C), EROS[1], d, 0.0F, midHotOrSlopeCold);
             emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), EROS[1], d, 0.0F, peak);
-            emitSurface(out, T, H, Climate.Parameter.span(COAST_C, NEAR_INLAND_C), Climate.Parameter.span(EROS[2], EROS[3]), d, 0.0F, mid);
-            emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), EROS[2], d, 0.0F, plat);
-            emitSurface(out, T, H, MID_INLAND_C, EROS[3], d, 0.0F, midHot);
-            emitSurface(out, T, H, FAR_INLAND_C, EROS[3], d, 0.0F, plat);
+
+            // ---- Upper slopes
+            emitSurface(out, T, H, Climate.Parameter.span(COAST_C, FAR_INLAND_C), EROS[2], d, 0.0F, slope);
+
+            // ---- High plateaus
+            emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), EROS[3], d, 0.0F, plat);
+
+            // ---- Foothills creeping into peak bands
             emitSurface(out, T, H, Climate.Parameter.span(COAST_C, FAR_INLAND_C), EROS[4], d, 0.0F, mid);
-            emitSurface(out, T, H, Climate.Parameter.span(COAST_C, NEAR_INLAND_C), EROS[5], d, 0.0F, maybeSav);
+
+            // ---- Shattered ridges / cliff bands
             emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), EROS[5], d, 0.0F, shat);
+
+            // ---- Soft fallback (never valleys here)
             emitSurface(out, T, H, Climate.Parameter.span(COAST_C, FAR_INLAND_C), EROS[6], d, 0.0F, mid);
         });
     }
@@ -273,38 +264,39 @@ public final class JSExpandedBiomeBuilder {
         grid((ti, hi) -> {
             Climate.Parameter T = TEMPS[ti];
             Climate.Parameter H = HUMS[hi];
-            ResourceKey<Biome> mid = pickMiddle(ti, hi, d);
-            ResourceKey<Biome> midHot = pickMiddleOrBadlandsIfHot(ti, hi, d);
-            ResourceKey<Biome> midHotOrSlopeCold = pickMiddleOrBadlandsIfHotOrSlopeIfCold(ti, hi, d);
-            ResourceKey<Biome> plat = pickPlateau(ti, hi, d);
-            ResourceKey<Biome> shat = pickShattered(ti, hi, d);
-            ResourceKey<Biome> maybeSav = maybeWindsweptSavanna(ti, hi, d, mid);
-            ResourceKey<Biome> slope = pickSlope(ti, hi, d);
-            ResourceKey<Biome> peak = pickPeak(ti, hi, d);
 
-            emitSurface(out, T, H, COAST_C, Climate.Parameter.span(EROS[0], EROS[1]), d, 0.0F, mid);
-            emitSurface(out, T, H, NEAR_INLAND_C, EROS[0], d, 0.0F, slope);
-            emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), EROS[0], d, 0.0F, peak);
-            emitSurface(out, T, H, NEAR_INLAND_C, EROS[1], d, 0.0F, midHotOrSlopeCold);
+            ResourceKey<Biome> slope = pickSlope(ti, hi, d);        // main biome here
+            ResourceKey<Biome> plat  = pickPlateau(ti, hi, d);      // broad high areas
+            ResourceKey<Biome> mid   = pickMiddle(ti, hi, d);       // foothills creeping up
+            ResourceKey<Biome> shat  = pickShattered(ti, hi, d);    // broken cliff zones
+
+            // ---- Steep upper slopes (near mountains)
+            emitSurface(out, T, H, Climate.Parameter.span(COAST_C, FAR_INLAND_C), EROS[0], d, 0.0F, slope);
             emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), EROS[1], d, 0.0F, slope);
-            emitSurface(out, T, H, Climate.Parameter.span(COAST_C, NEAR_INLAND_C), Climate.Parameter.span(EROS[2], EROS[3]), d, 0.0F, mid);
+
+            // ---- High plateaus
             emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), EROS[2], d, 0.0F, plat);
-            emitSurface(out, T, H, MID_INLAND_C, EROS[3], d, 0.0F, midHot);
-            emitSurface(out, T, H, FAR_INLAND_C, EROS[3], d, 0.0F, plat);
+            emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), EROS[3], d, 0.0F, plat);
+
+            // ---- Foothills and uplands
             emitSurface(out, T, H, Climate.Parameter.span(COAST_C, FAR_INLAND_C), EROS[4], d, 0.0F, mid);
-            emitSurface(out, T, H, Climate.Parameter.span(COAST_C, NEAR_INLAND_C), EROS[5], d, 0.0F, maybeSav);
+
+            // ---- Shattered ridges (rare, harsh erosion)
             emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), EROS[5], d, 0.0F, shat);
+
+            // ---- Transition to lower terrain
             emitSurface(out, T, H, Climate.Parameter.span(COAST_C, FAR_INLAND_C), EROS[6], d, 0.0F, mid);
         });
     }
 
     private void addMidSlice(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> out, Climate.Parameter d) {
 
-        // coast rock -> use cliffs
-        emitSurface(out, FULL_RANGE, FULL_RANGE, COAST_C, Climate.Parameter.span(EROS[0], EROS[2]), d, 0.0F,
+        // ---- Coastal cliffs (rocky shoreline)
+        emitSurface(out, FULL_RANGE, FULL_RANGE, COAST_C,
+                Climate.Parameter.span(EROS[0], EROS[2]), d, 0.0F,
                 JSExpandedBiomes.GRASSY_SEA_CLIFFS.getBiomeKey());
 
-        // wetlands
+        // ---- Wetlands in valleys and flat lowlands
         emitSurface(out, Climate.Parameter.span(TEMPS[1], TEMPS[2]), FULL_RANGE,
                 Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C), EROS[6], d, 0.0F,
                 JSExpandedBiomes.OPEN_BAYOU.getBiomeKey());
@@ -317,53 +309,73 @@ public final class JSExpandedBiomeBuilder {
             Climate.Parameter T = TEMPS[ti];
             Climate.Parameter H = HUMS[hi];
 
-            ResourceKey<Biome> mid = pickMiddle(ti, hi, d);
-            ResourceKey<Biome> midHot = pickMiddleOrBadlandsIfHot(ti, hi, d);
-            ResourceKey<Biome> midHotOrSlopeCold = pickMiddleOrBadlandsIfHotOrSlopeIfCold(ti, hi, d);
-            ResourceKey<Biome> shat = pickShattered(ti, hi, d);
-            ResourceKey<Biome> plat = pickPlateau(ti, hi, d);
+            ResourceKey<Biome> mid   = pickMiddle(ti, hi, d);     // plains / jungle / savanna
+            ResourceKey<Biome> slope = pickSlope(ti, hi, d);      // rare hills
+            ResourceKey<Biome> shat  = pickShattered(ti, hi, d);  // broken ridges
             ResourceKey<Biome> beach = pickBeach(ti, hi);
-            ResourceKey<Biome> maybeSav = maybeWindsweptSavanna(ti, hi, d, mid);
             ResourceKey<Biome> shCoast = pickShatteredCoast(ti, hi, d);
-            ResourceKey<Biome> slope = pickSlope(ti, hi, d);
 
-            emitSurface(out, T, H, Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C), EROS[0], d, 0.0F, slope);
-            emitSurface(out, T, H, Climate.Parameter.span(NEAR_INLAND_C, MID_INLAND_C), EROS[1], d, 0.0F, midHotOrSlopeCold);
-            emitSurface(out, T, H, FAR_INLAND_C, EROS[1], d, 0.0F, plat);
-            emitSurface(out, T, H, NEAR_INLAND_C, EROS[2], d, 0.0F, mid);
-            emitSurface(out, T, H, MID_INLAND_C, EROS[2], d, 0.0F, midHot);
-            emitSurface(out, T, H, FAR_INLAND_C, EROS[2], d, 0.0F, plat);
-            emitSurface(out, T, H, Climate.Parameter.span(COAST_C, NEAR_INLAND_C), EROS[3], d, 0.0F, mid);
-            emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), EROS[3], d, 0.0F, midHot);
+            // ---- Gentle hills near mountains
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C),
+                    EROS[0], d, 0.0F, slope);
 
+            // ---- Rolling uplands
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C),
+                    EROS[1], d, 0.0F, mid);
+
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C),
+                    EROS[2], d, 0.0F, mid);
+
+            // ---- Plains and jungle lowlands
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(COAST_C, FAR_INLAND_C),
+                    EROS[3], d, 0.0F, mid);
+
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(COAST_C, FAR_INLAND_C),
+                    EROS[4], d, 0.0F, mid);
+
+            // ---- Broken terrain bands (rare)
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C),
+                    EROS[5], d, 0.0F, shat);
+
+            // ---- Valleys and wetlands transition
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(COAST_C, FAR_INLAND_C),
+                    EROS[6], d, 0.0F, mid);
+
+            // ---- Beaches only at negative weirdness (true lowlands)
             if (d.max() < 0L) {
                 emitSurface(out, T, H, COAST_C, EROS[4], d, 0.0F, beach);
-                emitSurface(out, T, H, Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C), EROS[4], d, 0.0F, mid);
-            } else {
-                emitSurface(out, T, H, Climate.Parameter.span(COAST_C, FAR_INLAND_C), EROS[4], d, 0.0F, mid);
-            }
-
-            emitSurface(out, T, H, COAST_C, EROS[5], d, 0.0F, shCoast);
-            emitSurface(out, T, H, NEAR_INLAND_C, EROS[5], d, 0.0F, maybeSav);
-            emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), EROS[5], d, 0.0F, shat);
-
-            if (d.max() < 0L) {
                 emitSurface(out, T, H, COAST_C, EROS[6], d, 0.0F, beach);
             } else {
                 emitSurface(out, T, H, COAST_C, EROS[6], d, 0.0F, mid);
             }
 
+            // ---- Extra wetlands in cold zones
             if (ti == 0) {
-                emitSurface(out, T, H, Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C), EROS[6], d, 0.0F, mid);
+                emitSurface(out, T, H,
+                        Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C),
+                        EROS[6], d, 0.0F, mid);
             }
+
+            // ---- Shattered coasts (stormy shores)
+            emitSurface(out, T, H, COAST_C, EROS[5], d, 0.0F, shCoast);
         });
     }
 
     private void addLowSlice(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> out, Climate.Parameter d) {
 
-        emitSurface(out, FULL_RANGE, FULL_RANGE, COAST_C, Climate.Parameter.span(EROS[0], EROS[2]), d, 0.0F,
+        // ---- Coastal cliffs (where terrain still rises sharply from sea)
+        emitSurface(out, FULL_RANGE, FULL_RANGE, COAST_C,
+                Climate.Parameter.span(EROS[0], EROS[1]), d, 0.0F,
                 JSExpandedBiomes.GRASSY_SEA_CLIFFS.getBiomeKey());
 
+        // ---- Wetlands in flat lowlands
         emitSurface(out, Climate.Parameter.span(TEMPS[1], TEMPS[2]), FULL_RANGE,
                 Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C), EROS[6], d, 0.0F,
                 JSExpandedBiomes.OPEN_BAYOU.getBiomeKey());
@@ -376,57 +388,94 @@ public final class JSExpandedBiomeBuilder {
             Climate.Parameter T = TEMPS[ti];
             Climate.Parameter H = HUMS[hi];
 
-            ResourceKey<Biome> mid = pickMiddle(ti, hi, d);
-            ResourceKey<Biome> midHot = pickMiddleOrBadlandsIfHot(ti, hi, d);
-            ResourceKey<Biome> midHotOrSlopeCold = pickMiddleOrBadlandsIfHotOrSlopeIfCold(ti, hi, d);
+            ResourceKey<Biome> mid   = pickMiddle(ti, hi, d);   // plains / jungle / savanna
             ResourceKey<Biome> beach = pickBeach(ti, hi);
-            ResourceKey<Biome> maybeSav = maybeWindsweptSavanna(ti, hi, d, mid);
             ResourceKey<Biome> shCoast = pickShatteredCoast(ti, hi, d);
 
-            emitSurface(out, T, H, NEAR_INLAND_C, Climate.Parameter.span(EROS[0], EROS[1]), d, 0.0F, midHot);
-            emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C),
-                    Climate.Parameter.span(EROS[0], EROS[1]), d, 0.0F, midHotOrSlopeCold);
+            // ---- Gentle terrain everywhere inland
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C),
+                    EROS[0], d, 0.0F, mid);
 
-            emitSurface(out, T, H, NEAR_INLAND_C, Climate.Parameter.span(EROS[2], EROS[3]), d, 0.0F, mid);
-            emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C),
-                    Climate.Parameter.span(EROS[2], EROS[3]), d, 0.0F, midHot);
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C),
+                    EROS[1], d, 0.0F, mid);
 
-            emitSurface(out, T, H, COAST_C, Climate.Parameter.span(EROS[3], EROS[4]), d, 0.0F, beach);
-            emitSurface(out, T, H, Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C), EROS[4], d, 0.0F, mid);
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C),
+                    EROS[2], d, 0.0F, mid);
 
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(COAST_C, FAR_INLAND_C),
+                    EROS[3], d, 0.0F, mid);
+
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(COAST_C, FAR_INLAND_C),
+                    EROS[4], d, 0.0F, mid);
+
+            // ---- Stormy / rocky coast only
             emitSurface(out, T, H, COAST_C, EROS[5], d, 0.0F, shCoast);
-            emitSurface(out, T, H, NEAR_INLAND_C, EROS[5], d, 0.0F, maybeSav);
-            emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), EROS[5], d, 0.0F, mid);
 
+            // ---- Beaches at coast
             emitSurface(out, T, H, COAST_C, EROS[6], d, 0.0F, beach);
 
+            // ---- Extra flat plains in cold zones
             if (ti == 0) {
-                emitSurface(out, T, H, Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C), EROS[6], d, 0.0F, mid);
+                emitSurface(out, T, H,
+                        Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C),
+                        EROS[6], d, 0.0F, mid);
             }
         });
     }
 
     private void addValleys(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> out, Climate.Parameter d) {
 
-        emitSurface(out, FULL_RANGE, FULL_RANGE, Climate.Parameter.span(COAST_C, FAR_INLAND_C),
+        // ---- Main river corridors (all erosion levels)
+        emitSurface(out, FULL_RANGE, FULL_RANGE,
+                Climate.Parameter.span(COAST_C, FAR_INLAND_C),
                 Climate.Parameter.span(EROS[0], EROS[6]), d, 0.0F,
                 JSExpandedBiomes.MIGHTY_RIVER.getBiomeKey());
 
+        // ---- Bayous in cooler flat valleys
         emitSurface(out, Climate.Parameter.span(TEMPS[1], TEMPS[2]), FULL_RANGE,
-                Climate.Parameter.span(INLAND_C, FAR_INLAND_C), EROS[6], d, 0.0F,
+                Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C),
+                EROS[5], d, 0.0F,
                 JSExpandedBiomes.OPEN_BAYOU.getBiomeKey());
 
+        emitSurface(out, Climate.Parameter.span(TEMPS[1], TEMPS[2]), FULL_RANGE,
+                Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C),
+                EROS[6], d, 0.0F,
+                JSExpandedBiomes.OPEN_BAYOU.getBiomeKey());
+
+        // ---- Swamps in hot flat valleys
         emitSurface(out, Climate.Parameter.span(TEMPS[3], TEMPS[4]), FULL_RANGE,
-                Climate.Parameter.span(INLAND_C, FAR_INLAND_C), EROS[6], d, 0.0F,
+                Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C),
+                EROS[5], d, 0.0F,
                 JSExpandedBiomes.DENSE_SWAMP.getBiomeKey());
 
+        emitSurface(out, Climate.Parameter.span(TEMPS[3], TEMPS[4]), FULL_RANGE,
+                Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C),
+                EROS[6], d, 0.0F,
+                JSExpandedBiomes.DENSE_SWAMP.getBiomeKey());
+
+        // ---- Valley sides: plains and jungle
         grid((ti, hi) -> {
             Climate.Parameter T = TEMPS[ti];
             Climate.Parameter H = HUMS[hi];
+
             ResourceKey<Biome> mid = pickMiddleOrBadlandsIfHot(ti, hi, d);
 
-            emitSurface(out, T, H, Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C),
-                    Climate.Parameter.span(EROS[0], EROS[1]), d, 0.0F, mid);
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C),
+                    EROS[2], d, 0.0F, mid);
+
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C),
+                    EROS[3], d, 0.0F, mid);
+
+            emitSurface(out, T, H,
+                    Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C),
+                    EROS[4], d, 0.0F, mid);
         });
     }
 
@@ -436,23 +485,53 @@ public final class JSExpandedBiomeBuilder {
 
     // ---- Pickers (now pass through rarity)
     private ResourceKey<Biome> pickMiddle(int t, int h, Climate.Parameter d) {
-        ResourceKey<Biome> base = (d.max() < 0L) ? MIDDLE[t][h] : Optional.ofNullable(MIDDLE_VAR[t][h]).orElse(MIDDLE[t][h]);
-        return withRarity(base, t, h, d);
+
+        // ---- Extremely dry + hot → desert / volcanic lowlands
+        if (t >= 4 && h <= 1) {
+            return JSExpandedBiomes.OIL_FIELDS.getBiomeKey();
+        }
+
+        // ---- Dry + warm → savanna
+        if (h <= 1 && t >= 2) {
+            return JSExpandedBiomes.DEAD_FOREST.getBiomeKey();
+        }
+
+        // ---- Very humid → swamps
+        if (h >= 4) {
+            return (t >= 3)
+                    ? JSExpandedBiomes.DENSE_SWAMP.getBiomeKey()
+                    : JSExpandedBiomes.OPEN_BAYOU.getBiomeKey();
+        }
+
+        // ---- Humid → jungle variants
+        if (h >= 3) {
+            if (t >= 4) return JSExpandedBiomes.PRIMORDIAL_JUNGLE.getBiomeKey();
+            if (t >= 3) return JSExpandedBiomes.BAMBOO_FOREST.getBiomeKey();
+            return JSExpandedBiomes.LOW_LAND_JUNGLE.getBiomeKey();
+        }
+
+        // ---- Neutral → plains variants
+        if (h == 2) {
+            return (t >= 3)
+                    ? JSExpandedBiomes.LOWLAND_PLAINS.getBiomeKey()
+                    : JSExpandedBiomes.MARSHY_PLAINS.getBiomeKey();
+        }
+
+        // ---- Fallback
+        return JSExpandedBiomes.LOWLAND_PLAINS.getBiomeKey();
     }
 
     private ResourceKey<Biome> pickMiddleOrBadlandsIfHot(int t, int h, Climate.Parameter d) {
-        ResourceKey<Biome> base = (t == 4) ? pickBadlands(h, d) : pickMiddle(t, h, d);
-        return withRarity(base, t, h, d);
-    }
-
-    private ResourceKey<Biome> pickMiddleOrBadlandsIfHotOrSlopeIfCold(int t, int h, Climate.Parameter d) {
-        ResourceKey<Biome> base = (t == 0) ? pickSlope(t, h, d) : pickMiddleOrBadlandsIfHot(t, h, d);
-        return withRarity(base, t, h, d);
+        if (t >= 4 && h <= 2) {
+            return JSExpandedBiomes.BARREN_VOLCANO.getBiomeKey();
+        }
+        return pickMiddle(t, h, d);
     }
 
     private ResourceKey<Biome> maybeWindsweptSavanna(int t, int h, Climate.Parameter d, ResourceKey<Biome> fallback) {
-//        ResourceKey<Biome> base = (t > 1 && h < 4 && d.max() >= 0L) ? Biomes.WINDSWEPT_SAVANNA : fallback;
-//        return withRarity(base, t, h, d);
+        if (t >= 3 && h <= 1 && d.max() >= 0L) {
+            return JSExpandedBiomes.DEAD_WOOD_HILLS.getBiomeKey();
+        }
         return fallback;
     }
 
@@ -472,25 +551,55 @@ public final class JSExpandedBiomeBuilder {
     }
 
     private ResourceKey<Biome> pickPlateau(int t, int h, Climate.Parameter d) {
+        // extremely dry highlands → volcanic mesas
+        if (t >= 4 && h <= 1) {
+            return JSExpandedBiomes.BARREN_VOLCANO.getBiomeKey();
+        }
+
+        // very humid → megafalls plateaus
+        if (h >= 4) {
+            return JSExpandedBiomes.MEGAFALLS.getBiomeKey();
+        }
+
         ResourceKey<Biome> base;
         if (d.max() >= 0L && PLATEAU_VAR[t][h] != null) base = PLATEAU_VAR[t][h];
         else base = PLATEAU[t][h];
+
         return withRarity(base, t, h, d);
     }
 
     private ResourceKey<Biome> pickPeak(int t, int h, Climate.Parameter d) {
-//        ResourceKey<Biome> base;
-//        if (t <= 2) base = d.max() < 0L ? Biomes.JAGGED_PEAKS : Biomes.FROZEN_PEAKS;
-//        else base = (t == 3) ? Biomes.STONY_PEAKS : pickBadlands(h, d);
-//        return withRarity(base, t, h, d);
+        // very dry + hot → volcanic / cracked peaks
+        if (t >= 3 && h <= 1) {
+            return JSExpandedBiomes.BARREN_VOLCANO.getBiomeKey();
+        }
+
+        // humid → waterfall cliffs near summits
+        if (h >= 3) {
+            return JSExpandedBiomes.WATERFALL_CLIFFS.getBiomeKey();
+        }
+
+        // default dramatic peaks
         return JSExpandedBiomes.SKULL_MOUNTAINS.getBiomeKey();
     }
 
     private ResourceKey<Biome> pickSlope(int t, int h, Climate.Parameter d) {
-//        ResourceKey<Biome> base;
-//        if (t >= 3) base = pickPlateau(t, h, d);
-//        else base = (h <= 1) ? Biomes.SNOWY_SLOPES : Biomes.GROVE;
-//        return withRarity(base, t, h, d);
+        // very humid slopes → mountainous swamp
+        if (h >= 4) {
+            return JSExpandedBiomes.MOUNTAINOUS_SWAMP.getBiomeKey();
+        }
+
+        // humid → jungle hills
+        if (h >= 3) {
+            return JSExpandedBiomes.MEGAFALLS.getBiomeKey();
+        }
+
+        // dry → cracked cliffs
+        if (h <= 1 && t >= 3) {
+            return JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey();
+        }
+
+        // default mountain slopes
         return JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey();
     }
 

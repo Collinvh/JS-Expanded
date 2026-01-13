@@ -14,6 +14,7 @@ public class DeadWoodHills extends JSExpandedBiome {
     public DeadWoodHills() {
         super("dead_wood_hills");
         temperature = 5;
+        grassColor = 0x615045;
         waterColor = 0x3F76E4;
     }
 

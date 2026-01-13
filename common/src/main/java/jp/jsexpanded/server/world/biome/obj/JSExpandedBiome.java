@@ -7,6 +7,7 @@ import lombok.Getter;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.Musics;
@@ -15,6 +16,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 
@@ -47,6 +49,14 @@ public class JSExpandedBiome {
         addSpawns(ctx, spawner);
         BiomeGenerationSettings.Builder builder = new BiomeGenerationSettings.Builder(ctx.lookup(Registries.PLACED_FEATURE), ctx.lookup(Registries.CONFIGURED_CARVER));
         addSettings(ctx, builder);
+        builder.addCarver(
+                GenerationStep.Carving.AIR,
+                Carvers.CAVE
+        );
+        builder.addCarver(
+                GenerationStep.Carving.AIR,
+                Carvers.CAVE_EXTRA_UNDERGROUND
+        );
         var biomeBuilder = biome(hasRain, temperature, downfall, waterColor, waterFogColor, grassColor, foliageColor, spawner, builder, Musics.createGameMusic(music));
         applyExtraSettings(biomeBuilder);
         return biomeBuilder.build();

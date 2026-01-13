@@ -14,6 +14,7 @@ public class MountainousSwamp extends JSExpandedBiome {
     public MountainousSwamp() {
         super("mountainous_swamp");
         temperature = 5;
+        grassColor = 0x00695E;
         waterColor = 0x3F76E4;
     }
 

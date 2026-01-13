@@ -14,6 +14,7 @@ public class BarrenVolcano extends JSExpandedBiome {
     public BarrenVolcano() {
         super("barren_volcano");
         temperature = 5;
+        grassColor = 0xDD0000;
         waterColor = 0x3F76E4;
     }
 

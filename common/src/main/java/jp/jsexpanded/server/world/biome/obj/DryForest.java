@@ -14,6 +14,7 @@ public class DryForest extends JSExpandedBiome {
     public DryForest() {
         super("dry_forest");
         temperature = 5;
+        grassColor = 0xEFFFFF;
         waterColor = 0x3F76E4;
     }
 

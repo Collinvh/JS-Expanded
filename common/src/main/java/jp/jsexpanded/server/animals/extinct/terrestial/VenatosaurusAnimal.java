@@ -1,5 +1,6 @@
 package jp.jsexpanded.server.animals.extinct.terrestial;
 
+import jp.jsexpanded.JSExpanded;
 import jp.jsexpanded.server.animals.AbstractAddonAnimal;
 import jp.jsexpanded.server.animals.JSExpandedLocator;
 import jp.jsexpanded.server.animals.entity.extinct.terrestial.venatosaurus.VenatosaurusEntity;
@@ -64,7 +65,7 @@ public class VenatosaurusAnimal extends AbstractAddonAnimal<VenatosaurusEntity> 
         miscProperties.setGuideBookScientificName("Venatosaurus");
 
         miscProperties.setAdvancementTitle("Thought They Were Supposed To Be Extinct!");
-        miscProperties.setVersion(-1);
+        miscProperties.setVersion(JSExpanded.EXPANDED_VERSION);
     }
 
     @Override

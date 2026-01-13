@@ -14,6 +14,7 @@ public class OilFields extends JSExpandedBiome {
     public OilFields() {
         super("oil_fields");
         temperature = 5;
+        grassColor = 0x59211D;
         waterColor = 0x3F76E4;
     }
 
@@ -34,10 +35,10 @@ public class OilFields extends JSExpandedBiome {
         BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
         BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
         BiomeDefaultFeatures.addDefaultOres(builder);
-        BiomeDefaultFeatures.addGiantTaigaVegetation(builder);
-        BiomeDefaultFeatures.addTaigaGrass(builder);
         BiomeDefaultFeatures.addDefaultSoftDisks(builder);
-        BiomeDefaultFeatures.addDefaultMushrooms(builder);
+
+
+        BiomeDefaultFeatures.addDesertVegetation(builder);
     }
 
     @Override
@@ -47,33 +48,19 @@ public class OilFields extends JSExpandedBiome {
                 SurfaceRules.ifTrue(
                         SurfaceRules.ON_FLOOR,
                         SurfaceRules.sequence(
-
-                                // Tar fields (sand + coarse dirt + crude oil = lava)
-                                SurfaceRules.ifTrue(
-                                        SurfaceRules.noiseCondition(Noises.SWAMP, 0.6D, 1.0D),
-                                        SurfaceRules.sequence(
-                                                SurfaceRules.ifTrue(
-                                                        SurfaceRules.noiseCondition(Noises.GRAVEL, 0.8D, 1.0D),
-                                                        SurfaceRules.state(Blocks.LAVA.defaultBlockState())
-                                                ),
-                                                SurfaceRules.ifTrue(
-                                                        SurfaceRules.noiseCondition(Noises.GRAVEL, 0.5D, 0.8D),
-                                                        SurfaceRules.state(Blocks.SAND.defaultBlockState())
-                                                ),
-                                                SurfaceRules.state(Blocks.COARSE_DIRT.defaultBlockState())
-                                        )
-                                ),
-
-                                // Normal surface
-                                SurfaceRules.ifTrue(
-                                        SurfaceRules.noiseCondition(Noises.GRAVEL, 0.55D, 1.0D),
-                                        SurfaceRules.state(Blocks.COARSE_DIRT.defaultBlockState())
-                                ),
                                 SurfaceRules.ifTrue(
                                         SurfaceRules.noiseCondition(Noises.SWAMP, 0.7D, 1.0D),
-                                        SurfaceRules.state(Blocks.PODZOL.defaultBlockState())
+                                        SurfaceRules.state(Blocks.ROOTED_DIRT.defaultBlockState())
                                 ),
-                                SurfaceRules.state(Blocks.GRASS_BLOCK.defaultBlockState())
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.noiseCondition(Noises.SWAMP, 0.45D, 0.7D),
+                                        SurfaceRules.state(Blocks.MUD.defaultBlockState())
+                                ),
+                                SurfaceRules.ifTrue(
+                                        SurfaceRules.noiseCondition(Noises.SWAMP, -0.01D, 0.25D),
+                                        SurfaceRules.state(Blocks.COARSE_DIRT.defaultBlockState())
+                                ),
+                                SurfaceRules.state(Blocks.SAND.defaultBlockState())
                         )
                 )
         );

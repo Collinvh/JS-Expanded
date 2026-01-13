@@ -14,6 +14,7 @@ public class PrimordialJungle extends JSExpandedBiome {
     public PrimordialJungle() {
         super("primordial_jungle");
         temperature = 5;
+        grassColor = 0x111E11;
         waterColor = 0x3F76E4;
     }
 

@@ -1,9 +1,9 @@
-// 1.21.1	2026-01-06T07:13:11.4370236	Advancements
-1116270de09bf1b90c07448510bb356fabbe9b9e data/jsexpanded/advancement/base/animals/v-1.0/bloodfish.json
-91bae77c0d857d6d71cc8589bbf37b92debc5801 data/jsexpanded/advancement/base/animals/v-1.0/celocimex.json
-a57451825995f9e65f7e48805f1cc058a17ef848 data/jsexpanded/advancement/base/animals/v-1.0/cunaepraedator.json
-d8fad0976928bcf0282b9743dd60aeaae5b59afc data/jsexpanded/advancement/base/animals/v-1.0/moonspider.json
-6d7155d532c60b9b49eca721483ff7db72f1f555 data/jsexpanded/advancement/base/animals/v-1.0/piranhadon.json
-05b22f911422768945b2bd938f3c9e8319f33420 data/jsexpanded/advancement/base/animals/v-1.0/sicklefin.json
-bcb78f5152591b17035d849daf16d613245d5970 data/jsexpanded/advancement/base/animals/v-1.0/spinaculex.json
-e0482f645e3131069adf62d2237a818913025dd7 data/jsexpanded/advancement/base/animals/v-1.0/venatosaurus.json
+// 1.21.1	2026-01-12T16:56:49.2126127	Advancements
+822931ac2e609042fead6f922a73c5555c37636a data/jsexpanded/advancement/base/animals/v9000.0/bloodfish.json
+f5dcc88a3d971df79f88622f0af54bf223eb009b data/jsexpanded/advancement/base/animals/v9000.0/celocimex.json
+f9a47694d32452d12512923eac375462fd918279 data/jsexpanded/advancement/base/animals/v9000.0/cunaepraedator.json
+a9d1a3168de5081cdddbd1b313c1c245ca4f6f2c data/jsexpanded/advancement/base/animals/v9000.0/moonspider.json
+8f9108cf9a8a8f3366736008c94719eb061cd380 data/jsexpanded/advancement/base/animals/v9000.0/piranhadon.json
+f8556dd9141ee937fd111eadb71a77d9077a452d data/jsexpanded/advancement/base/animals/v9000.0/sicklefin.json
+359268a558a62ffbd3190054925d82f302e199d4 data/jsexpanded/advancement/base/animals/v9000.0/spinaculex.json
+6d1ac4be1d6af9fe67656240f9fc8bd244c5eef2 data/jsexpanded/advancement/base/animals/v9000.0/venatosaurus.json

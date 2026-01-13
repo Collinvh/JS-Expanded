@@ -14,6 +14,7 @@ public class MarshyPlains extends JSExpandedBiome {
     public MarshyPlains() {
         super("marshy_plains");
         temperature = 5;
+        grassColor = 0x51FF96;
         waterColor = 0x3F76E4;
     }
 

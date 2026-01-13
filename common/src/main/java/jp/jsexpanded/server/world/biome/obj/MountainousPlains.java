@@ -14,6 +14,7 @@ public class MountainousPlains extends JSExpandedBiome {
     public MountainousPlains() {
         super("mountainous_plains");
         temperature = 5;
+        grassColor = 0xFFAE5E;
         waterColor = 0x3F76E4;
     }
 

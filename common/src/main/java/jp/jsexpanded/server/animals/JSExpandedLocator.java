@@ -74,7 +74,6 @@ public class JSExpandedLocator<T extends JSAnimalBase> extends ResourceLocator<T
             return cache.get(key, () -> {
                 String name = getEntityName(entity);
                 String growthStage = getGrowthStage(entity);
-                String version = getVersion(entity);
                 return JSExpanded.createId(
                         "geo/animal/" +  name + "/" + name + "_" + growthStage + ".geo.json"
                 );
@@ -91,7 +90,6 @@ public class JSExpandedLocator<T extends JSAnimalBase> extends ResourceLocator<T
         try {
             return cache.get(key, () -> {
                 String name = getEntityName(entity);
-                String version = getVersion(entity);
                 return JSExpanded.createId(
                         "geo/animal/" +  name + "/" + name + "_adult.geo.json"
                 );
@@ -108,7 +106,6 @@ public class JSExpandedLocator<T extends JSAnimalBase> extends ResourceLocator<T
         try {
             return cache.get(key, () -> {
                 String name = getEntityName(entity);
-                String version = getVersion(entity);
                 boolean baby =
                         !adultOnly
                                 && entity.getAnimal().getAnimalAttributes().getMiscProperties().isBabyAnimations()
@@ -127,7 +124,6 @@ public class JSExpandedLocator<T extends JSAnimalBase> extends ResourceLocator<T
     protected ResourceLocation buildTextureLocation(T entity) {
         String name = getEntityName(entity);
         String growthStage = getGrowthStage(entity);
-        String version = getVersion(entity);
 
         if (entity.getModules().getGrowthStageModule().getGrowthStage() != AnimalGrowthStage.ADULT && !adultOnly) {
             return JSExpanded.createId("textures/geo/animal/" +  name + "/" + name + "_" + growthStage + ".png");
@@ -172,11 +168,6 @@ public class JSExpandedLocator<T extends JSAnimalBase> extends ResourceLocator<T
     private String getGrowthStage(T entity) {
         if(adultOnly) return "adult";
         return entity.getModules().getGrowthStageModule().getGrowthStage().getGrowthStageName();
-    }
-
-    public String getVersion(T entity) {
-        float version = entity.getAnimal().getAnimalAttributes().getMiscProperties().getVersion();
-        return "v" + version;
     }
 
     protected String makeCacheKey(T entity, String type) {

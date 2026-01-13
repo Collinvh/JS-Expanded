@@ -49,11 +49,11 @@ public class JSExpandedAchievementProvider implements AdvancementProvider.Advanc
                 actualItem,
                 Component.translatable("advancements.js."+ name +".title"),
                 Component.translatable("advancements.js."+ name +".desc"),
-                JSCommon.createId(("textures/gui/advancements/backgrounds/v"+ animal.getAnimalAttributes().getMiscProperties().getVersion() +".png")),
+                JSCommon.createId(("textures/gui/advancements/backgrounds/v"+ animal.getAnimalAttributes().getMiscProperties().getVersion().versionId() +".png")),
                 AdvancementType.CHALLENGE, true, true, true);
-        builder.parent(AdvancementSubProvider.createPlaceholder(createId("base/v" + animal.getAnimalAttributes().getMiscProperties().getVersion())));
+        builder.parent(AdvancementSubProvider.createPlaceholder(createId("base/v" + animal.getAnimalAttributes().getMiscProperties().getVersion().versionId())));
         builder.addCriterion("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(hatchedEgg.get())));
-        builder.save(saver, createId("base/animals/v"+ animal.getAnimalAttributes().getMiscProperties().getVersion() +"/" + name));
+        builder.save(saver, createId("base/animals/v"+ animal.getAnimalAttributes().getMiscProperties().getVersion().versionId() +"/" + name));
     }
 
     private String createId(String s) {

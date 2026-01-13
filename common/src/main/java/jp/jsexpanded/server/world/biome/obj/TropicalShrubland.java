@@ -14,6 +14,7 @@ public class TropicalShrubland extends JSExpandedBiome {
     public TropicalShrubland() {
         super("tropical_shrubland");
         temperature = 5;
+        grassColor = 0x3B7A6C;
         waterColor = 0x3F76E4;
     }
 

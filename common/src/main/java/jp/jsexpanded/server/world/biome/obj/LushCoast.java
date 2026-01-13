@@ -15,6 +15,7 @@ public class LushCoast extends JSExpandedBiome {
     public LushCoast() {
         super("lush_coast");
         temperature = 5;
+        grassColor = 0xFF00FF;
         waterColor = 0x3F76E4;
     }
 
@@ -43,20 +44,17 @@ public class LushCoast extends JSExpandedBiome {
 
     @Override
     protected SurfaceRules.RuleSource innerSequence() {
+
         return SurfaceRules.ifTrue(
                 SurfaceRules.abovePreliminarySurface(),
                 SurfaceRules.ifTrue(
                         SurfaceRules.ON_FLOOR,
                         SurfaceRules.sequence(
                                 SurfaceRules.ifTrue(
-                                        SurfaceRules.noiseCondition(Noises.GRAVEL, 0.55D, 1.0D),
+                                        SurfaceRules.noiseCondition(Noises.SWAMP, -0.01D, 0.25D),
                                         SurfaceRules.state(Blocks.COARSE_DIRT.defaultBlockState())
                                 ),
-                                SurfaceRules.ifTrue(
-                                        SurfaceRules.noiseCondition(Noises.SWAMP, 0.7D, 1.0D),
-                                        SurfaceRules.state(Blocks.PODZOL.defaultBlockState())
-                                ),
-                                SurfaceRules.state(Blocks.GRASS_BLOCK.defaultBlockState())
+                                SurfaceRules.state(Blocks.SAND.defaultBlockState())
                         )
                 )
         );

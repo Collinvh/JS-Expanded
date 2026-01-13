@@ -16,6 +16,7 @@ public class SunkenCity extends JSExpandedBiome {
     public SunkenCity() {
         super("sunken_city");
         temperature = 5;
+        grassColor = 0x7F6A00;
         waterColor = 0x3F76E4;
     }
 

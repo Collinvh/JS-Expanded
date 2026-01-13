@@ -14,6 +14,7 @@ public class TropicalHighlands extends JSExpandedBiome {
     public TropicalHighlands() {
         super("tropical_highlands");
         temperature = 5;
+        grassColor = 0x6D7C51;
         waterColor = 0x3F76E4;
     }
 

@@ -14,6 +14,7 @@ public class LowlandPlains extends JSExpandedBiome {
     public LowlandPlains() {
         super("lowland_plains");
         temperature = 5;
+        grassColor = 0x5D0000;
         waterColor = 0x3F76E4;
     }
 

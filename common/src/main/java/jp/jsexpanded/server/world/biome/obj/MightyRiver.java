@@ -14,6 +14,7 @@ public class MightyRiver extends JSExpandedBiome {
     public MightyRiver() {
         super("mighty_river");
         temperature = 5;
+        grassColor = 0x52FF00;
         waterColor = 0x3F76E4;
     }
 

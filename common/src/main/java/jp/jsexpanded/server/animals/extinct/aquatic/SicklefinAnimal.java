@@ -74,7 +74,7 @@ public class SicklefinAnimal extends AbstractAddonAnimal<SicklefinEntity> {
 
         miscProperties.setAdvancementTitle("Surprisingly Mundane");
         miscProperties.disableBabyGuidebook();
-        miscProperties.setVersion(-1);
+        miscProperties.setVersion(JSExpanded.EXPANDED_VERSION);
     }
 
     @Override
