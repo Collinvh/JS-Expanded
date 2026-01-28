@@ -5,26 +5,38 @@ import jp.jsexpanded.server.animals.AbstractAddonAnimal;
 import jp.jsexpanded.server.animals.JSExpandedLocator;
 import jp.jsexpanded.server.animals.entity.extinct.aquatic.BloodfishEntity;
 import jp.jsexpanded.server.animals.entity.extinct.aquatic.PiranhadonEntity;
+import jp.jsexpanded.server.animals.entity.extinct.aquatic.SicklefinEntity;
+import jp.jsexpanded.server.animals.entity.extinct.avian.celocimex.CelocimexEntity;
 import jp.jsexpanded.server.animals.entity.extinct.terrestial.moonspider.MoonspiderEntity;
+import jp.jsexpanded.server.animals.entity.extinct.terrestial.venatosaurus.VenatosaurusEntity;
 import jp.jurassicsaga.server.base.animal.animals.JSAnimations;
 import jp.jurassicsaga.server.base.animal.animations.JSAnimator;
 import jp.jurassicsaga.server.base.animal.entity.obj.bases.JSAnimalBase;
 import jp.jurassicsaga.server.base.animal.entity.obj.diet.Diets;
 import jp.jurassicsaga.server.base.animal.entity.obj.info.AnimalDietType;
 import jp.jurassicsaga.server.base.animal.obj.attributes.*;
+import jp.jurassicsaga.server.base.entity.obj.visitor.VisitorEntity;
 import jp.jurassicsaga.server.base.generic.obj.EggType;
 import jp.jurassicsaga.server.base.generic.obj.Era;
 import jp.jurassicsaga.server.base.generic.util.JSUtils;
+import jp.jurassicsaga.server.v1.animal.animals.extinct.aquatic.TylosaurusAnimal;
+import jp.jurassicsaga.server.v1.animal.entity.extant.AlligatorEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extant.BonitoEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extant.GoatEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extant.OstrichEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extinct.aquatic.MesolimulusEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extinct.aquatic.TylosaurusEntity;
+import jp.jurassicsaga.server.v1.animal.entity.extinct.avian.CearadactylusEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.*;
+import jp.jurassicsaga.server.v2.animal.entity.extinct.avian.LudodactylusEntity;
 import jp.jurassicsaga.server.v2.animal.entity.extinct.terrestial.*;
+import jp.jurassicsaga.server.v4.animal.entity.extinct.terrestial.CeratosaurusEntity;
+import jp.jurassicsaga.server.v4.animal.entity.extinct.terrestial.CorythosaurusEntity;
+import jp.jurassicsaga.server.v4.animal.entity.extinct.terrestial.SpinosaurusEntity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
@@ -67,12 +79,13 @@ public class PiranhadonAnimal extends AbstractAddonAnimal<PiranhadonEntity> {
         miscProperties.setGuidebookScaling(new float[]{ 1.2f, 0.6f });
         miscProperties.setGuidebookOffset(new Vec2(-1,0),new Vec2(0,0));
         miscProperties.setExtinct();
+        miscProperties.setMachineScale(0.4F);
 
         miscProperties.setGuideBookDescription("Piranhadon was a massive carnivorous river-dwelling fish that inhabited the swamps of Skull Island.As an ambush predator, Piranhadon would lie in wait near the river banks, using its sensitive barbels to detect prey.");
         miscProperties.setGuideBookSource("Skull Island");
         miscProperties.setGuideBookScientificName("Piranhadon");
 
-        miscProperties.setAdvancementTitle("Boom piranha");
+        miscProperties.setAdvancementTitle("River of Teeth");
         miscProperties.disableBabyGuidebook();
         miscProperties.setVersion(JSExpanded.EXPANDED_VERSION);
     }
@@ -80,17 +93,31 @@ public class PiranhadonAnimal extends AbstractAddonAnimal<PiranhadonEntity> {
     @Override
     protected void applySocialProperties(JSSocialGroupProperties<PiranhadonEntity> socialGroupProperties) {
         socialGroupProperties.addHuntTargets(
-                Player.class, MesolimulusEntity.class, AbstractFish.class,
-                Animal.class, GoatEntity.class, OstrichEntity.class,
-                GallimimusEntity.class, DryosaurusEntity.class, BonitoEntity.class,
-                DilophosaurusEntity.class, HadrosaurusEntity.class, ParasaurolophusEntity.class,
+                //Vanilla
+                Animal.class, Monster.class, AbstractVillager.class,
+                WaterAnimal.class, Player.class, VisitorEntity.class,
 
+                //V1
+                BonitoEntity.class, AlligatorEntity.class, GoatEntity.class,
+                OstrichEntity.class, VelociraptorEntity.class, CearadactylusEntity.class,
+                TriceratopsEntity.class, GallimimusEntity.class, HadrosaurusEntity.class,
+                ParasaurolophusEntity.class, TroodonEntity.class, ApatosaurusEntity.class,
+                DilophosaurusEntity.class, DryosaurusEntity.class, StegosaurusEntity.class,
+                TyrannosaurusEntity.class, BrachiosaurusEntity.class,
 
                 //V2
-                MaiasauraEntity.class, MicroceratusEntity.class, StyracosaurusEntity.class,
-                ProceratosaurusEntity.class, OthnielaEntity.class, EuoplocephalusEntity.class,
-                VelociraptorEntity.class, AchillobatorEntity.class, CoelurusEntity.class,
-                CallovosaurusEntity.class, ProtoceratopsEntity.class, TylosaurusEntity.class
+                AchillobatorEntity.class, BaryonyxEntity.class, EuoplocephalusEntity.class,
+                LudodactylusEntity.class, MaiasauraEntity.class, MetriacanthosaurusEntity.class,
+                ProceratosaurusEntity.class, OthnielaEntity.class, MicroceratusEntity.class,
+                StyracosaurusEntity.class, CoelurusEntity.class, CallovosaurusEntity.class,
+                HerrerasaurusEntity.class, DracovenatorEntity.class, ProtoceratopsEntity.class,
+
+                //V4
+                SpinosaurusEntity.class, CorythosaurusEntity.class, CeratosaurusEntity.class,
+
+                //Expansion
+                VenatosaurusEntity.class, BloodfishEntity.class, CelocimexEntity.class,
+                MoonspiderEntity.class, SicklefinEntity.class
         );
         socialGroupProperties.addHerdTargets(PiranhadonEntity.class);
         socialGroupProperties.setMaxDistanceToPackLeader(900);
@@ -140,7 +167,7 @@ public class PiranhadonAnimal extends AbstractAddonAnimal<PiranhadonEntity> {
         /*
         Speed Related
          */
-        attributes.setMovementSpeed(JSUtils.kmhToSpeed(10));
+        attributes.setMovementSpeed(JSUtils.kmhToSpeed(20));
         attributes.setWaterEfficiency(0.8F);
         attributes.setRunningSpeedMultiplier(1.45F);
         attributes.setSwimmingSpeedMultiplier(2F);

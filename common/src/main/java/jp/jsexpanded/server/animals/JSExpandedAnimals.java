@@ -1,6 +1,11 @@
 package jp.jsexpanded.server.animals;
 
+import jp.jsexpanded.server.animals.entity.extinct.aquatic.BloodfishEntity;
 import jp.jsexpanded.server.animals.entity.extinct.aquatic.PiranhadonEntity;
+import jp.jsexpanded.server.animals.entity.extinct.aquatic.SicklefinEntity;
+import jp.jsexpanded.server.animals.entity.extinct.aquatic.cunaepraedator.CunaepraedatorEntity;
+import jp.jsexpanded.server.animals.entity.extinct.avian.SpinaculexEntity;
+import jp.jsexpanded.server.animals.entity.extinct.avian.celocimex.CelocimexEntity;
 import jp.jsexpanded.server.animals.entity.extinct.terrestial.venatosaurus.VenatosaurusEntity;
 import jp.jsexpanded.server.animals.extinct.aquatic.BloodfishAnimal;
 import jp.jsexpanded.server.animals.extinct.aquatic.CunaepraedatorAnimal;
@@ -13,6 +18,7 @@ import jp.jsexpanded.server.animals.extinct.terrestial.VenatosaurusAnimal;
 import jp.jurassicsaga.server.base.animal.obj.JSAnimal;
 import jp.jurassicsaga.server.v1.animal.JSV1Animals;
 import jp.jurassicsaga.server.v2.animal.JSV2Animals;
+import jp.jurassicsaga.server.v4.animal.JSV4Animals;
 import net.minecraft.world.entity.LivingEntity;
 
 public class JSExpandedAnimals {
@@ -35,6 +41,8 @@ public class JSExpandedAnimals {
         PIRANHADON = new PiranhadonAnimal();
         CUNAEPRAEDATOR = new CunaepraedatorAnimal();
         SPINACULEX = new SpinaculexAnimal();
+
+        finalizeAnimals();
     }
 
     /***
@@ -48,8 +56,13 @@ public class JSExpandedAnimals {
     }
 
     private static void initHunt() {
-        huntMe(VenatosaurusEntity.class, JSV2Animals.BARYONYX, JSV1Animals.TYRANNOSAURUS, JSV1Animals.TYLOSAURUS);
+        huntMe(VenatosaurusEntity.class, JSV2Animals.BARYONYX, JSV1Animals.TYRANNOSAURUS, JSV4Animals.SPINOSAURUS, JSV4Animals.CERATOSAURUS, JSV1Animals.TYLOSAURUS);
         huntMe(PiranhadonEntity.class, JSV1Animals.TYLOSAURUS);
+        huntMe(SpinaculexEntity.class, JSV1Animals.MEGANEURA);
+        huntMe(CelocimexEntity.class, JSV1Animals.MEGANEURA);
+        huntMe(SicklefinEntity.class, JSV1Animals.TYLOSAURUS, JSV2Animals.BARYONYX, JSV4Animals.SPINOSAURUS);
+        huntMe(BloodfishEntity.class, JSV1Animals.TYLOSAURUS, JSV2Animals.BARYONYX, JSV4Animals.SPINOSAURUS);
+        huntMe(CunaepraedatorEntity.class, JSV1Animals.TYLOSAURUS, JSV4Animals.SPINOSAURUS);
     }
 
     private static void initScared() {
@@ -65,6 +78,10 @@ public class JSExpandedAnimals {
         beScaredOfMe(PiranhadonEntity.class,
                 JSV1Animals.BONITO
         );
+
+        beScaredOfMe(SpinaculexEntity.class,
+                JSV1Animals.MOSQUITO
+        );
     }
 
     private static void initHerd() {
@@ -74,6 +91,7 @@ public class JSExpandedAnimals {
 
     public static void beScaredOfMe(Class<? extends LivingEntity> meClazz, JSAnimal<?>... scaredAnimals) {
         for (JSAnimal<?> scaredAnimal : scaredAnimals) {
+            if(scaredAnimal == null) continue;
             scaredAnimal.getAnimalAttributes().getSocialGroupProperties().addScaredOf(meClazz);
         }
     }
@@ -81,6 +99,7 @@ public class JSExpandedAnimals {
 
     public static void huntMe(Class<? extends LivingEntity> meClazz, JSAnimal<?>... scaredAnimals) {
         for (JSAnimal<?> scaredAnimal : scaredAnimals) {
+            if(scaredAnimal == null) continue;
             scaredAnimal.getAnimalAttributes().getSocialGroupProperties().addHuntTargets(meClazz);
         }
     }
@@ -88,6 +107,7 @@ public class JSExpandedAnimals {
 
     public static void herdWithMe(Class<? extends LivingEntity> meClazz, JSAnimal<?>... scaredAnimals) {
         for (JSAnimal<?> scaredAnimal : scaredAnimals) {
+            if(scaredAnimal == null) continue;
             scaredAnimal.getAnimalAttributes().getSocialGroupProperties().addHerdTargets(meClazz);
         }
     }

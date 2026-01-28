@@ -7,6 +7,7 @@ import jp.jsexpanded.server.animals.entity.extinct.terrestial.venatosaurus.Venat
 import jp.jurassicsaga.server.base.animal.entity.obj.diet.Diets;
 import jp.jurassicsaga.server.base.animal.entity.obj.info.AnimalDietType;
 import jp.jurassicsaga.server.base.animal.obj.attributes.*;
+import jp.jurassicsaga.server.base.entity.obj.visitor.VisitorEntity;
 import jp.jurassicsaga.server.base.generic.gene.JSGenetics;
 import jp.jurassicsaga.server.base.generic.obj.ActiveTime;
 import jp.jurassicsaga.server.base.generic.obj.EggType;
@@ -15,8 +16,11 @@ import jp.jurassicsaga.server.base.generic.util.JSUtils;
 import jp.jurassicsaga.server.v1.animal.animations.extinct.terrestial.VelociraptorAnimations;
 import jp.jurassicsaga.server.v1.animal.entity.extant.GoatEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extant.OstrichEntity;
+import jp.jurassicsaga.server.v1.animal.entity.extinct.avian.CearadactylusEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.*;
+import jp.jurassicsaga.server.v2.animal.animals.extinct.terrestial.AchillobatorAnimal;
 import jp.jurassicsaga.server.v2.animal.entity.extinct.terrestial.*;
+import jp.jurassicsaga.server.v4.animal.entity.extinct.terrestial.CeratosaurusEntity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
@@ -73,16 +77,21 @@ public class VenatosaurusAnimal extends AbstractAddonAnimal<VenatosaurusEntity> 
         socialGroupProperties.addHuntTargets(
                 //Vanilla
                 AbstractVillager.class, Player.class, Monster.class,
-                Animal.class,
+                Animal.class, VisitorEntity.class,
 
                 //V1
                 DryosaurusEntity.class, GoatEntity.class, OstrichEntity.class,
                 ParasaurolophusEntity.class, HadrosaurusEntity.class, ApatosaurusEntity.class,
-                GallimimusEntity.class, ProcompsognathusEntity.class, VelociraptorEntity.class,
+                GallimimusEntity.class, ProcompsognathusEntity.class, CearadactylusEntity.class,
 
                 //V2
                 MetriacanthosaurusEntity.class, EuoplocephalusEntity.class, StyracosaurusEntity.class,
-                MaiasauraEntity.class, MicroceratusEntity.class, AchillobatorEntity.class
+                ProceratosaurusEntity.class, OthnielaEntity.class, MaiasauraEntity.class,
+                MicroceratusEntity.class, CoelurusEntity.class, CallovosaurusEntity.class,
+                ProtoceratopsEntity.class,
+
+                //V4
+                CeratosaurusEntity.class
         );
         socialGroupProperties.addScaredOf(
                 TyrannosaurusEntity.class
@@ -134,7 +143,7 @@ public class VenatosaurusAnimal extends AbstractAddonAnimal<VenatosaurusEntity> 
         /*
         Speed Related
          */
-        attributes.setMovementSpeed(JSUtils.kmhToSpeed(18));
+        attributes.setMovementSpeed(JSUtils.kmhToSpeed(32));
         attributes.setWaterEfficiency(0.8F);
         attributes.setRunningSpeedMultiplier(2.25F);
 

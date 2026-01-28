@@ -11,6 +11,5 @@ import net.neoforged.fml.common.Mod;
 public class JSNeoExpandedClient {
 
     public JSNeoExpandedClient(IEventBus eventBus) {
-        JSExpandedClient.init();
     }
 }

@@ -12,13 +12,13 @@ import jp.jurassicsaga.server.base.animal.obj.attributes.*;
 import jp.jurassicsaga.server.base.generic.obj.EggType;
 import jp.jurassicsaga.server.base.generic.obj.Era;
 import jp.jurassicsaga.server.base.generic.util.JSUtils;
+import jp.jurassicsaga.server.v1.animal.animals.extinct.avian.MeganeuraAnimal;
 import jp.jurassicsaga.server.v1.animal.entity.extant.GoatEntity;
-import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.DryosaurusEntity;
-import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.ProcompsognathusEntity;
-import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.TyrannosaurusEntity;
-import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.VelociraptorEntity;
-import jp.jurassicsaga.server.v2.animal.entity.extinct.terrestial.CompsognathusEntity;
-import jp.jurassicsaga.server.v2.animal.entity.extinct.terrestial.MicroceratusEntity;
+import jp.jurassicsaga.server.v1.animal.entity.extant.MosquitoEntity;
+import jp.jurassicsaga.server.v1.animal.entity.extinct.avian.MeganeuraEntity;
+import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.*;
+import jp.jurassicsaga.server.v2.animal.entity.extant.avian.ButterflyEntity;
+import jp.jurassicsaga.server.v2.animal.entity.extinct.terrestial.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.animal.Animal;
@@ -81,22 +81,16 @@ public class CelocimexAnimal extends AbstractAddonAnimal<CelocimexEntity> {
 
     @Override
     protected void applySocialProperties(JSSocialGroupProperties<CelocimexEntity> socialGroupProperties) {
-        socialGroupProperties.addHuntTargets(
-                //Vanilla
-                AbstractVillager.class, Player.class, Monster.class,
-                Animal.class,
-
+        socialGroupProperties.addScaredOf(
                 //V1
-                DryosaurusEntity.class, GoatEntity.class,
-                ProcompsognathusEntity.class, VelociraptorEntity.class,
+                VelociraptorEntity.class, TroodonEntity.class, DilophosaurusEntity.class,
+                TyrannosaurusEntity.class, MeganeuraEntity.class,
 
                 //V2
-                MicroceratusEntity.class, CompsognathusEntity.class
+                AchillobatorEntity.class, BaryonyxEntity.class, MetriacanthosaurusEntity.class
         );
-        socialGroupProperties.addScaredOf(
-                TyrannosaurusEntity.class
-        );
-        socialGroupProperties.addHerdTargets(MoonspiderEntity.class);
+        socialGroupProperties.addHuntTargets(MosquitoEntity.class, ButterflyEntity.class);
+        socialGroupProperties.addHerdTargets(CelocimexEntity.class);
         socialGroupProperties.setMaxDistanceToPackLeader(900);
         socialGroupProperties.setMinDistanceToPackLeader(400);
         socialGroupProperties.setMaxHerdSize(7);
@@ -161,7 +155,7 @@ public class CelocimexAnimal extends AbstractAddonAnimal<CelocimexEntity> {
         /*
         Speed Related
          */
-        attributes.setMovementSpeed(JSUtils.kmhToSpeed(8));
+        attributes.setMovementSpeed(JSUtils.kmhToSpeed(16));
         attributes.setWaterEfficiency(0.8F);
         attributes.setRunningSpeedMultiplier(2.7F);
 

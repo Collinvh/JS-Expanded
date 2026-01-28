@@ -1,6 +1,7 @@
 package jp.jsexpanded.server.animals;
 
 import jp.jsexpanded.JSExpanded;
+import jp.jurassicsaga.server.base.animal.JSAnimals;
 import jp.jurassicsaga.server.base.animal.animals.JSAnimations;
 import jp.jurassicsaga.server.base.animal.entity.obj.bases.JSAnimalBase;
 import jp.jurassicsaga.server.base.animal.obj.JSAnimal;

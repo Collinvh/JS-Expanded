@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class JSDataGatherMixin {
     @Inject(at = @At("HEAD"), method = "gatherData", cancellable = true)
     private static void gatherData(GatherDataEvent event, CallbackInfo ci) {
+        //This is done because I sometimes forget to disable datagen on the main mod (sorry)
         ci.cancel();
     }
 }

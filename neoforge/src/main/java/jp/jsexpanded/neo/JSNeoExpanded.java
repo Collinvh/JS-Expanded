@@ -14,8 +14,6 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 public class JSNeoExpanded {
 
     public JSNeoExpanded(IEventBus eventBus) {
-        JSExpanded.init();
-
         eventBus.addListener(GatherData::gatherData);
     }
 
@@ -24,7 +22,6 @@ public class JSNeoExpanded {
     public static class ModEvents {
         @SubscribeEvent
         public static void fmlCommonSetup(FMLCommonSetupEvent event) {
-            event.enqueueWork(JSExpandedAnimals::finalizeAnimals);
         }
     }
 }

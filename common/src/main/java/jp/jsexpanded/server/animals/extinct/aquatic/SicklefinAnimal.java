@@ -3,6 +3,7 @@ package jp.jsexpanded.server.animals.extinct.aquatic;
 import jp.jsexpanded.JSExpanded;
 import jp.jsexpanded.server.animals.AbstractAddonAnimal;
 import jp.jsexpanded.server.animals.JSExpandedLocator;
+import jp.jsexpanded.server.animals.entity.extinct.aquatic.PiranhadonEntity;
 import jp.jsexpanded.server.animals.entity.extinct.aquatic.SicklefinEntity;
 import jp.jsexpanded.server.animals.entity.extinct.terrestial.moonspider.MoonspiderEntity;
 import jp.jurassicsaga.server.base.animal.animals.JSAnimations;
@@ -15,12 +16,14 @@ import jp.jurassicsaga.server.base.generic.obj.EggType;
 import jp.jurassicsaga.server.base.generic.obj.Era;
 import jp.jurassicsaga.server.base.generic.util.JSUtils;
 import jp.jurassicsaga.server.v1.animal.entity.extant.GoatEntity;
+import jp.jurassicsaga.server.v1.animal.entity.extinct.aquatic.TylosaurusEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.DryosaurusEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.ProcompsognathusEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.TyrannosaurusEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.VelociraptorEntity;
 import jp.jurassicsaga.server.v2.animal.entity.extinct.terrestial.CompsognathusEntity;
 import jp.jurassicsaga.server.v2.animal.entity.extinct.terrestial.MicroceratusEntity;
+import jp.jurassicsaga.server.v4.animal.entity.extinct.terrestial.SpinosaurusEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.animal.Animal;
@@ -70,7 +73,7 @@ public class SicklefinAnimal extends AbstractAddonAnimal<SicklefinEntity> {
 
         miscProperties.setGuideBookDescription("The Sicklefin, or Sicililepis minimus, was a fish native to Skull Island's waterways, similar to a batfish in appearance. It is unknown what the Sicklefin actually eats, however, it's beaked mouth suggests a possible diet of shellfish.");
         miscProperties.setGuideBookSource("Skull Island");
-        miscProperties.setGuideBookScientificName("Venatosaurus");
+        miscProperties.setGuideBookScientificName("Sicililepis minimus");
 
         miscProperties.setAdvancementTitle("Surprisingly Mundane");
         miscProperties.disableBabyGuidebook();
@@ -79,20 +82,8 @@ public class SicklefinAnimal extends AbstractAddonAnimal<SicklefinEntity> {
 
     @Override
     protected void applySocialProperties(JSSocialGroupProperties<SicklefinEntity> socialGroupProperties) {
-        socialGroupProperties.addHuntTargets(
-                //Vanilla
-                AbstractVillager.class, Player.class, Monster.class,
-                Animal.class,
-
-                //V1
-                DryosaurusEntity.class, GoatEntity.class,
-                ProcompsognathusEntity.class, VelociraptorEntity.class,
-
-                //V2
-                MicroceratusEntity.class, CompsognathusEntity.class
-        );
         socialGroupProperties.addScaredOf(
-                TyrannosaurusEntity.class
+                TylosaurusEntity.class, PiranhadonEntity.class, SpinosaurusEntity.class
         );
         socialGroupProperties.addHerdTargets(MoonspiderEntity.class);
         socialGroupProperties.setMaxDistanceToPackLeader(900);
@@ -141,7 +132,7 @@ public class SicklefinAnimal extends AbstractAddonAnimal<SicklefinEntity> {
         /*
         Speed Related
          */
-        attributes.setMovementSpeed(JSUtils.kmhToSpeed(18));
+        attributes.setMovementSpeed(JSUtils.kmhToSpeed(32));
         attributes.setWaterEfficiency(0.8F);
         attributes.setRunningSpeedMultiplier(1.45F);
 

@@ -31,13 +31,13 @@ public final class JSExpandedBiomeBuilder {
     };
 
     private static final Climate.Parameter[] EROS = new Climate.Parameter[]{
-            Climate.Parameter.span(-1.0F, -0.75F), // shattered cliffs
-            Climate.Parameter.span(-0.75F, -0.45F),// steep slopes
-            Climate.Parameter.span(-0.45F, -0.2F), // hills
-            Climate.Parameter.span(-0.2F, 0.2F),   // rolling foothills
-            Climate.Parameter.span(0.2F, 0.5F),    // plains
-            Climate.Parameter.span(0.5F, 0.75F),   // flat wetlands
-            Climate.Parameter.span(0.75F, 1.0F)    // rivers/swamps
+            Climate.Parameter.span(0.75F, 1.0F),    // shattered cliffs / ridges
+            Climate.Parameter.span(0.5F, 0.75F),    // steep slopes
+            Climate.Parameter.span(0.2F, 0.5F),     // hills
+            Climate.Parameter.span(-0.2F, 0.2F),    // rolling
+            Climate.Parameter.span(-0.45F, -0.2F),  // plains
+            Climate.Parameter.span(-0.75F, -0.45F), // wetlands
+            Climate.Parameter.span(-1.0F, -0.75F)   // river flats
     };
 
     private static final Climate.Parameter MUSHROOM_C   = Climate.Parameter.span(-1.2F, -1.05F);
@@ -50,9 +50,9 @@ public final class JSExpandedBiomeBuilder {
     private static final Climate.Parameter MID_INLAND_C  = Climate.Parameter.span(0.1F, 0.45F);
     private static final Climate.Parameter FAR_INLAND_C  = Climate.Parameter.span(0.45F, 1.0F);
 
-    static final Climate.Parameter LOW_EROSION  = Climate.Parameter.span(0.6F, 1.0F);   // cliffs
-    static final Climate.Parameter MID_EROSION  = Climate.Parameter.span(-0.2F, 0.6F);  // beaches
-    static final Climate.Parameter HIGH_EROSION = Climate.Parameter.span(-1.0F, -0.2F); // flats
+    static final Climate.Parameter HIGH_EROSION = Climate.Parameter.span(0.5F, 1.0F);   // rugged
+    static final Climate.Parameter MID_EROSION  = Climate.Parameter.span(-0.2F, 0.5F);  // normal
+    static final Climate.Parameter LOW_EROSION  = Climate.Parameter.span(-1.0F, -0.2F); // flat
 
     // Tables
     private static final ResourceKey<Biome>[][] OCEANS = new ResourceKey[][]{
@@ -62,24 +62,24 @@ public final class JSExpandedBiomeBuilder {
 
     private static final ResourceKey<Biome>[][] PLATEAU = new ResourceKey[][]{
             { JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.MOUNTAINOUS_PLAINS.getBiomeKey(), JSExpandedBiomes.MOUNTAINOUS_SWAMP.getBiomeKey(), JSExpandedBiomes.SKULL_MOUNTAINS.getBiomeKey() },
-            { JSExpandedBiomes.MOUNTAINOUS_PLAINS.getBiomeKey(), JSExpandedBiomes.MOUNTAINOUS_PLAINS.getBiomeKey(), JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.WATERFALL_CLIFFS.getBiomeKey() },
-            { JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.MEGAFALLS.getBiomeKey(), JSExpandedBiomes.MEGAFALLS.getBiomeKey(), JSExpandedBiomes.WATERFALL_CLIFFS.getBiomeKey() },
-            { JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.MEGAFALLS.getBiomeKey(), JSExpandedBiomes.WATERFALL_CLIFFS.getBiomeKey(), JSExpandedBiomes.SKULL_MOUNTAINS.getBiomeKey() },
+            { JSExpandedBiomes.MOUNTAINOUS_PLAINS.getBiomeKey(), JSExpandedBiomes.MOUNTAINOUS_PLAINS.getBiomeKey(), JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.SKULL_MOUNTAINS.getBiomeKey() },
+            { JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.SKULL_MOUNTAINS.getBiomeKey(), JSExpandedBiomes.SKULL_MOUNTAINS.getBiomeKey(), JSExpandedBiomes.SKULL_MOUNTAINS.getBiomeKey() },
+            { JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.SKULL_MOUNTAINS.getBiomeKey() },
             { JSExpandedBiomes.BARREN_VOLCANO.getBiomeKey(), JSExpandedBiomes.BARREN_VOLCANO.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.SKULL_MOUNTAINS.getBiomeKey() }
     };
 
     private static final ResourceKey<Biome>[][] PLATEAU_VAR = new ResourceKey[][]{
             { null, null, null, null, null },
-            { null, null, JSExpandedBiomes.WATERFALL_CLIFFS.getBiomeKey(), null, null },
+            { null, null, JSExpandedBiomes.SKULL_MOUNTAINS.getBiomeKey(), null, null },
             { null, null, null, null, null },
             { null, null, null, null, null },
             { JSExpandedBiomes.BARREN_VOLCANO.getBiomeKey(), null, null, null, null }
     };
 
     private static final ResourceKey<Biome>[][] SHATTERED = new ResourceKey[][]{
-            { JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.WATERFALL_CLIFFS.getBiomeKey(), JSExpandedBiomes.WATERFALL_CLIFFS.getBiomeKey() },
-            { JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.MEGAFALLS.getBiomeKey(), JSExpandedBiomes.MEGAFALLS.getBiomeKey() },
-            { JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.MEGAFALLS.getBiomeKey(), JSExpandedBiomes.WATERFALL_CLIFFS.getBiomeKey(), JSExpandedBiomes.WATERFALL_CLIFFS.getBiomeKey() },
+            { JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey() },
+            { JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.SKULL_MOUNTAINS.getBiomeKey(), JSExpandedBiomes.SKULL_MOUNTAINS.getBiomeKey() },
+            { JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.TROPICAL_HIGHLANDS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey(), JSExpandedBiomes.CRACKING_CLIFFS.getBiomeKey() },
             { null, null, null, null, null },
             { null, null, null, null, null }
     };
@@ -156,7 +156,7 @@ public final class JSExpandedBiomeBuilder {
                 FULL_RANGE,
                 FULL_RANGE,
                 Climate.Parameter.span(MID_INLAND_C, FAR_INLAND_C), // never coast
-                Climate.Parameter.span(EROS[4], EROS[6]),           // flat terrain
+                Climate.Parameter.span(EROS[5], EROS[6]),           // true valley flats only
                 Climate.Parameter.span(-0.15F, 0.15F),              // valley weirdness
                 0.0F,
                 JSExpandedBiomes.MIGHTY_RIVER.getBiomeKey()
@@ -167,7 +167,7 @@ public final class JSExpandedBiomeBuilder {
                 FULL_RANGE,
                 FULL_RANGE,
                 Climate.Parameter.span(NEAR_INLAND_C, FAR_INLAND_C), // allow near inland but not coast
-                EROS[6],                                             // very flat only
+                Climate.Parameter.span(EROS[5], EROS[6]),            // very flat only
                 Climate.Parameter.span(-0.1F, 0.1F),
                 0.0F,
                 JSExpandedBiomes.MIGHTY_RIVER.getBiomeKey()
@@ -213,19 +213,25 @@ public final class JSExpandedBiomeBuilder {
 
     // ---- Inland
     private void addInlandBiomes(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> out) {
-        addMidSlice(out, Climate.Parameter.span(-1.0F, -0.93333334F));
-        addHighSlice(out, Climate.Parameter.span(-0.93333334F, -0.7666667F));
-        addPeaks(out, Climate.Parameter.span(-0.7666667F, -0.56666666F));
-        addHighSlice(out, Climate.Parameter.span(-0.56666666F, -0.4F));
-        addMidSlice(out, Climate.Parameter.span(-0.4F, -0.26666668F));
-        addLowSlice(out, Climate.Parameter.span(-0.26666668F, -0.05F));
-        addValleys(out, Climate.Parameter.span(-0.05F, 0.05F));
-        addLowSlice(out, Climate.Parameter.span(0.05F, 0.26666668F));
-        addMidSlice(out, Climate.Parameter.span(0.26666668F, 0.4F));
-        addHighSlice(out, Climate.Parameter.span(0.4F, 0.56666666F));
-        addPeaks(out, Climate.Parameter.span(0.56666666F, 0.7666667F));
-        addHighSlice(out, Climate.Parameter.span(0.7666667F, 0.93333334F));
-        addMidSlice(out, Climate.Parameter.span(0.93333334F, 1.0F));
+
+        // valleys (near ridges = 0)
+        addValleys(out, Climate.Parameter.span(-0.15F, 0.15F));
+
+        // lowlands
+        addLowSlice(out, Climate.Parameter.span(-0.35F, -0.15F));
+        addLowSlice(out, Climate.Parameter.span(0.15F, 0.35F));
+
+        // midlands / hills
+        addMidSlice(out, Climate.Parameter.span(-0.6F, -0.35F));
+        addMidSlice(out, Climate.Parameter.span(0.35F, 0.6F));
+
+        // highlands
+        addHighSlice(out, Climate.Parameter.span(-0.8F, -0.6F));
+        addHighSlice(out, Climate.Parameter.span(0.6F, 0.8F));
+
+        // sharp peaks
+        addPeaks(out, Climate.Parameter.span(-1.0F, -0.8F));
+        addPeaks(out, Climate.Parameter.span(0.8F, 1.0F));
     }
 
     private void addPeaks(Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> out, Climate.Parameter d) {
@@ -293,7 +299,7 @@ public final class JSExpandedBiomeBuilder {
 
         // ---- Coastal cliffs (rocky shoreline)
         emitSurface(out, FULL_RANGE, FULL_RANGE, COAST_C,
-                Climate.Parameter.span(EROS[0], EROS[2]), d, 0.0F,
+                Climate.Parameter.span(EROS[2], EROS[0]), d, 0.0F,
                 JSExpandedBiomes.GRASSY_SEA_CLIFFS.getBiomeKey());
 
         // ---- Wetlands in valleys and flat lowlands
@@ -433,7 +439,7 @@ public final class JSExpandedBiomeBuilder {
         // ---- Main river corridors (all erosion levels)
         emitSurface(out, FULL_RANGE, FULL_RANGE,
                 Climate.Parameter.span(COAST_C, FAR_INLAND_C),
-                Climate.Parameter.span(EROS[0], EROS[6]), d, 0.0F,
+                Climate.Parameter.span(EROS[6], EROS[0]), d, 0.0F,
                 JSExpandedBiomes.MIGHTY_RIVER.getBiomeKey());
 
         // ---- Bayous in cooler flat valleys
@@ -570,13 +576,8 @@ public final class JSExpandedBiomeBuilder {
 
     private ResourceKey<Biome> pickPeak(int t, int h, Climate.Parameter d) {
         // very dry + hot → volcanic / cracked peaks
-        if (t >= 3 && h <= 1) {
+        if (t >= 3 && h <= 1 || h >= 3) {
             return JSExpandedBiomes.BARREN_VOLCANO.getBiomeKey();
-        }
-
-        // humid → waterfall cliffs near summits
-        if (h >= 3) {
-            return JSExpandedBiomes.WATERFALL_CLIFFS.getBiomeKey();
         }
 
         // default dramatic peaks

@@ -4,6 +4,7 @@ import com.mojang.datafixers.util.Pair;
 import jp.jsexpanded.JSExpanded;
 import jp.jsexpanded.server.world.biome.ExpandedSurfaceRuleData;
 import jp.jsexpanded.server.world.biome.JSExpandedBiomes;
+import jp.jsexpanded.server.world.level.gen.JSBasedChunkGenerator;
 import jp.jurassicsaga.server.base.world.biome.JSBiomeBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -107,7 +108,7 @@ public class JSExpandedDimensions {
         ctx.register(EXPANDED_DIM,
                 new LevelStem(
                         types.getOrThrow(EXPANDED_TYPE),
-                        new NoiseBasedChunkGenerator(
+                        new JSBasedChunkGenerator(
                                 MultiNoiseBiomeSource.createFromList(
                                         buildParameters(biomes, builder)
                                 ),
@@ -205,7 +206,12 @@ public class JSExpandedDimensions {
 // ---- Fold weirdness into Peaks & Valleys (PV) ----
 // PV = (-abs(abs(ridges) - 2/3) + 1/3) * 3
 
-        DensityFunction ridgesAbs = ridges.abs();
+        DensityFunction ridgesSoft =
+                DensityFunctions.mul(
+                        ridges,
+                        DensityFunctions.constant(0.6D)
+                );
+        DensityFunction ridgesAbs = ridgesSoft.abs();
 
         DensityFunction folded =
                 DensityFunctions.add(
@@ -216,23 +222,21 @@ public class JSExpandedDimensions {
         DensityFunction pv =
                 DensityFunctions.mul(
                         DensityFunctions.add(folded, DensityFunctions.constant(-0.3333333D)),
-                        DensityFunctions.constant(-3.0D)
+                        DensityFunctions.constant(-2.0D)
                 );
 
 
 // ---- Continentalness gate (coasts = 0, inland = 1) ----
         DensityFunction inlandMask =
-                DensityFunctions.add(
-                        DensityFunctions.mul(continents, DensityFunctions.constant(1.2D)),
-                        DensityFunctions.constant(0.4D)
-                ).clamp(0.0D, 1.0D);
+                DensityFunctions.add(continents, DensityFunctions.constant(-0.1D))
+                        .clamp(0.0D, 1.0D);
 
 
 // ---- Erosion gate (flat biomes = 0, rugged = 1) ----
         DensityFunction ruggedMask =
                 DensityFunctions.add(
-                        DensityFunctions.mul(erosion, DensityFunctions.constant(-1.3D)),
-                        DensityFunctions.constant(1.1D)
+                        DensityFunctions.mul(erosion, DensityFunctions.constant(-1.8D)),
+                        DensityFunctions.constant(0.6D)
                 ).clamp(0.0D, 1.0D);
 
 
@@ -245,7 +249,7 @@ public class JSExpandedDimensions {
         DensityFunction mountainJaggedness =
                 DensityFunctions.mul(
                         pv,
-                        DensityFunctions.mul(jaggednessStrength, DensityFunctions.constant(1.1D))
+                        DensityFunctions.mul(jaggednessStrength, DensityFunctions.constant(0.7D))
                 );
 
         terrainDensity =

@@ -12,18 +12,20 @@ import jp.jurassicsaga.server.base.animal.entity.obj.diet.Diets;
 import jp.jurassicsaga.server.base.animal.entity.obj.info.AnimalDietType;
 import jp.jurassicsaga.server.base.animal.entity.obj.other.JSVariants;
 import jp.jurassicsaga.server.base.animal.obj.attributes.*;
+import jp.jurassicsaga.server.base.entity.obj.visitor.VisitorEntity;
 import jp.jurassicsaga.server.base.generic.obj.EggType;
 import jp.jurassicsaga.server.base.generic.obj.Era;
 import jp.jurassicsaga.server.base.generic.util.JSUtils;
+import jp.jurassicsaga.server.v1.animal.entity.extant.BonitoEntity;
 import jp.jurassicsaga.server.v1.animal.entity.extant.GoatEntity;
-import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.DryosaurusEntity;
-import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.ProcompsognathusEntity;
-import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.TyrannosaurusEntity;
-import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.VelociraptorEntity;
-import jp.jurassicsaga.server.v2.animal.entity.extinct.terrestial.CompsognathusEntity;
-import jp.jurassicsaga.server.v2.animal.entity.extinct.terrestial.MicroceratusEntity;
+import jp.jurassicsaga.server.v1.animal.entity.extant.OstrichEntity;
+import jp.jurassicsaga.server.v1.animal.entity.extinct.aquatic.MesolimulusEntity;
+import jp.jurassicsaga.server.v1.animal.entity.extinct.terrestial.*;
+import jp.jurassicsaga.server.v2.animal.entity.extinct.terrestial.*;
+import jp.jurassicsaga.server.v4.animal.entity.extinct.terrestial.SpinosaurusEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.animal.AbstractFish;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.npc.AbstractVillager;
@@ -70,30 +72,34 @@ public class CunaepraedatorAnimal extends AbstractAddonAnimal<CunaepraedatorEnti
         miscProperties.setExtinct();
         miscProperties.disableBabyGuidebook();
 
-        miscProperties.setGuideBookDescription("N/A");
-        miscProperties.setGuideBookSource("Skull Island");
-        miscProperties.setGuideBookScientificName("N/A");
+        miscProperties.setGuideBookDescription("A highly aggressive apex predator known for ambush hunting and territorial behavior.");
+        miscProperties.setGuideBookSource("Skull Island.");
+        miscProperties.setGuideBookScientificName("Cunaepraedator ferox");
 
-        miscProperties.setAdvancementTitle("N/A");
+        miscProperties.setAdvancementTitle("Face the Cunaepraedator");
         miscProperties.setVersion(JSExpanded.EXPANDED_VERSION);
     }
 
     @Override
     protected void applySocialProperties(JSSocialGroupProperties<CunaepraedatorEntity> socialGroupProperties) {
-        socialGroupProperties.addHuntTargets(
-                //Vanilla
-                AbstractVillager.class, Player.class, Monster.class,
-                Animal.class,
-
+        socialGroupProperties.addScaredOf(
                 //V1
-                DryosaurusEntity.class, GoatEntity.class,
-                ProcompsognathusEntity.class, VelociraptorEntity.class,
+                TyrannosaurusEntity.class,
+                //V4
+                SpinosaurusEntity.class
+        );
+        socialGroupProperties.addHuntTargets(
+                Player.class, MesolimulusEntity.class, AbstractFish.class,
+                Animal.class, GoatEntity.class, OstrichEntity.class,
+                GallimimusEntity.class, DryosaurusEntity.class, BonitoEntity.class,
+                DilophosaurusEntity.class, HadrosaurusEntity.class, ParasaurolophusEntity.class,
+                VisitorEntity.class,
 
                 //V2
-                MicroceratusEntity.class, CompsognathusEntity.class
-        );
-        socialGroupProperties.addScaredOf(
-                TyrannosaurusEntity.class
+                MaiasauraEntity.class, MicroceratusEntity.class, StyracosaurusEntity.class,
+                ProceratosaurusEntity.class, OthnielaEntity.class, EuoplocephalusEntity.class,
+                VelociraptorEntity.class, AchillobatorEntity.class, CoelurusEntity.class,
+                CallovosaurusEntity.class, ProtoceratopsEntity.class, HerrerasaurusEntity.class
         );
         socialGroupProperties.addHerdTargets(CunaepraedatorEntity.class);
         socialGroupProperties.setMaxDistanceToPackLeader(900);
@@ -178,7 +184,7 @@ public class CunaepraedatorAnimal extends AbstractAddonAnimal<CunaepraedatorEnti
         /*
         Speed Related
          */
-        attributes.setMovementSpeed(JSUtils.kmhToSpeed(8));
+        attributes.setMovementSpeed(JSUtils.kmhToSpeed(16));
         attributes.setWaterEfficiency(0.8F);
         attributes.setRunningSpeedMultiplier(2.7F);
 

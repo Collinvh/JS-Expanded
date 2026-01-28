@@ -4,6 +4,7 @@ import com.google.common.base.Supplier;
 import jp.jsexpanded.server.animals.JSExpandedAnimals;
 import jp.jsexpanded.server.block.JSExpandedBlocks;
 import jp.jsexpanded.server.sound.JSExpandedSounds;
+import jp.jsexpanded.server.world.level.JSLevel;
 import jp.jurassicsaga.JSConstants;
 import jp.jurassicsaga.server.base.generic.Versions;
 import jp.jurassicsaga.server.base.item.JSItemGroups;
@@ -42,6 +43,7 @@ public class JSExpanded {
         JSExpandedAnimals.init();
         JSExpandedBlocks.init();
         JSExpandedSounds.init();
+        JSLevel.init();
 
         BLOCKS = TABS.register("jsexpanded.items", () -> JSHelper.jsPlatform.registerMenu(
                 Component.translatable("itemGroup.jsexpanded.items"),

@@ -62,16 +62,23 @@ public class SpinaculexAnimal extends AbstractAddonAnimal<SpinaculexEntity> {
         miscProperties.setExtinct();
         miscProperties.setVersion(JSExpanded.EXPANDED_VERSION);
         miscProperties.disableBabyGuidebook();
+
+        miscProperties.setGuideBookDescription("Spinaculex was a giant mosquito-like insect native to Skull Island, feeding on the blood of large animals using its elongated proboscis.");
+        miscProperties.setGuideBookSource("Skull Island");
+        miscProperties.setGuideBookScientificName("Spinaculex sanguinis");
+
+        miscProperties.setAdvancementTitle("Unwelcome Bite");
     }
 
     @Override
     protected void applySocialProperties(JSSocialGroupProperties<SpinaculexEntity> socialGroupProperties) {
-        socialGroupProperties.addHuntTargets(Player.class, AbstractVillager.class);
+        socialGroupProperties.addHuntTargets(Player.class, AbstractVillager.class, MosquitoEntity.class);
         socialGroupProperties.addScaredOf(MeganeuraEntity.class);
         socialGroupProperties.addHerdTargets(MosquitoEntity.class);
         socialGroupProperties.setMaxDistanceToPackLeader(200);
         socialGroupProperties.setMinDistanceToPackLeader(50);
         socialGroupProperties.setMaxHerdSize(20);
+        socialGroupProperties.setNaturalAggression(1F);
     }
 
     @Override

@@ -158,7 +158,7 @@ public class MoonspiderAnimal extends AbstractAddonAnimal<MoonspiderEntity> {
         /*
         Speed Related
          */
-        attributes.setMovementSpeed(JSUtils.kmhToSpeed(8));
+        attributes.setMovementSpeed(JSUtils.kmhToSpeed(16));
         attributes.setWaterEfficiency(0.8F);
         attributes.setRunningSpeedMultiplier(2.7F);
 
